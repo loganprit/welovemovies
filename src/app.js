@@ -3,14 +3,17 @@ const express = require("express");
 const app = express();
 
 // Import routers
-const moviesRouter = require("./routes/moviesRouter");
-const theatersRouter = require("./routes/theatersRouter");
-const reviewsRouter = require("./routes/reviewsRouter");
+const moviesRouter = require("./movies/movies.router");
+const theatersRouter = require("./theaters/theaters.router");
+const reviewsRouter = require("./reviews/reviews.router");
 
 // Middleware to parse JSON bodies
 app.use(express.json());
 
-// Route handlers
+// CORS middleware
+app.use(cors());
+
+// Routers
 app.use("/movies", moviesRouter);
 app.use("/theaters", theatersRouter);
 app.use("/reviews", reviewsRouter);
