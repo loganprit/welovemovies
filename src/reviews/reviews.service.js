@@ -15,8 +15,8 @@ function destroy(review_id) {
 function update(updatedReview) {
   return knex("reviews")
     .where({ review_id: updatedReview.review_id })
-    .update(updatedReview, "*")
-    .then((records) => records[0]); // Return the first updated record
+    .update(updatedReview)
+    .then(() => read(updatedReview.review_id)); // Retrieve the updated record
 }
 
 // Function to read a single review with critic information

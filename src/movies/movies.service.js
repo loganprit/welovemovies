@@ -57,19 +57,27 @@ function readReviews(movieId) {
       "r.updated_at",
       "r.critic_id",
       "r.movie_id",
-      knex.raw(`json_object(
-          'critic_id', c.critic_id,
-          'preferred_name', c.preferred_name,
-          'surname', c.surname,
-          'organization_name', c.organization_name
-        ) as critic`)
+      "c.critic_id as critic:critic_id",
+      "c.preferred_name as critic:preferred_name",
+      "c.surname as critic:surname",
+      "c.organization_name as critic:organization_name"
     )
     .where({ "r.movie_id": movieId })
     .then((reviews) => {
       return reviews.map((review) => {
+        const critic = {
+          critic_id: review["critic:critic_id"],
+          preferred_name: review["critic:preferred_name"],
+          surname: review["critic:surname"],
+          organization_name: review["critic:organization_name"],
+        };
+        delete review["critic:critic_id"];
+        delete review["critic:preferred_name"];
+        delete review["critic:surname"];
+        delete review["critic:organization_name"];
         return {
           ...review,
-          critic: JSON.parse(review.critic),
+          critic,
         };
       });
     });
