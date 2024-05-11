@@ -8,6 +8,6 @@ knex.migrate
   .latest()
   .then((migrations) => {
     console.log("migrations", migrations);
-    app.listen(PORT, listener);
+    app.listen(port, listener);
   })
   .catch(console.error);
