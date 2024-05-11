@@ -1,7 +1,7 @@
 const knex = require("../db/connection");
 const reduceProperties = require("../utils/reduce-properties");
-const mapProperties = require("../utils/map-properties");
 
+// Helper function to reduce theater properties
 const reduceMovies = reduceProperties("theater_id", {
   movie_id: ["movies", null, "movie_id"],
   title: ["movies", null, "title"],
@@ -15,6 +15,7 @@ const reduceMovies = reduceProperties("theater_id", {
   theater_id: ["movies", null, "theater_id"],
 });
 
+// Function to list all theaters
 function list() {
   return knex("theaters")
     .join(

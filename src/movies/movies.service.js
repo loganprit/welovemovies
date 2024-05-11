@@ -1,15 +1,16 @@
 const knex = require("../db/connection");
-const reduceProperties = require("../utils/reduce-properties");
-const reduceReview = require("../reviews/reviews.service");
 
+// List all movies or only movies that are showing
 function list(is_showing) {
   if (is_showing) {
+    // If is_showing is true, return only movies that are showing
     return isShowing();
   }
+  // If is_showing is not true, return all movies
   return knex("movies").select("*");
 }
 
-// "/:movieId?is_showing=true"
+// Helper function to return only movies that are showing
 function isShowing() {
   return knex("movies as m")
     .join("movies_theaters as mt", "m.movie_id", "mt.movie_id")
@@ -18,11 +19,12 @@ function isShowing() {
     .select("m.*");
 }
 
+// Function to read a single movie
 function read(movieId) {
   return knex("movies").select("*").where({ movie_id: movieId }).first();
 }
 
-//"/:movieId/theaters"
+// Helper function to read theaters for a single movie
 function readTheaters(movieId) {
   return knex("movies as m")
     .join("movies_theaters as mt", "m.movie_id", "mt.movie_id")
@@ -43,7 +45,7 @@ function readTheaters(movieId) {
     );
 }
 
-// "/:movieId/reviews"
+// Helper function to read reviews for a single movie
 function readReviews(movieId) {
   return knex("reviews as r")
     .join("critics as c", "r.critic_id", "c.critic_id")
