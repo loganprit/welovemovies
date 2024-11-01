@@ -3,12 +3,15 @@ node_modules
 .pnp
 .pnp.js
 
-# Environment
+# Environment files
 .env
 .env.local
-.env.development.local
-.env.test.local
-.env.production.local
+.env.*.local
+
+# Keep examples
+!.env.example
+!.env.development.example
+!.env.production.example
 
 # Build outputs
 build
@@ -29,3 +32,7 @@ yarn-error.log*
 .DS_Store
 Thumbs.db
 node_modules
+
+# Misc
+TODO.md
+og-image.svg

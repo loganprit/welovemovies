@@ -1,19 +1,30 @@
-## Reviews
+## Reviews Table Structure
 
-The `reviews` table represents a review done by a critic of a single movie. It references both a critic and a movie.
+The `reviews` table stores movie reviews with the following schema:
 
-- `review_id`: (Primary Key) A unique ID for the review.
-- `content`: (Text) The content of the review, written in markdown.
-- `score`: (Integer) A numerical representation of the score given to the movie by the critic.
-- `critic_id`: (Foreign Key) A reference ID to a particular critic.
-- `movie_id`: (Foreign Key) A reference ID to a particular movie.
+```typescript
+interface Review {
+  review_id: number; // Primary Key, Auto-incrementing
+  content: string; // Review content in markdown format
+  score: number; // Numerical score given to the movie
+  critic_id: number; // Foreign Key referencing critics.critic_id
+  movie_id: number; // Foreign Key referencing movies.movie_id
+  created_at: Date; // Timestamp of record creation
+  updated_at: Date; // Timestamp of last update
+}
+```
 
-An example record looks like the following:
+### Foreign Key Constraints
+
+- `critic_id` references `critics(critic_id)`
+- `movie_id` references `movies(movie_id)`
+
+### Sample Record
 
 ```json
 {
   "review_id": 1,
-  "content": "...",
+  "content": "A masterful film that expertly balances...",
   "score": 4,
   "movie_id": 1,
   "critic_id": 4,
@@ -22,5 +33,4 @@ An example record looks like the following:
 }
 ```
 
-To create the `created_at` and `updated_at` fields you can use the timestamps method in your migration file (e.g. `table.timestamps(true, true);`). You can read more about timestamps [here](https://knexjs.org/#Schema-timestamps).
 `

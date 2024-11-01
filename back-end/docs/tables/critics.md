@@ -1,13 +1,19 @@
-## Critics
+## Critics Table Structure
 
-The `critics` table represents movie critics who have created reviews for movies. Each critic has the following fields:
+The `critics` table stores movie critic information with the following schema:
 
-- `critic_id`: (Primary Key) A unique ID for the critic.
-- `preferred_name`: (String) The critic's preferred first name.
-- `surname`: (String) The critic's last name.
-- `organization_name`: (String) The name of the organization the critic works for.
+```typescript
+interface Critic {
+  critic_id: number; // Primary Key, Auto-incrementing
+  preferred_name: string; // Critic's preferred first name
+  surname: string; // Critic's last name
+  organization_name: string; // Organization the critic works for
+  created_at: Date; // Timestamp of record creation
+  updated_at: Date; // Timestamp of last update
+}
+```
 
-An example record looks like the following:
+### Sample Record
 
 ```json
 {
@@ -19,4 +25,3 @@ An example record looks like the following:
   "updated_at": "2021-02-23T20:48:13.315Z"
 }
 ```
-To create the `created_at` and `updated_at` fields you can use the timestamps method in your migration file (e.g. `table.timestamps(true, true);`). You can read more about timestamps [here](https://knexjs.org/#Schema-timestamps).

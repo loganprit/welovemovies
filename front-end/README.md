@@ -1,67 +1,82 @@
-# WeLoveMovies
+# WeLoveMovies Frontend
 
 ## Introduction
 
-WeLoveMovies is an expansive movie database application designed to help users discover movies, read detailed reviews, and find local theater showtimes. This platform caters to movie enthusiasts looking to explore a wide range of film genres and titles, offering insightful reviews and convenient viewing options.
-
-## Problem Statement
-
-Moviegoers often struggle to find a centralized source that provides comprehensive details about movies, including where they can watch them locally. WeLoveMovies addresses this challenge by aggregating data about movies, their reviews, and available theaters in one user-friendly interface.
-
-## User Case
-
-This application is ideal for:
-
-- Movie enthusiasts who want to explore films based on genre, popularity, or new releases.
-- Individuals looking for local theaters showing specific movies.
-- Users interested in reading detailed reviews before watching a film.
-
-## Intended Use
-
-WeLoveMovies serves as a hub for:
-
-- Browsing movies currently showing in theaters.
-- Exploring detailed movie descriptions and aggregated reviews.
-- Finding theaters that are showing specific movies.
+The WeLoveMovies frontend is a React-based web application that provides an intuitive interface for browsing movies, theaters, and reviews. It focuses on delivering a seamless user experience through responsive design and interactive components.
 
 ## Features
 
-- **Movie Listings**: Users can view all movies or filter to see what's currently showing.
-- **Theater Showtimes**: Find out where and when you can catch a movie locally.
-- **Detailed Reviews**: Access user-generated reviews for movies to gauge audience reactions and critiques.
+- **Movie Browser**: Interactive grid view of movies with filtering options
+- **Theater Locator**: Map-based interface showing nearby theaters
+- **Review System**: Clean, organized display of user reviews with ratings
+- **Responsive Design**: Optimized layout for both desktop and mobile devices
+- **Dynamic Routing**: Smooth navigation between different views using React Router
 
-## Technologies and Tools
+## Component Structure
 
-- **Node.js**: Chosen for its efficiency in handling I/O-bound tasks, perfect for a data-intensive application like this.
-- **Express**: Utilized for its robust routing and middleware capabilities, making it easier to manage requests and responses.
-- **Knex**: Employs this SQL query builder for seamless interactions with the PostgreSQL database, allowing complex queries for movie, theater, and review data.
-- **Git**: Used for version control, ensuring that development progresses smoothly in a collaborative environment.
+- `Header`: Main navigation and branding
+- `MovieList`: Displays grid of available movies
+- `TheaterView`: Shows theater information and current showings
+- `ReviewSection`: Handles display and submission of reviews
+- `ErrorAlert`: Manages error state display
 
-## Discoveries
+## Setup Instructions
 
-Throughout the development of WeLoveMovies, I learned to effectively structure a back-end that handles complex queries and integrates multiple data sources. Implementing CRUD operations for reviews enhanced my understanding of user interactions and data management.
+1. Clone the repository
+2. Navigate to front-end directory: `cd front-end`
+3. Install dependencies: `npm install`
+4. Set up environment:
+   - For development: Copy `.env.development` to `.env`
+   - For production: Copy `.env.production` to `.env`
+   - Modify the API URL in `.env` if needed
+5. Start development server: `npm start`
 
-## Future Goals
+## Available Scripts
 
-- **User Profiles**: Allow users to create accounts, save favorite movies, and personalize their experience.
-- **Advanced Filtering**: Implement more sophisticated filtering options to sort movies by ratings, release dates, or viewer demographics.
-- **Search**: Allow users to search.
-- **Interactive UI**: Enhance the user interface with more interactive elements like sliders for rating and dynamic search bars.
+- `npm start`: Launches development server
+- `npm test`: Runs test suite
+- `npm run build`: Creates production build
+- `npm run eject`: Ejects from Create React App
+
+## Technologies Used
+
+- **React**: Core frontend framework
+- **React Router**: Client-side routing
+- **Bootstrap**: Styling and responsive design
+- **Axios**: API request handling
 
 ## Screenshots
+
+<table>
+<tr>
+<td width="50%">
 
 ![All Movies](/images/all_movies.jpeg)
 _Overview of all movies available in the database._
 
-![All Theaters](/images/all_theaters.jpeg)
-_Overview of all theaters and their movies available in the database._
+</td>
+<td width="50%">
 
 ![Now Showing](/images/now_showing.jpeg)
 _List of movies currently showing in theaters._
 
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+![All Theaters](/images/all_theaters.jpeg)
+_Overview of all theaters and their movies available in the database._
+
+</td>
+<td width="50%">
+
 ![Specific Movie Details](/images/specific_movie.jpeg)
 _Detailed view of a movie including reviews and showtimes._
 
-Visit the backend repo [here](https://github.com/loganprit/welovemovies-back-end).
+</td>
+</tr>
+</table>
 
-Visit the live application [here](https://welovemovies-front-end-ribo.onrender.com/).
+View the main README [here](../README.md). </br>
+View the back-end README [here](/back-end/README.md).

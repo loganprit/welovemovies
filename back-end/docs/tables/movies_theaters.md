@@ -1,12 +1,23 @@
-## Movies-Theaters
+## Movies-Theaters Join Table Structure
 
-The `movies_theaters` table is a join table that connects movies with theaters. It represents which movies are being shown in which theaters. It also includes a key that represents whether or not a movie is currently showing at the theater, or if it has in the past.
+The `movies_theaters` table is a junction table connecting movies with theaters:
 
-- `movie_id`: (Foreign Key) A reference ID to a particular movie.
-- `theater_id`: (Foreign Key) A reference ID to a particular theater.
-- `is_showing`: (Boolean) A representation of whether or not the movie is currently showing in the referenced theater.
+```typescript
+interface MovieTheater {
+  movie_id: number; // Foreign Key referencing movies.movie_id
+  theater_id: number; // Foreign Key referencing theaters.theater_id
+  is_showing: boolean; // Indicates if movie is currently showing
+}
+```
 
-An example record looks like the following:
+### Key Features
+
+- Composite Primary Key: `[movie_id, theater_id]`
+- Foreign Key Constraints:
+  - `movie_id` references `movies(movie_id)`
+  - `theater_id` references `theaters(theater_id)`
+
+### Sample Record
 
 ```json
 {
