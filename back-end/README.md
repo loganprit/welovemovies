@@ -1,67 +1,50 @@
-# WeLoveMovies
+# WeLoveMovies Backend
 
 ## Introduction
 
-WeLoveMovies is an expansive movie database application designed to help users discover movies, read detailed reviews, and find local theater showtimes. This platform caters to movie enthusiasts looking to explore a wide range of film genres and titles, offering insightful reviews and convenient viewing options.
-
-## Problem Statement
-
-Moviegoers often struggle to find a centralized source that provides comprehensive details about movies, including where they can watch them locally. WeLoveMovies addresses this challenge by aggregating data about movies, their reviews, and available theaters in one user-friendly interface.
-
-## User Case
-
-This application is ideal for:
-
-- Movie enthusiasts who want to explore films based on genre, popularity, or new releases.
-- Individuals looking for local theaters showing specific movies.
-- Users interested in reading detailed reviews before watching a film.
-
-## Intended Use
-
-WeLoveMovies serves as a hub for:
-
-- Browsing movies currently showing in theaters.
-- Exploring detailed movie descriptions and aggregated reviews.
-- Finding theaters that are showing specific movies.
+The WeLoveMovies backend is a Node.js and Express-based API that powers the movie browsing and review platform. It provides robust endpoints for managing movies, theaters, and user reviews while ensuring data consistency and performance.
 
 ## Features
 
-- **Movie Listings**: Users can view all movies or filter to see what's currently showing.
-- **Theater Showtimes**: Find out where and when you can catch a movie locally.
-- **Detailed Reviews**: Access user-generated reviews for movies to gauge audience reactions and critiques.
+- **RESTful API**: Complete CRUD operations for movies, theaters, and reviews
+- **Data Validation**: Comprehensive input validation and sanitization
+- **Error Handling**: Detailed error responses and logging
+- **Database Management**: Efficient PostgreSQL queries and relationships
+- **Authentication**: Secure endpoint protection where needed
 
-## Technologies and Tools
+## API Structure
 
-- **Node.js**: Chosen for its efficiency in handling I/O-bound tasks, perfect for a data-intensive application like this.
-- **Express**: Utilized for its robust routing and middleware capabilities, making it easier to manage requests and responses.
-- **Knex**: Employs this SQL query builder for seamless interactions with the PostgreSQL database, allowing complex queries for movie, theater, and review data.
-- **Git**: Used for version control, ensuring that development progresses smoothly in a collaborative environment.
+- `/movies`: Movie management endpoints
+- `/theaters`: Theater and showtime endpoints
+- `/reviews`: Review creation and management
+- `/critics`: Critic information endpoints
+- `/error`: Error handling middleware
 
-## Discoveries
+## Setup Instructions
 
-Throughout the development of WeLoveMovies, I learned to effectively structure a back-end that handles complex queries and integrates multiple data sources. Implementing CRUD operations for reviews enhanced my understanding of user interactions and data management.
+1. Clone the repository
+2. Navigate to back-end directory: `cd back-end`
+3. Install dependencies: `npm install`
+4. Copy `.env.sample` to `.env`
+5. Setup database: `npm run migrate`
+6. Seed database: `npm run seed`
+7. Start server: `npm start`
 
-## Future Goals
+## Available Scripts
 
-- **User Profiles**: Allow users to create accounts, save favorite movies, and personalize their experience.
-- **Advanced Filtering**: Implement more sophisticated filtering options to sort movies by ratings, release dates, or viewer demographics.
-- **Search**: Allow users to search.
-- **Interactive UI**: Enhance the user interface with more interactive elements like sliders for rating and dynamic search bars.
+- `npm start`: Launches production server
+- `npm run dev`: Starts development server
+- `npm test`: Runs test suite
+- `npm run migrate`: Runs database migrations
+- `npm run seed`: Seeds database with initial data
 
-## Screenshots
+## Technologies Used
 
-![All Movies](/images/all_movies.jpeg)
-_Overview of all movies available in the database._
+- **Node.js**: Runtime environment
+- **Express**: Web application framework
+- **PostgreSQL**: Database management
+- **Knex.js**: SQL query builder
+- **Jest**: Testing framework
 
-![All Theaters](/images/all_theaters.jpeg)
-_Overview of all theaters and their movies available in the database._
-
-![Now Showing](/images/now_showing.jpeg)
-_List of movies currently showing in theaters._
-
-![Specific Movie Details](/images/specific_movie.jpeg)
-_Detailed view of a movie including reviews and showtimes._
-
-Visit the frontend repo [here](https://github.com/loganprit/welovemovies-front-end).
-
-Visit the live application [here](https://welovemovies-front-end-ribo.onrender.com/).
+View the main README [here](../README.md).
+View the front-end README [here](/front-end/README.md).
