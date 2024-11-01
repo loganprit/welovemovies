@@ -19,5 +19,12 @@ module.exports = function override(config) {
       Buffer: ["buffer", "Buffer"],
     }),
   ]);
+
+  // Add markdown loader
+  config.module.rules.push({
+    test: /\.md$/,
+    use: "raw-loader",
+  });
+
   return config;
 };
