@@ -1,9 +1,16 @@
-const path = require("path");
-require("dotenv").config();
+import path from "path";
+import type { Knex } from "knex";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const DATABASE_URL = process.env.DATABASE_URL;
 
-module.exports = {
+interface KnexConfig {
+  [key: string]: Knex.Config;
+}
+
+const config: KnexConfig = {
   development: {
     client: "postgresql",
     connection: {
@@ -39,7 +46,7 @@ module.exports = {
   },
 
   test: {
-    client: "sqlite3",
+    client: "better-sqlite3",
     connection: {
       filename: ":memory:",
     },
@@ -50,5 +57,17 @@ module.exports = {
       directory: path.join(__dirname, "src", "db", "seeds"),
     },
     useNullAsDefault: true,
+    pool: {
+      afterCreate: (conn: any, cb: Function) => {
+        // Enable foreign key support and WAL mode for better performance
+        conn.exec(`
+          PRAGMA foreign_keys = ON;
+          PRAGMA journal_mode = WAL;
+        `);
+        cb();
+      }
+    }
   },
 };
+
+export default config;

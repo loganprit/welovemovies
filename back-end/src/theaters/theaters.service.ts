@@ -1,5 +1,6 @@
-const knex = require("../db/connection");
-const reduceProperties = require("../utils/reduce-properties");
+import { TheaterWithMovies } from "../types/api";
+import knex from "../db/connection";
+import reduceProperties from "../utils/reduce-properties";
 
 // Helper function to reduce theater properties
 const reduceMovies = reduceProperties("theater_id", {
@@ -15,19 +16,20 @@ const reduceMovies = reduceProperties("theater_id", {
   theater_id: ["movies", null, "theater_id"],
 });
 
-// Function to list all theaters
-function list() {
-  return knex("theaters")
+// Function to list all theaters with their movies
+async function list(): Promise<TheaterWithMovies[]> {
+  const theaters = await knex("theaters")
     .join(
       "movies_theaters",
       "theaters.theater_id",
       "movies_theaters.theater_id"
     )
     .join("movies", "movies.movie_id", "movies_theaters.movie_id")
-    .select("*")
-    .then(reduceMovies);
+    .select("*");
+
+  return reduceMovies(theaters) as TheaterWithMovies[];
 }
 
-module.exports = {
+export {
   list,
 };

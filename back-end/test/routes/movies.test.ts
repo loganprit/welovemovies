@@ -1,22 +1,22 @@
-const request = require("supertest");
-
-const app = require("../../src/app");
-const db = require("../../src/db/connection");
+import request from "supertest";
+import app from "../../src/app";
+import knex from "../../src/db/connection";
+import { Movie, ReviewWithCritic } from "../../src/types/api";
 
 describe("Movie Routes", () => {
-  beforeAll(() => {
-    return db.migrate
-      .forceFreeMigrationsLock()
-      .then(() => db.migrate.rollback(null, true))
-      .then(() => db.migrate.latest());
+  beforeAll(async () => {
+    await knex.migrate.forceFreeMigrationsLock();
+    await knex.migrate.rollback(undefined, true);
+    await knex.migrate.latest();
+    await knex.seed.run();
   });
 
-  beforeEach(() => {
-    return db.seed.run();
+  beforeEach(async () => {
+    await knex.seed.run();
   });
 
   afterAll(async () => {
-    return await db.migrate.rollback(null, true).then(() => db.destroy());
+    return await knex.migrate.rollback(undefined, true).then(() => knex.destroy());
   });
 
   describe("GET /movies", () => {
@@ -38,9 +38,13 @@ describe("Movie Routes", () => {
     });
 
     test("should return active movies if `is_showing=true` is provided", async () => {
-      // Set the first movie to be not showing
-      const previous = await db("movies").first();
-      await db("movies_theaters")
+      const previous = await knex<Movie>("movies").first();
+      
+      if (!previous) {
+        throw new Error("No movie found in database");
+      }
+
+      await knex("movies_theaters")
         .update({ is_showing: false })
         .where({ movie_id: previous.movie_id });
 
@@ -58,7 +62,11 @@ describe("Movie Routes", () => {
     });
 
     test("should return movie details when given an existing ID", async () => {
-      const previous = await db("movies").first();
+      const previous = await knex<Movie>("movies").first();
+
+      if (!previous) {
+        throw new Error("No movie found in database");
+      }
 
       const response = await request(app).get(`/movies/${previous.movie_id}`);
 
@@ -67,7 +75,11 @@ describe("Movie Routes", () => {
     });
 
     test("/theaters returns the theaters for the specified movie_id", async () => {
-      const previous = await db("movies").first();
+      const previous = await knex<Movie>("movies").first();
+
+      if (!previous) {
+        throw new Error("No movie found in database");
+      }
 
       const response = await request(app).get(
         `/movies/${previous.movie_id}/theaters`
@@ -79,7 +91,11 @@ describe("Movie Routes", () => {
     });
 
     test("GET `/movies/:movieId/reviews` returns the reviews, with critic property, for the specified movie_id", async () => {
-      const previous = await db("movies").first();
+      const previous = await knex<Movie>("movies").first();
+
+      if (!previous) {
+        throw new Error("No movie found in database");
+      }
 
       const response = await request(app).get(
         `/movies/${previous.movie_id}/reviews`
@@ -87,7 +103,7 @@ describe("Movie Routes", () => {
 
       expect(response.body.error).toBeUndefined();
       expect(response.body.data).toHaveLength(7);
-      response.body.data.forEach((review) => {
+      response.body.data.forEach((review: ReviewWithCritic) => {
         expect(review).toHaveProperty("movie_id", previous.movie_id);
         expect(review).toHaveProperty(
           "critic",
@@ -101,7 +117,11 @@ describe("Movie Routes", () => {
     });
 
     test("should not include critics anywhere for the path `/movies/:movieId/critics`", async () => {
-      const previous = await db("movies").first();
+      const previous = await knex<Movie>("movies").first();
+
+      if (!previous) {
+        throw new Error("No movie found in database");
+      }
 
       const response = await request(app).get(
         `/movies/${previous.movie_id}/critics`

@@ -1,27 +1,27 @@
-const request = require("supertest");
-
-const app = require("../../src/app");
-const db = require("../../src/db/connection");
+import request from "supertest";
+import app from "../../src/app";
+import knex from "../../src/db/connection";
+import { TheaterWithMovies } from "../../src/types/api";
 
 describe("Theater Routes", () => {
   beforeAll(() => {
-    return db.migrate
+    return knex.migrate
       .forceFreeMigrationsLock()
-      .then(() => db.migrate.rollback(null, true))
-      .then(() => db.migrate.latest());
+      .then(() => knex.migrate.rollback(undefined, true))
+      .then(() => knex.migrate.latest());
   });
 
   beforeEach(() => {
-    return db.seed.run();
+    return knex.seed.run();
   });
 
   afterAll(async () => {
-    return await db.migrate.rollback(null, true).then(() => db.destroy());
+    return await knex.migrate.rollback(undefined, true).then(() => knex.destroy());
   });
 
   describe("GET /theaters", () => {
     test("should return a list of all theaters, including the 'movies' each theatre is showing", async () => {
-      const expectedHollywoodTheatre = {
+      const expectedHollywoodTheatre: Partial<TheaterWithMovies> = {
         name: "Hollywood Theatre",
         address_line_1: "4122 NE Sandy Blvd.",
         address_line_2: "",
