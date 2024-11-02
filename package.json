@@ -9,12 +9,15 @@
     "start": "concurrently \"npm run start:frontend\" \"npm run start:backend\"",
     "start:frontend": "npm run start --workspace=front-end",
     "start:backend": "npm run start:dev --workspace=back-end",
-    "build": "npm run build --workspace=front-end",
-    "test": "npm run test --workspaces"
+    "build": "npm run build --workspaces",
+    "test": "npm run test --workspaces",
+    "type-check": "npm run type-check --workspaces",
+    "type-check:watch": "npm run type-check:watch --workspaces"
   },
   "devDependencies": {
-    "concurrently": "^8.2.2",
     "@testing-library/user-event": "^12.2.0",
+    "@typescript-eslint/parser": "^8.12.2",
+    "concurrently": "^8.2.2",
     "knex": "3.1.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",

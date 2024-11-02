@@ -13,11 +13,14 @@
     "reset": "npm run rollback && npm run migrate && npm run seed",
     "rollback": "knex migrate:rollback",
     "seed": "knex seed:run",
-    "start": "node src/server.js",
-    "start:dev": "nodemon src/server.js",
+    "start": "node dist/server.js",
+    "start:dev": "ts-node-dev --respawn --transpile-only src/server.ts",
     "start:solution": "docker-compose up --build",
     "test": "jest",
-    "test:solution": "docker-compose build && docker-compose run --rm api npm test && docker-compose down"
+    "test:solution": "docker-compose build && docker-compose run --rm api npm test && docker-compose down",
+    "build": "tsc",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "tsc --noEmit --watch"
   },
   "keywords": [],
   "author": "",
