@@ -37,5 +37,6 @@ export async function seed(knex: Knex): Promise<void> {
     },
   ];
 
+  // Insert the theaters into the database
   await knex("theaters").insert(theaters);
 }

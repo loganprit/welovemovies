@@ -1,16 +1,22 @@
-## Theaters
+## Theaters Table Structure
 
-The `theaters` table represents movie theaters. Each theater has the following fields:
+The `theaters` table stores theater information with the following schema:
 
-- `theater_id`: (Primary Key) A unique ID for the theater.
-- `name`: (String) The name of the theater.
-- `address_line_1`: (String) The first line of the address of the theater.
-- `address_line_2`: (String) The second line of the address of the theater.
-- `city`: (String) The city in which the theater is located.
-- `state`: (String) The state in which the theater is located.
-- `zip`: (String) The zip in which the theater is located.
+```typescript
+interface Theater {
+  theater_id: number; // Primary Key, Auto-incrementing
+  name: string; // Theater name
+  address_line_1: string; // Primary address
+  address_line_2?: string; // Optional secondary address
+  city: string; // Theater city
+  state: string; // Theater state
+  zip: string; // Theater ZIP code
+  created_at: Date; // Timestamp of record creation
+  updated_at: Date; // Timestamp of last update
+}
+```
 
-An example record looks like the following:
+### Sample Record
 
 ```json
 {
@@ -25,4 +31,3 @@ An example record looks like the following:
   "updated_at": "2021-02-23T20:48:13.315Z"
 }
 ```
-To create the `created_at` and `updated_at` fields you can use the timestamps method in your migration file (e.g. `table.timestamps(true, true);`). You can read more about timestamps [here](https://knexjs.org/#Schema-timestamps).
