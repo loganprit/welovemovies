@@ -1,6 +1,20 @@
 import React from "react";
+import { Theater as TheaterType } from "../types/api-types";
 
-function Theater({ theater }) {
+interface TheaterProps {
+  theater: TheaterType;
+}
+
+/**
+ * Component that displays information about a single theater
+ * @param props - Component props containing theater data
+ * @returns JSX element displaying theater details
+ */
+const Theater: React.FC<TheaterProps> = ({ theater }) => {
+  if (!theater) {
+    return <div>Theater information unavailable</div>;
+  }
+
   return (
     <article className="col-sm-12 col-md">
       <div className="card">
@@ -16,6 +30,6 @@ function Theater({ theater }) {
       </div>
     </article>
   );
-}
+};
 
 export default Theater;
