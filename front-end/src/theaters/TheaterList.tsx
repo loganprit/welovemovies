@@ -23,13 +23,11 @@ const TheaterList: React.FC = () => {
     const loadTheaters = async (): Promise<void> => {
       try {
         const data = await listTheaters(abortController.signal);
-        // Only set state if component is still mounted
         if (!abortController.signal.aborted) {
           setTheaters(data);
         }
       } catch (err) {
-        // Only set error if component is still mounted and it's not an abort error
-        if ((err as Error).name !== "AbortError" && !abortController.signal.aborted) {
+        if (!abortController.signal.aborted && (err as Error).name !== "AbortError") {
           const apiError = err as ApiError;
           setError({
             name: "FetchError",

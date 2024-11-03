@@ -1,7 +1,7 @@
 import { Movie } from "../types/models";
 import { ApiRequestOptions, ApiResponse, ApiError, Review, Theater } from "../types/api-types";
 
-const API_BASE_URL = process.env.REACT_APP_API_URL;
+const API_BASE_URL = process.env["REACT_APP_API_URL"];
 
 /**
  * Defines the default headers for these functions to work with `json-server`
@@ -48,7 +48,6 @@ async function fetchJson<T>(
         return payload.data;
     } catch (error: unknown) {
         if (error instanceof Error && error.name !== "AbortError") {
-            console.error("API Error:", error.message);
             throw error;
         }
         return Promise.resolve(onCancel);

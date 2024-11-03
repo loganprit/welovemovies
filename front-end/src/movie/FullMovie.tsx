@@ -29,14 +29,18 @@ const FullMovie: React.FC = () => {
       try {
         setError(null);
         const movieData = await readMovie(Number(id), abortController.signal);
-        setMovie(movieData);
+        if (!abortController.signal.aborted) {
+          setMovie(movieData);
+        }
       } catch (err) {
-        const apiError = err as ApiError;
-        setError({
-          name: "FetchError",
-          message: apiError.message || "Failed to load movie",
-          status: apiError.status
-        });
+        if (!abortController.signal.aborted && (err as Error).name !== "AbortError") {
+          const apiError = err as ApiError;
+          setError({
+            name: "FetchError",
+            message: apiError.message || "Failed to load movie",
+            status: apiError.status
+          });
+        }
       }
     };
 
