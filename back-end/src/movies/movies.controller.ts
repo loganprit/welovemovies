@@ -29,9 +29,8 @@ async function movieExists(
     res.locals.movie = movie;
     return next();
   }
-  next({
-    status: 404,
-    message: `Movie with ID ${req.params.movieId} cannot be found.`,
+  res.status(404).json({
+    error: `Movie with ID ${req.params.movieId} cannot be found.`
   });
 }
 

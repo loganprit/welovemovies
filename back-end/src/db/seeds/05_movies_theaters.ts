@@ -1,15 +1,14 @@
 import { Knex } from "knex";
 import { Movie, Theater } from "../../types/api";
 
-// Interface for the movies_theaters join table
+type MovieId = Pick<Movie, "movie_id">;
+type TheaterId = Pick<Theater, "theater_id">;
+
 interface MovieTheater {
   movie_id: number;
   theater_id: number;
   is_showing: boolean;
 }
-
-type MovieId = Pick<Movie, "movie_id">;
-type TheaterId = Pick<Theater, "theater_id">;
 
 /**
  * Generates join table records for movies and theaters
@@ -22,17 +21,22 @@ const generateMoviesTheatersJoins = (
   theaterIds: TheaterId[]
 ): MovieTheater[] => {
   return movieIds
-    .map(({ movie_id: movieId }) => {
-      return theaterIds.map(({ theater_id: theaterId }) => {
+    .map((movieRow) => {
+      return theaterIds.map((theaterRow) => {
         return {
           is_showing: true,
-          theater_id: theaterId,
-          movie_id: movieId,
+          theater_id: Number(theaterRow.theater_id),
+          movie_id: Number(movieRow.movie_id),
         };
       });
     })
     .reduce((a, b) => a.concat(b), [])
-    .filter((join): join is MovieTheater => Boolean(join.theater_id));
+    .filter((join): join is MovieTheater => 
+      typeof join.theater_id === "number" && 
+      join.theater_id > 0 &&
+      typeof join.movie_id === "number" && 
+      join.movie_id > 0
+    );
 };
 
 /**

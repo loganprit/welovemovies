@@ -10,6 +10,7 @@ type MovieSeed = Omit<Movie, "movie_id" | "created_at" | "updated_at">;
  * @returns Promise that resolves when seeding is complete
  */
 export async function seed(knex: Knex): Promise<void> {
+
   const movies: MovieSeed[] = [
     {
       title: "Spirited Away",

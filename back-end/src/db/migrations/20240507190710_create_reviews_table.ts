@@ -1,5 +1,12 @@
-exports.up = function (knex) {
-  return knex.schema.createTable("reviews", (table) => {
+import type { Knex } from "knex";
+
+/**
+ * Creates the reviews table in the database
+ * @param knex - The Knex instance
+ * @returns Knex migration promise
+ */
+export function up(knex: Knex): Knex.SchemaBuilder {
+  return knex.schema.createTable("reviews", (table: Knex.TableBuilder) => {
     table.increments("review_id").primary(); // Primary key
     table.text("content");
     table.integer("score");
@@ -9,8 +16,13 @@ exports.up = function (knex) {
     table.foreign("movie_id").references("movie_id").inTable("movies");
     table.timestamps(true, true); // Adds created_at and updated_at columns
   });
-};
+}
 
-exports.down = function (knex) {
+/**
+ * Drops the reviews table from the database
+ * @param knex - The Knex instance
+ * @returns Knex migration promise
+ */
+export function down(knex: Knex): Knex.SchemaBuilder {
   return knex.schema.dropTable("reviews");
-};
+}
