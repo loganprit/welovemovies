@@ -31,9 +31,8 @@ async function reviewExists(
     res.locals.review = review;
     return next();
   }
-  next({
-    status: 404,
-    message: `Review with id: ${req.params.reviewId} cannot be found`,
+  res.status(404).json({
+    error: `Review with ID ${req.params.reviewId} cannot be found.`
   });
 }
 
