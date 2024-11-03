@@ -8,8 +8,9 @@
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "declaration": false
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "src/knexfile.ts"],
   "exclude": ["node_modules", "dist"]
 }

@@ -8,11 +8,13 @@
   "scripts": {
     "start": "concurrently \"npm run start:frontend\" \"npm run start:backend\"",
     "start:frontend": "npm run start --workspace=front-end",
-    "start:backend": "npm run start:dev --workspace=back-end",
+    "start:backend": "npm run start --workspace=back-end",
     "build": "npm run build --workspaces",
     "test": "npm run test --workspaces",
     "type-check": "npm run type-check --workspaces",
-    "type-check:watch": "npm run type-check:watch --workspaces"
+    "type-check:watch": "npm run type-check:watch --workspaces",
+    "migrate": "ts-node ./src/knexfile.ts && knex migrate:latest --knexfile ./src/knexfile.ts",
+    "migrate:dev": "cross-env NODE_ENV=development ts-node ./src/knexfile.ts && cross-env NODE_ENV=development knex migrate:latest --knexfile ./src/knexfile.ts"
   },
   "devDependencies": {
     "@testing-library/user-event": "^12.2.0",

@@ -1,8 +1,13 @@
-import path from "path";
 import type { Knex } from "knex";
 import dotenv from "dotenv";
+import path from "path";
 
 dotenv.config();
+
+if (!process.env.DATABASE_URL) {
+  console.error("DATABASE_URL is not set in environment variables");
+  process.exit(1);
+}
 
 const DATABASE_URL = process.env.DATABASE_URL;
 
@@ -12,24 +17,41 @@ interface KnexConfig {
 
 const baseConfig: Knex.Config = {
   client: "postgresql",
-  connection: {
-    connectionString: DATABASE_URL + "?sslmode=require",
-    ssl: {
-      rejectUnauthorized: false,
-    },
+  connection: DATABASE_URL,
+  pool: { 
+    min: 0, 
+    max: 5,
+    acquireTimeoutMillis: 60000,
+    createTimeoutMillis: 30000,
+    idleTimeoutMillis: 600000,
+    reapIntervalMillis: 1000,
+    createRetryIntervalMillis: 100,
   },
-  pool: { min: 0, max: 5 },
+  acquireConnectionTimeout: 60000,
   migrations: {
-    directory: path.join(__dirname, "db", "migrations"),
+    directory: path.resolve(__dirname, "db", "migrations"),
   },
   seeds: {
-    directory: path.join(__dirname, "db", "seeds"),
+    directory: path.resolve(__dirname, "db", "seeds"),
   },
+  debug: process.env.NODE_ENV === "development",
 };
 
 const config: KnexConfig = {
-  development: baseConfig,
-  production: baseConfig,
+  development: {
+    ...baseConfig,
+    connection: {
+      connectionString: DATABASE_URL,
+      ssl: process.env.NODE_ENV === "production" ? { rejectUnauthorized: false } : false,
+    },
+  },
+  production: {
+    ...baseConfig,
+    connection: {
+      connectionString: DATABASE_URL,
+      ssl: { rejectUnauthorized: false },
+    },
+  },
   test: {
     client: "better-sqlite3",
     connection: {
@@ -41,10 +63,10 @@ const config: KnexConfig = {
       ]
     },
     migrations: {
-      directory: path.join(__dirname, "db", "migrations"),
+      directory: "./db/migrations",
     },
     seeds: {
-      directory: path.join(__dirname, "db", "seeds"),
+      directory: "./db/seeds",
     },
     useNullAsDefault: true,
     pool: {

@@ -1,13 +1,14 @@
 import { Movie } from "../types/models";
 import { ApiRequestOptions, ApiResponse, ApiError, Review, Theater } from "../types/api-types";
 
-const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:5001";
+const API_BASE_URL = process.env.REACT_APP_API_URL;
 
 /**
  * Defines the default headers for these functions to work with `json-server`
  */
 const headers: Headers = new Headers();
 headers.append("Content-Type", "application/json");
+headers.append("Accept", "application/json");
 
 /**
  * Fetch `json` from the specified URL and handle error status codes and ignore `AbortError`s
@@ -26,8 +27,10 @@ async function fetchJson<T>(
         const response = await fetch(url.toString(), options);
 
         if (!response.ok) {
-            const error = new Error(`HTTP Error ${response.status}`) as ApiError;
+            const errorData = await response.json();
+            const error = new Error(errorData.error || `HTTP Error ${response.status}`) as ApiError;
             error.status = response.status;
+            error.name = "ApiError";
             throw error;
         }
 
@@ -38,13 +41,15 @@ async function fetchJson<T>(
         const payload = await response.json() as ApiResponse<T>;
 
         if (payload.error) {
-            throw new Error(payload.error);
+            const error = new Error(payload.error) as ApiError;
+            error.name = "ApiError";
+            throw error;
         }
         return payload.data;
     } catch (error: unknown) {
         if (error instanceof Error && error.name !== "AbortError") {
             console.error("API Error:", error.message);
-            throw new Error(`API Error: ${error.message}`);
+            throw error;
         }
         return Promise.resolve(onCancel);
     }
