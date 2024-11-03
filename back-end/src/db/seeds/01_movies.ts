@@ -1,5 +1,16 @@
-exports.seed = function (knex) {
-  return knex("movies").insert([
+import { Knex } from "knex";
+import { Movie } from "../../types/api";
+
+// Omit the auto-generated fields from the Movie type for seeding
+type MovieSeed = Omit<Movie, "movie_id" | "created_at" | "updated_at">;
+
+/**
+ * Seed function to populate the movies table with initial data
+ * @param knex - The Knex instance
+ * @returns Promise that resolves when seeding is complete
+ */
+export async function seed(knex: Knex): Promise<void> {
+  const movies: MovieSeed[] = [
     {
       title: "Spirited Away",
       runtime_in_minutes: 125,
@@ -144,5 +155,8 @@ exports.seed = function (knex) {
       image_url:
         "https://www.themoviedb.org/t/p/w1280/8tZYtuWezp8JbcsvHYO0O46tFbo.jpg",
     },
-  ]);
-};
+  ];
+
+  // Insert the movies into the database
+  await knex("movies").insert(movies);
+}

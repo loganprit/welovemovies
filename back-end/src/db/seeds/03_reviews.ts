@@ -1,3 +1,7 @@
+import { Knex } from "knex";
+import { Review, Movie, Critic } from "../../types/api";
+
+// Sample review content
 const content = `Lorem markdownum priores iactate receptus margine in motu ferreus pastor. Teneat
 tua opifex regina, adest; similisque nec, me convivia ortus.
 
@@ -22,7 +26,20 @@ transitus quam longius aenea, concussaque hoc mille.
 
 Ut erat. Tibi Themin corpore saepes.`;
 
-const generateReviews = (criticIds, movieIds) => {
+type CriticId = Pick<Critic, "critic_id">;
+type MovieId = Pick<Movie, "movie_id">;
+type ReviewSeed = Omit<Review, "review_id" | "created_at" | "updated_at">;
+
+/**
+ * Generates review records for each combination of critic and movie
+ * @param criticIds - Array of critic IDs from the database
+ * @param movieIds - Array of movie IDs from the database
+ * @returns Array of review records ready for insertion
+ */
+const generateReviews = (
+  criticIds: CriticId[],
+  movieIds: MovieId[]
+): ReviewSeed[] => {
   return movieIds
     .map(({ movie_id }) => {
       return criticIds.map(({ critic_id }) => {
@@ -35,13 +52,18 @@ const generateReviews = (criticIds, movieIds) => {
       });
     })
     .reduce((a, b) => a.concat(b), [])
-    .filter((reviews) => reviews.content);
+    .filter((review): review is ReviewSeed => Boolean(review.content));
 };
 
-exports.seed = async function (knex) {
+/**
+ * Seed function to populate the reviews table with initial data
+ * @param knex - The Knex instance
+ * @returns Promise that resolves when seeding is complete
+ */
+export async function seed(knex: Knex): Promise<void> {
   const criticIds = await knex("critics").select("critic_id");
   const movieIds = await knex("movies").select("movie_id");
 
   const reviews = generateReviews(criticIds, movieIds);
-  return knex("reviews").insert(reviews);
-};
+  await knex("reviews").insert(reviews);
+}
