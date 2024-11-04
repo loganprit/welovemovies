@@ -36,14 +36,25 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.18.0",
-    "typescript": "^5.2.2"
-  },
-  "devDependencies": {
+    "typescript": "^5.2.2",
+    "assert": "^2.1.0",
+    "buffer": "^6.0.3",
+    "crypto-browserify": "^3.12.0",
+    "https-browserify": "^1.0.0",
+    "os-browserify": "^0.3.0",
+    "process": "^0.11.10",
+    "stream-browserify": "^3.0.0",
+    "stream-http": "^3.2.0",
+    "url": "^0.11.3",
+    "util": "^0.12.5",
     "eslint-config-prettier": "^9.0.0",
     "lint-staged": "^15.0.2",
     "prettier": "^3.1.0",
     "react-app-rewired": "^2.2.1",
     "source-map-explorer": "^2.5.3"
+  },
+  "devDependencies": {
+
   },
   "browserslist": {
     "production": [
