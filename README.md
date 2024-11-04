@@ -32,47 +32,86 @@ WeLoveMovies serves as a hub for:
 - **Theater Showtimes**: Find out where and when you can catch a movie locally.
 - **Detailed Reviews**: Access user-generated reviews for movies to gauge audience reactions and critiques.
 
-## Setup Instructions
+## Technologies and Tools
 
-1. Clone the repository
-2. Install dependencies: `npm install`
-3. Copy `.env.sample` to `.env` in both front-end and back-end directories
-4. Configure environment variables
-5. Start development servers: `npm start`
-
-## Available Scripts
-
-- `npm start`: Start both frontend and backend in development mode
-- `npm run start:frontend`: Start only frontend
-- `npm run start:backend`: Start only backend
-- `npm run build`: Build frontend for production
-- `npm test`: Run tests for both packages
+- **TypeScript**: Provides type safety and enhanced developer experience across both frontend and backend
+- **React**: Frontend framework with TypeScript integration for building the user interface
+- **Node.js**: Runtime environment for the backend, optimized for I/O-bound operations
+- **Express**: Web framework for building the REST API with TypeScript support
+- **PostgreSQL**: Primary database for production environment
+- **SQLite**: Used for testing environment with in-memory database
+- **Knex**: Type-safe SQL query builder for database interactions
+- **Jest**: Testing framework configured for TypeScript testing
+- **Docker**: Containerization support for consistent development and deployment
 
 ## Project Structure
 
-- `/front-end`: React frontend application
-- `/back-end`: Express backend application
+- `/front-end`: React/TypeScript frontend application
+  - `/src`: Source code directory
+    - `/components`: Reusable UI components
+    - `/movie`: Movie-related components
+    - `/theaters`: Theater-related components
+    - `/shared`: Shared components and utilities
+    - `/types`: TypeScript type definitions
+    - `/utils`: Utility functions and API clients
+- `/back-end`: Express/TypeScript backend application
+  - `/src`: Source code directory
+    - `/db`: Database migrations and seeds
+    - `/movies`: Movie-related routes and services
+    - `/reviews`: Review-related routes and services
+    - `/theaters`: Theater-related routes and services
+    - `/types`: TypeScript type definitions
 
-## Technologies and Tools
+## Development Setup
 
-- **Node.js**: Chosen for its efficiency in handling I/O-bound tasks, perfect for a data-intensive application like this.
-- **Express**: Utilized for its robust routing and middleware capabilities, making it easier to manage requests and responses.
-- **Knex**: Employs this SQL query builder for seamless interactions with the PostgreSQL database, allowing complex queries for movie, theater, and review data.
-- **Git**: Used for version control, ensuring that development progresses smoothly in a collaborative environment.
+1. Clone the repository
+2. Install dependencies: `bash
+npm install   `
+3. Configure environment:
+   - Copy `.env.sample` to `.env` in both front-end and back-end directories
+   - Set up database connection in `DATABASE_URL`
+4. Initialize database: `bash
+npm run migrate
+npm run seed   `
+5. Start development servers: `bash
+npm start   `
+
+## Available Scripts
+
+### Root Directory
+
+- `npm start`: Start both frontend and backend in development mode
+- `npm run build`: Build both packages for production
+- `npm test`: Run tests for both packages
+- `npm run type-check`: Run TypeScript type checking
+
+### Frontend
+
+- `npm run start:frontend`: Start frontend development server
+- `npm run build`: Create production build
+- `npm run lint`: Run ESLint
+- `npm run format`: Format code with Prettier
+
+### Backend
+
+- `npm run start:backend`: Start backend development server
+- `npm run migrate`: Run database migrations
+- `npm run seed`: Seed database with initial data
+- `npm run db:reset`: Reset database (rollback, migrate, seed)
 
 ## Discoveries
 
-Throughout the development of WeLoveMovies, I learned to effectively structure a back-end that handles complex queries and integrates multiple data sources. Implementing CRUD operations for reviews enhanced my understanding of user interactions and data management.
+This newest update to WeLoveMovies marked my first introduction to TypeScript, where I discovered the power of static typing and type safety. Through developing the backend, I learned essential TypeScript features like interfaces, type declarations, and generics while implementing complex database queries and API integrations. The process of building CRUD operations with proper type checking enhanced my understanding of both data management and the benefits of TypeScript's compile-time error detection.
 
 ## Future Goals
 
+- **Visual Redesign**: Modernize the frontend with Tailwind CSS and create a comprehensive UI component library for consistent design.
 - **Advanced Filtering**: Implement more sophisticated filtering options to sort movies by ratings, release dates, or viewer demographics.
 - **Search**: Implement advanced search functionality.
 - **Movie Metadata**: Expand movie information by integrating with TMDb's API.
 - **Theater Location**: Add real theater search based on user location.
 - **Performance**: Implement caching layer for improved response times.
 - **User Accounts**: Add authentication and authorization for personalized features.
-- **TypeScript Transition**: Transition to TypeScript for type safety
 
 ## Screenshots
 
