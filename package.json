@@ -6,40 +6,20 @@
     "back-end"
   ],
   "scripts": {
-    "start": "cross-env NODE_ENV=production concurrently \"npm run start:frontend\" \"npm run start:backend\"",
+    "start": "concurrently \"npm run start:frontend\" \"npm run start:backend\"",
     "start:frontend": "npm run start --workspace=front-end",
-    "start:backend": "npm run start --workspace=back-end",
-    "build": "npm run clean && npm run build --workspaces",
-    "clean": "rimraf ./dist",
-    "test": "cross-env NODE_ENV=test npm run test --workspaces",
-    "type-check": "tsc --noEmit",
-    "type-check:watch": "tsc --noEmit --watch",
-    "migrate": "ts-node ./src/knexfile.ts && knex migrate:latest --knexfile ./src/knexfile.ts",
-    "migrate:dev": "cross-env NODE_ENV=development ts-node ./src/knexfile.ts && cross-env NODE_ENV=development knex migrate:latest --knexfile ./src/knexfile.ts",
-    "lint": "eslint . --ext .ts,.tsx",
-    "format": "prettier --write \"**/*.{ts,tsx,json,md}\""
+    "start:backend": "npm run start:dev --workspace=back-end",
+    "build": "npm run build --workspace=front-end",
+    "test": "npm run test --workspaces"
   },
   "devDependencies": {
-    "@testing-library/user-event": "^12.2.0",
-    "@types/jest": "^29.5.14",
-    "@typescript-eslint/eslint-plugin": "^8.12.2",
-    "@typescript-eslint/parser": "^8.12.2",
     "concurrently": "^8.2.2",
-    "cross-env": "^7.0.3",
-    "eslint": "^8.57.0",
-    "eslint-config-prettier": "^9.1.0",
+    "@testing-library/user-event": "^12.2.0",
     "knex": "3.1.0",
-    "prettier": "^3.2.5",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^5.0.1",
-    "rimraf": "^5.0.5",
-    "ts-jest": "^29.2.5"
-  },
-  "engines": {
-    "node": ">=16.0.0",
-    "npm": ">=8.0.0"
+    "react-scripts": "^5.0.1"
   }
 }

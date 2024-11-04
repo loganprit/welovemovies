@@ -25,10 +25,7 @@ The WeLoveMovies frontend is a React-based web application that provides an intu
 1. Clone the repository
 2. Navigate to front-end directory: `cd front-end`
 3. Install dependencies: `npm install`
-4. Set up environment:
-   - For development: Copy `.env.development` to `.env`
-   - For production: Copy `.env.production` to `.env`
-   - Modify the API URL in `.env` if needed
+4. Copy `.env.sample` to `.env`
 5. Start development server: `npm start`
 
 ## Available Scripts

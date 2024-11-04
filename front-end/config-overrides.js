@@ -1,15 +1,8 @@
 const webpack = require("webpack");
 
-/**
- * Webpack configuration override for React app
- * Adds polyfills and loaders required for the application
- *
- * @param {Object} config - Original webpack config
- * @returns {Object} Modified webpack config
- */
 module.exports = function override(config) {
-  // Configure polyfill fallbacks
-  const polyfillFallbacks = {
+  const fallback = config.resolve.fallback || {};
+  Object.assign(fallback, {
     crypto: require.resolve("crypto-browserify"),
     stream: require.resolve("stream-browserify"),
     assert: require.resolve("assert"),
@@ -18,24 +11,16 @@ module.exports = function override(config) {
     os: require.resolve("os-browserify"),
     url: require.resolve("url"),
     util: require.resolve("util"),
-  };
-
-  // Apply fallbacks to config
-  config.resolve.fallback = {
-    ...(config.resolve.fallback || {}),
-    ...polyfillFallbacks,
-  };
-
-  // Add required plugins
-  config.plugins = [
-    ...(config.plugins || []),
+  });
+  config.resolve.fallback = fallback;
+  config.plugins = (config.plugins || []).concat([
     new webpack.ProvidePlugin({
       process: "process/browser",
       Buffer: ["buffer", "Buffer"],
     }),
-  ];
+  ]);
 
-  // Add markdown loader for .md files
+  // Add markdown loader
   config.module.rules.push({
     test: /\.md$/,
     use: "raw-loader",
