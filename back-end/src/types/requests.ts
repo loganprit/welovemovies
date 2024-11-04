@@ -1,34 +1,45 @@
 /**
- * Interface defining the request body structure for creating/updating a review
- * Contains the review data including content, score and optional IDs
+ * Type for request body data containing review information
+ */
+interface ReviewData {
+  content: string;
+  score: number;
+  critic_id?: number;
+  movie_id?: number;
+}
+
+/**
+ * Request body structure for review operations
  */
 interface ReviewRequestBody {
-  data: {
-    content: string;
-    score: number;
-    critic_id?: number;
-    movie_id?: number;
-  };
+  data: ReviewData;
 }
 
 /**
- * Interface defining URL parameters for review-specific routes
- * Contains the review ID parameter
+ * Route parameters for review-specific endpoints
  */
 interface ReviewParams {
-  reviewId: string;
+  readonly reviewId: string;
 }
 
 /**
- * Interface defining URL parameters for theater-specific routes
- * Contains the theater ID parameter
+ * Route parameters for theater-specific endpoints
  */
 interface TheaterParams {
-  theaterId: string;
+  readonly theaterId: string;
+}
+
+/**
+ * Route parameters for movie-specific endpoints
+ */
+interface MovieParams {
+  readonly movieId: string;
 }
 
 export type {
+  ReviewData,
   ReviewRequestBody,
   ReviewParams,
-  TheaterParams
+  TheaterParams,
+  MovieParams
 };

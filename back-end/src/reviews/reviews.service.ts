@@ -1,7 +1,9 @@
 import knex from "../db/connection";
 import type { Review, ReviewWithCritic } from "../types/api";
 
-// Function to read a single review
+/**
+ * Retrieves a single review by ID
+ */
 export function read(reviewId: number): Promise<Review | undefined> {
   return knex("reviews")
     .select("*")
@@ -9,14 +11,18 @@ export function read(reviewId: number): Promise<Review | undefined> {
     .first();
 }
 
-// Function to delete a review
+/**
+ * Deletes a review by ID
+ */
 export function destroy(reviewId: number): Promise<number> {
   return knex("reviews")
     .where({ review_id: reviewId })
     .del();
 }
 
-// Function to update a review
+/**
+ * Updates an existing review
+ */
 export function update(updatedReview: Partial<Review> & { review_id: number }): Promise<Review> {
   return knex("reviews")
     .where({ review_id: updatedReview.review_id })
@@ -24,7 +30,9 @@ export function update(updatedReview: Partial<Review> & { review_id: number }): 
     .then(() => read(updatedReview.review_id)) as Promise<Review>;
 }
 
-// Function to read a single review with critic information
+/**
+ * Retrieves a review with critic information
+ */
 export function readWithCritic(reviewId: number): Promise<ReviewWithCritic[]> {
   return knex("reviews as r")
     .join("critics as c", "r.critic_id", "c.critic_id")

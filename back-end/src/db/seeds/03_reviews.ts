@@ -1,35 +1,29 @@
 import { Knex } from "knex";
 import { Review, Movie, Critic } from "../../types/api";
 
-// Sample review content for seeding the database
-const content = `A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.`;
+const REVIEW_CONTENT = `A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.`;
 
 type CriticId = Pick<Critic, "critic_id">;
 type MovieId = Pick<Movie, "movie_id">;
 type ReviewSeed = Omit<Review, "review_id" | "created_at" | "updated_at">;
 
 /**
- * Generates review records for each combination of critic and movie
- * @param criticIds - Array of critic IDs from the database
- * @param movieIds - Array of movie IDs from the database
- * @returns Array of review records ready for insertion
+ * Generates review records for each critic-movie combination
  */
 const generateReviews = (
   criticIds: CriticId[],
   movieIds: MovieId[]
 ): ReviewSeed[] => {
   return movieIds
-    .map((movieRow) => {
-      return criticIds.map((criticRow) => {
-        return {
-          content,
-          score: Math.ceil(Math.random() * 5),
-          critic_id: Number(criticRow.critic_id),
-          movie_id: Number(movieRow.movie_id),
-        };
-      });
-    })
-    .reduce((a, b) => a.concat(b), [])
+    .map((movie) => 
+      criticIds.map((critic) => ({
+        content: REVIEW_CONTENT,
+        score: Math.ceil(Math.random() * 5),
+        critic_id: Number(critic.critic_id),
+        movie_id: Number(movie.movie_id),
+      }))
+    )
+    .flat()
     .filter((review): review is ReviewSeed => 
       Boolean(review.content) && 
       review.critic_id > 0 &&
@@ -39,9 +33,7 @@ const generateReviews = (
 };
 
 /**
- * Seed function to populate the reviews table with initial data
- * @param knex - The Knex instance
- * @returns Promise that resolves when seeding is complete
+ * Seed function to populate the reviews table
  */
 export async function seed(knex: Knex): Promise<void> {
   const criticIds = await knex("critics").select("critic_id");

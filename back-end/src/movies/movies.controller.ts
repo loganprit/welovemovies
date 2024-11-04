@@ -3,6 +3,9 @@ import * as service from "./movies.service";
 import asyncErrorBoundary from "../errors/asyncErrorBoundary";
 import type { Movie } from "../types/api";
 
+/**
+ * Extended Request interface for movie-specific routes
+ */
 interface CustomRequest extends Request {
   query: {
     is_showing?: string;
@@ -12,29 +15,44 @@ interface CustomRequest extends Request {
   };
 }
 
+/**
+ * Extended Response interface with movie-specific locals
+ */
 interface CustomResponse extends Response {
   locals: {
     movie?: Movie;
   };
 }
 
-// Middleware to check if movie exists
+/**
+ * Validates movie existence and attaches to response locals
+ * @param req - Express request object
+ * @param res - Express response object
+ * @param next - Express next function
+ */
 async function movieExists(
   req: CustomRequest,
   res: CustomResponse,
   next: NextFunction
 ): Promise<void> {
-  const movie = await service.read(Number(req.params.movieId));
+  const movieId = Number(req.params.movieId);
+  const movie = await service.read(movieId);
+
   if (movie) {
     res.locals.movie = movie;
     return next();
   }
+
   res.status(404).json({
     error: `Movie with ID ${req.params.movieId} cannot be found.`
   });
 }
 
-// Controller functions
+/**
+ * Lists all movies, optionally filtered by showing status
+ * @param req - Express request object
+ * @param res - Express response object
+ */
 async function list(
   req: CustomRequest,
   res: CustomResponse,
@@ -45,31 +63,46 @@ async function list(
   res.json({ data });
 }
 
+/**
+ * Retrieves a specific movie by ID
+ * @param _req - Express request object
+ * @param res - Express response object
+ */
 async function read(
   _req: CustomRequest,
   res: CustomResponse,
   _next: NextFunction
 ): Promise<void> {
-  if (res.locals.movie) {
-    res.json({ data: res.locals.movie });
-  }
+  res.json({ data: res.locals.movie });
 }
 
+/**
+ * Lists theaters showing a specific movie
+ * @param req - Express request object
+ * @param res - Express response object
+ */
 async function readTheaters(
   req: CustomRequest,
   res: CustomResponse,
   _next: NextFunction
 ): Promise<void> {
-  const data = await service.readTheaters(Number(req.params.movieId));
+  const movieId = Number(req.params.movieId);
+  const data = await service.readTheaters(movieId);
   res.json({ data });
 }
 
+/**
+ * Lists reviews for a specific movie
+ * @param req - Express request object
+ * @param res - Express response object
+ */
 async function readReviews(
   req: CustomRequest,
   res: CustomResponse,
   _next: NextFunction
 ): Promise<void> {
-  const data = await service.readReviews(Number(req.params.movieId));
+  const movieId = Number(req.params.movieId);
+  const data = await service.readReviews(movieId);
   res.json({ data });
 }
 

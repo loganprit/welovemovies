@@ -4,24 +4,26 @@ import knex from "../../src/db/connection";
 import { Review } from "../../src/types/api";
 
 describe("Review Routes", () => {
-  beforeAll(() => {
-    return knex.migrate
-      .forceFreeMigrationsLock()
-      .then(() => knex.migrate.rollback(undefined, true))
-      .then(() => knex.migrate.latest());
+  beforeAll(async () => {
+    await knex.migrate.forceFreeMigrationsLock();
+    await knex.migrate.rollback(undefined, true);
+    await knex.migrate.latest();
   });
 
-  beforeEach(() => {
-    return knex.seed.run();
+  beforeEach(async () => {
+    await knex.seed.run();
   });
 
   afterAll(async () => {
-    return await knex.migrate.rollback(undefined, true).then(() => knex.destroy());
+    await knex.migrate.rollback(undefined, true);
+    await knex.destroy();
   });
 
   describe("PUT /reviews/:reviewId", () => {
     test("should return a 404 if the ID given does not match any ID in the database", async () => {
-      const response = await request(app).put("/reviews/999999999").send({});
+      const response = await request(app)
+        .put("/reviews/999999999")
+        .send({});
 
       expect(response.body.error).toMatch(/cannot be found/i);
       expect(response.statusCode).toBe(404);
@@ -64,7 +66,10 @@ describe("Review Routes", () => {
 
   describe("DELETE /reviews/:reviewId", () => {
     test("should return a 404 if the ID given does not match any ID in the database", async () => {
-      const response = await request(app).delete("/reviews/9999").send({});
+      const response = await request(app)
+        .delete("/reviews/9999")
+        .send({});
+
       expect(response.body.error).toBeDefined();
       expect(response.statusCode).toBe(404);
     });
@@ -76,17 +81,14 @@ describe("Review Routes", () => {
         throw new Error("No review found in database");
       }
 
-      const response = await request(app).delete(
-        `/reviews/${previous.review_id}`
-      );
+      const response = await request(app)
+        .delete(`/reviews/${previous.review_id}`);
 
       expect(response.body.error).toBeUndefined();
       expect(response.statusCode).toBe(204);
 
       const deletedReview = await knex<Review>("reviews")
-        .where({
-          review_id: previous.review_id,
-        })
+        .where({ review_id: previous.review_id })
         .first();
 
       expect(deletedReview).toBeUndefined();

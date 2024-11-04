@@ -11,26 +11,21 @@ interface MovieTheater {
 }
 
 /**
- * Generates join table records for movies and theaters
- * @param movieIds - Array of movie IDs from the database
- * @param theaterIds - Array of theater IDs from the database
- * @returns Array of movie-theater relationships ready for insertion
+ * Generates movie-theater relationship records
  */
 const generateMoviesTheatersJoins = (
   movieIds: MovieId[],
   theaterIds: TheaterId[]
 ): MovieTheater[] => {
   return movieIds
-    .map((movieRow) => {
-      return theaterIds.map((theaterRow) => {
-        return {
-          is_showing: true,
-          theater_id: Number(theaterRow.theater_id),
-          movie_id: Number(movieRow.movie_id),
-        };
-      });
-    })
-    .reduce((a, b) => a.concat(b), [])
+    .map((movie) => 
+      theaterIds.map((theater) => ({
+        is_showing: true,
+        theater_id: Number(theater.theater_id),
+        movie_id: Number(movie.movie_id),
+      }))
+    )
+    .flat()
     .filter((join): join is MovieTheater => 
       typeof join.theater_id === "number" && 
       join.theater_id > 0 &&
@@ -40,9 +35,7 @@ const generateMoviesTheatersJoins = (
 };
 
 /**
- * Seed function to populate the movies_theaters join table with initial data
- * @param knex - The Knex instance
- * @returns Promise that resolves when seeding is complete
+ * Seed function to populate the movies_theaters table
  */
 export async function seed(knex: Knex): Promise<void> {
   const movieIds = await knex("movies").select("movie_id");

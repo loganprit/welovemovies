@@ -7,11 +7,11 @@ import type { Knex } from "knex";
  */
 export function up(knex: Knex): Knex.SchemaBuilder {
   return knex.schema.createTable("critics", (table: Knex.TableBuilder) => {
-    table.increments("critic_id").primary(); // Primary key
+    table.increments("critic_id").primary();
     table.string("preferred_name").notNullable();
     table.string("surname").notNullable();
     table.string("organization_name").notNullable();
-    table.timestamps(true, true); // Adds created_at and updated_at columns
+    table.timestamps(true, true);
   });
 }
 

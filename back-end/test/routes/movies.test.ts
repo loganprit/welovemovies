@@ -16,14 +16,14 @@ describe("Movie Routes", () => {
   });
 
   afterAll(async () => {
-    return await knex.migrate.rollback(undefined, true).then(() => knex.destroy());
+    await knex.migrate.rollback(undefined, true);
+    await knex.destroy();
   });
 
   describe("GET /movies", () => {
     test("should return a list of all movies by default", async () => {
       const response = await request(app).get("/movies");
-
-      const data = response.body.data;
+      const { data } = response.body;
 
       expect(data).toEqual(
         expect.arrayContaining([
@@ -38,18 +38,17 @@ describe("Movie Routes", () => {
     });
 
     test("should return active movies if `is_showing=true` is provided", async () => {
-      const previous = await knex<Movie>("movies").first();
+      const movie = await knex<Movie>("movies").first();
       
-      if (!previous) {
+      if (!movie) {
         throw new Error("No movie found in database");
       }
 
       await knex("movies_theaters")
         .update({ is_showing: false })
-        .where({ movie_id: previous.movie_id });
+        .where({ movie_id: movie.movie_id });
 
       const response = await request(app).get("/movies?is_showing=true");
-
       expect(response.body.data).toHaveLength(15);
     });
   });
@@ -62,49 +61,43 @@ describe("Movie Routes", () => {
     });
 
     test("should return movie details when given an existing ID", async () => {
-      const previous = await knex<Movie>("movies").first();
+      const movie = await knex<Movie>("movies").first();
 
-      if (!previous) {
+      if (!movie) {
         throw new Error("No movie found in database");
       }
 
-      const response = await request(app).get(`/movies/${previous.movie_id}`);
-
+      const response = await request(app).get(`/movies/${movie.movie_id}`);
       expect(response.body.error).toBeUndefined();
-      expect(response.body.data).toEqual(previous);
+      expect(response.body.data).toEqual(movie);
     });
 
     test("/theaters returns the theaters for the specified movie_id", async () => {
-      const previous = await knex<Movie>("movies").first();
+      const movie = await knex<Movie>("movies").first();
 
-      if (!previous) {
+      if (!movie) {
         throw new Error("No movie found in database");
       }
 
-      const response = await request(app).get(
-        `/movies/${previous.movie_id}/theaters`
-      );
-
+      const response = await request(app).get(`/movies/${movie.movie_id}/theaters`);
       expect(response.body.error).toBeUndefined();
       expect(response.body.data[0]).toHaveProperty("name", "Regal City Center");
       expect(response.body.data).toHaveLength(3);
     });
 
-    test("GET `/movies/:movieId/reviews` returns the reviews, with critic property, for the specified movie_id", async () => {
-      const previous = await knex<Movie>("movies").first();
+    test("GET `/movies/:movieId/reviews` returns the reviews with critic property", async () => {
+      const movie = await knex<Movie>("movies").first();
 
-      if (!previous) {
+      if (!movie) {
         throw new Error("No movie found in database");
       }
 
-      const response = await request(app).get(
-        `/movies/${previous.movie_id}/reviews`
-      );
-
+      const response = await request(app).get(`/movies/${movie.movie_id}/reviews`);
       expect(response.body.error).toBeUndefined();
       expect(response.body.data).toHaveLength(7);
+
       response.body.data.forEach((review: ReviewWithCritic) => {
-        expect(review).toHaveProperty("movie_id", previous.movie_id);
+        expect(review).toHaveProperty("movie_id", movie.movie_id);
         expect(review).toHaveProperty(
           "critic",
           expect.objectContaining({
@@ -117,16 +110,13 @@ describe("Movie Routes", () => {
     });
 
     test("should not include critics anywhere for the path `/movies/:movieId/critics`", async () => {
-      const previous = await knex<Movie>("movies").first();
+      const movie = await knex<Movie>("movies").first();
 
-      if (!previous) {
+      if (!movie) {
         throw new Error("No movie found in database");
       }
 
-      const response = await request(app).get(
-        `/movies/${previous.movie_id}/critics`
-      );
-
+      const response = await request(app).get(`/movies/${movie.movie_id}/critics`);
       expect(response.body.error).toBeDefined();
       expect(response.statusCode).toBe(404);
     });

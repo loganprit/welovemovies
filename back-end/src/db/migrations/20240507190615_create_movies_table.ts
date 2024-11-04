@@ -7,13 +7,13 @@ import type { Knex } from "knex";
  */
 export function up(knex: Knex): Knex.SchemaBuilder {
   return knex.schema.createTable("movies", (table: Knex.TableBuilder) => {
-    table.increments("movie_id").primary(); // Primary key
+    table.increments("movie_id").primary();
     table.string("title").notNullable();
     table.integer("runtime_in_minutes").notNullable();
     table.string("rating");
     table.text("description");
     table.string("image_url");
-    table.timestamps(true, true); // Adds created_at and updated_at columns
+    table.timestamps(true, true);
   });
 }
 

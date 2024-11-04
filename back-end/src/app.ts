@@ -1,6 +1,7 @@
-import express, { Express } from "express";
+import express, { Express, Request, Response, NextFunction } from "express";
 import dotenv from "dotenv";
 import cors from "cors";
+import { ApiError, ErrorResponse } from "./types/errors";
 
 // Load environment variables if USER is set
 if (process.env.USER) {
@@ -12,30 +13,69 @@ import moviesRouter from "./movies/movies.router";
 import theatersRouter from "./theaters/theaters.router";
 import reviewsRouter from "./reviews/reviews.router";
 
-// Create Express application
-const app: Express = express();
+/**
+ * Global error handler middleware
+ */
+const errorHandler = (
+  err: Error | ApiError,
+  _req: Request,
+  res: Response<ErrorResponse>,
+  _next: NextFunction
+): void => {
+  if (err instanceof ApiError) {
+    res.status(err.statusCode).json({
+      error: err.message,
+      details: err.details,
+      statusCode: err.statusCode,
+    });
+  } else {
+    // Handle unexpected errors
+    res.status(500).json({
+      error: "Internal server error",
+      statusCode: 500,
+    });
+  }
+};
 
-// Read CORS origins from environment variable and split into an array
-const corsOrigins: string[] = process.env.CORS_ORIGIN
-  ? process.env.CORS_ORIGIN.split(",")
-  : [];
+/**
+ * Configure and create Express application with type-safe middleware
+ */
+const configureApp = (): Express => {
+  const app: Express = express();
 
-// Configure CORS middleware
-app.use(
-  cors({
-    origin: corsOrigins,
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type"],
-  })
-);
+  // Read and validate CORS origins from environment variable
+  const corsOrigins: string[] = process.env.CORS_ORIGIN
+    ? process.env.CORS_ORIGIN.split(",").map((origin) => origin.trim())
+    : [];
 
-// Middleware to parse JSON bodies
-app.use(express.json());
+  if (corsOrigins.length === 0) {
+    console.warn("No CORS origins specified. API will not accept cross-origin requests.");
+  }
 
-// Routers
-app.use("/movies", moviesRouter);
-app.use("/theaters", theatersRouter);
-app.use("/reviews", reviewsRouter);
+  // Configure CORS middleware with strict typing
+  app.use(
+    cors({
+      origin: corsOrigins,
+      methods: ["GET", "POST", "PUT", "DELETE"],
+      allowedHeaders: ["Content-Type"],
+      credentials: true,
+      maxAge: 86400, // 24 hours
+    })
+  );
 
-// Export the Express application
-export default app;
+  // Middleware to parse JSON bodies with size limit
+  app.use(express.json({ limit: "10mb" }));
+
+  // Mount routers
+  app.use("/movies", moviesRouter);
+  app.use("/theaters", theatersRouter);
+  app.use("/reviews", reviewsRouter);
+
+  // Error handling middleware
+  app.use(errorHandler);
+
+  return app;
+};
+
+// Create and export the configured Express application
+export default configureApp();

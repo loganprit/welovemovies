@@ -4,23 +4,23 @@ import knex from "../../src/db/connection";
 import { TheaterWithMovies } from "../../src/types/api";
 
 describe("Theater Routes", () => {
-  beforeAll(() => {
-    return knex.migrate
-      .forceFreeMigrationsLock()
-      .then(() => knex.migrate.rollback(undefined, true))
-      .then(() => knex.migrate.latest());
+  beforeAll(async () => {
+    await knex.migrate.forceFreeMigrationsLock();
+    await knex.migrate.rollback(undefined, true);
+    await knex.migrate.latest();
   });
 
-  beforeEach(() => {
-    return knex.seed.run();
+  beforeEach(async () => {
+    await knex.seed.run();
   });
 
   afterAll(async () => {
-    return await knex.migrate.rollback(undefined, true).then(() => knex.destroy());
+    await knex.migrate.rollback(undefined, true);
+    await knex.destroy();
   });
 
   describe("GET /theaters", () => {
-    test("should return a list of all theaters, including the 'movies' each theatre is showing", async () => {
+    test("should return a list of all theaters with their associated movies", async () => {
       const expectedHollywoodTheatre: Partial<TheaterWithMovies> = {
         name: "Hollywood Theatre",
         address_line_1: "4122 NE Sandy Blvd.",
@@ -40,7 +40,6 @@ describe("Theater Routes", () => {
       const response = await request(app).get("/theaters");
 
       expect(response.body.error).toBeUndefined();
-
       expect(response.body.data).toEqual(
         expect.arrayContaining([
           expect.objectContaining(expectedHollywoodTheatre),

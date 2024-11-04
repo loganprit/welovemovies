@@ -1,8 +1,11 @@
-import { Request, Response, NextFunction, RequestHandler } from "express";
+import { Request, Response, NextFunction } from "express";
 import * as service from "./theaters.service";
 import asyncErrorBoundary from "../errors/asyncErrorBoundary";
 import type { TheaterWithMovies } from "../types/api";
 
+/**
+ * Lists all theaters with their associated movies
+ */
 async function listTheaters(
   _req: Request,
   res: Response<{ data: TheaterWithMovies[] }>,
@@ -12,4 +15,6 @@ async function listTheaters(
   res.json({ data });
 }
 
-export const list: RequestHandler = asyncErrorBoundary(listTheaters);
+export const list = asyncErrorBoundary(listTheaters);
+
+export default { list };

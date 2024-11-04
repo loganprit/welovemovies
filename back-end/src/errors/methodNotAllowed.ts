@@ -1,17 +1,18 @@
 import { Request, Response, NextFunction } from "express";
+import { ApiError } from "../types/errors";
 
 /**
  * Middleware to handle HTTP methods that aren't supported by a route
  */
-function methodNotAllowed(
+export default function methodNotAllowed(
   req: Request,
   _res: Response,
   next: NextFunction
 ): void {
-  next({
-    status: 405,
-    message: `${req.method} not allowed for ${req.originalUrl}`,
-  });
+  next(
+    new ApiError(
+      405,
+      `${req.method} not allowed for ${req.originalUrl}`
+    )
+  );
 }
-
-export default methodNotAllowed;

@@ -11,9 +11,9 @@
     "allowJs": true,
     "checkJs": true,
     "declaration": true,
-    "sourceMap": true,
+    "sourceMap": false,
     "outDir": "./dist",
-    "removeComments": false,
+    "removeComments": true,
     "strict": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
@@ -35,6 +35,8 @@
   "exclude": [
     "node_modules",
     "dist",
-    "coverage"
+    "coverage",
+    "**/*.test.ts",
+    "**/*.spec.ts"
   ]
 }

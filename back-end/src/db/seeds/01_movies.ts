@@ -1,16 +1,12 @@
 import { Knex } from "knex";
 import { Movie } from "../../types/api";
 
-// Omit the auto-generated fields from the Movie type for seeding
 type MovieSeed = Omit<Movie, "movie_id" | "created_at" | "updated_at">;
 
 /**
- * Seed function to populate the movies table with initial data
- * @param knex - The Knex instance
- * @returns Promise that resolves when seeding is complete
+ * Seed function to populate the movies table
  */
 export async function seed(knex: Knex): Promise<void> {
-
   const movies: MovieSeed[] = [
     {
       title: "Spirited Away",
@@ -158,6 +154,5 @@ export async function seed(knex: Knex): Promise<void> {
     },
   ];
 
-  // Insert the movies into the database
   await knex("movies").insert(movies);
 }

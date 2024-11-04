@@ -1,32 +1,47 @@
 import knex, { Knex } from "knex";
 import config from "../knexfile";
 
+/**
+ * Database connection configuration and initialization module
+ * Handles environment-specific setup and connection testing
+ */
+
+// Initialize environment with fallback to development
 const environment = process.env.NODE_ENV || "development";
 const environmentConfig = config[environment];
 
+// Validate configuration existence for current environment
 if (!environmentConfig) {
-  throw new Error(`No configuration found for environment: ${environment}`);
+  throw new Error(`Invalid environment configuration: ${environment}`);
 }
 
+// Ensure required environment variables are present
 if (!process.env.DATABASE_URL) {
-  throw new Error("DATABASE_URL environment variable is not set");
+  throw new Error("DATABASE_URL environment variable is required");
 }
 
-console.log("Environment:", environment);
-console.log("Database URL:", process.env.DATABASE_URL.split("@")[1]); // Only log the host part for security
-console.log("Config:", JSON.stringify(environmentConfig, null, 2));
-
+// Initialize database connection
 let connection: Knex;
 
 try {
   connection = knex(environmentConfig);
-  // Test the connection
-  connection.raw("SELECT 1")
-    .then(() => console.log("Database connection established successfully"))
-    .catch((error) => console.error("Database connection test failed:", error));
+
+  // Test connection in development environment only
+  if (environment === "development") {
+    void connection
+      .raw("SELECT 1")
+      .then(() => {
+        console.info(`Database connection established [${environment}]`);
+      })
+      .catch((error: Error) => {
+        console.error("Database connection test failed:", error.message);
+        process.exit(1);
+      });
+  }
 } catch (error) {
-  console.error("Failed to create connection:", error);
-  throw error;
+  const message = error instanceof Error ? error.message : "Unknown database initialization error";
+  console.error("Database connection failed:", message);
+  process.exit(1);
 }
 
 export default connection;

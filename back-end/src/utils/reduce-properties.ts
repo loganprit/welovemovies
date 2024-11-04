@@ -11,9 +11,7 @@ type ReduceConfiguration = {
 /**
  * Generic type for data objects being reduced
  */
-type DataObject = {
-  [key: string]: any; // Using any here since we don't know the shape of input data
-};
+type DataObject = Record<string, unknown>;
 
 /**
  * Generates a custom map-properties configuration for the current row in the data set.
@@ -34,14 +32,19 @@ type DataObject = {
 function getRowMapConfiguration(
   configuration: ReduceConfiguration,
   previousRow: DataObject
-): { [key: string]: string[] } {
-  return Object.entries(configuration).reduce<{ [key: string]: string[] }>(
+): Record<string, string[]> {
+  return Object.entries(configuration).reduce<Record<string, string[]>>(
     (accumulator, [key, values]) => {
-      accumulator[key] = values.map((value, index, source) =>
-        value === null
-          ? String(lodash.get(previousRow, `${source[index - 1]}.length`, 0))
-          : value
-      );
+      accumulator[key] = values.map((value, index, source) => {
+        if (value === null) {
+          const previousPath = source[index - 1];
+          if (!previousPath) {
+            throw new Error("Null cannot be the first value in configuration array");
+          }
+          return String(lodash.get(previousRow, `${previousPath}.length`, 0));
+        }
+        return value;
+      });
       return accumulator;
     },
     {}
@@ -61,16 +64,11 @@ function reduceProperties(
   configuration: ReduceConfiguration
 ): (data: DataObject[]) => DataObject[] {
   return (data: DataObject[]): DataObject[] => {
-    const reducedData = data.reduce<{ [key: string]: DataObject }>(
+    const reducedData = data.reduce<Record<string, DataObject>>(
       (accumulator, row) => {
-        const key = row[uniqueField];
+        const key = String(row[uniqueField]);
         const rowObject = accumulator[key] || {};
-
-        const rowMapConfiguration = getRowMapConfiguration(
-          configuration,
-          rowObject
-        );
-
+        const rowMapConfiguration = getRowMapConfiguration(configuration, rowObject);
         const rowMapper = mapProperties(rowMapConfiguration);
         accumulator[key] = lodash.merge(rowObject, rowMapper(row));
         return accumulator;

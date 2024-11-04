@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from "express";
+import { ApiError } from "../types/errors";
 
 type AsyncFunction<
   P = Record<string, unknown>,
@@ -12,13 +13,13 @@ type AsyncFunction<
   next: NextFunction
 ) => Promise<void>;
 
-function asyncErrorBoundary<
+export default function asyncErrorBoundary<
   P = Record<string, unknown>,
   ResBody = unknown,
   ReqBody = unknown,
   ReqQuery = Record<string, unknown>,
   Locals extends Record<string, unknown> = Record<string, unknown>
->(delegate: AsyncFunction<P, ResBody, ReqBody, ReqQuery, Locals>, defaultStatus = 500) {
+>(delegate: AsyncFunction<P, ResBody, ReqBody, ReqQuery, Locals>) {
   return (
     req: Request<P, ResBody, ReqBody, ReqQuery>,
     res: Response<ResBody, Locals>,
@@ -27,13 +28,11 @@ function asyncErrorBoundary<
     return Promise.resolve()
       .then(() => delegate(req, res, next))
       .catch((error: unknown) => {
-        const err = error as Error;
-        next({
-          status: defaultStatus,
-          message: err?.message || "Internal server error",
-        });
+        if (error instanceof ApiError) {
+          next(error);
+        } else {
+          next(new ApiError(500, "Internal server error"));
+        }
       });
   };
 }
-
-export default asyncErrorBoundary;

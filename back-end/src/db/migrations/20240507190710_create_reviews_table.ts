@@ -7,14 +7,14 @@ import type { Knex } from "knex";
  */
 export function up(knex: Knex): Knex.SchemaBuilder {
   return knex.schema.createTable("reviews", (table: Knex.TableBuilder) => {
-    table.increments("review_id").primary(); // Primary key
+    table.increments("review_id").primary();
     table.text("content");
     table.integer("score");
     table.integer("critic_id").unsigned().notNullable();
     table.integer("movie_id").unsigned().notNullable();
     table.foreign("critic_id").references("critic_id").inTable("critics");
     table.foreign("movie_id").references("movie_id").inTable("movies");
-    table.timestamps(true, true); // Adds created_at and updated_at columns
+    table.timestamps(true, true);
   });
 }
 

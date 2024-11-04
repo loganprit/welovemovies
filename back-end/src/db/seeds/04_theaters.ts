@@ -1,13 +1,10 @@
 import { Knex } from "knex";
 import { Theater } from "../../types/api";
 
-// Omit auto-generated fields from Theater type for seeding
 type TheaterSeed = Omit<Theater, "theater_id" | "created_at" | "updated_at">;
 
 /**
- * Seed function to populate the theaters table with initial data
- * @param knex - The Knex instance
- * @returns Promise that resolves when seeding is complete
+ * Seed function to populate the theaters table
  */
 export async function seed(knex: Knex): Promise<void> {
   const theaters: TheaterSeed[] = [
@@ -37,6 +34,5 @@ export async function seed(knex: Knex): Promise<void> {
     },
   ];
 
-  // Insert the theaters into the database
   await knex("theaters").insert(theaters);
 }

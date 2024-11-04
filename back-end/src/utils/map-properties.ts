@@ -8,20 +8,22 @@ type PropertyConfiguration = {
 };
 
 /**
- * Creates a function to map the properties of an object to different properties on a new object.
- * @param configuration - Object where each key is the source property and the value is either a "." delimited string or array for the target path
- * @returns A function that accepts an object and returns a new object with remapped properties based on the configuration
+ * Maps object properties to a new structure based on provided configuration
+ * @param configuration - Mapping configuration where keys are source properties and values are target paths
+ * @returns Function that transforms objects according to the configuration
  */
 function mapProperties<T extends object, U extends object>(
   configuration: PropertyConfiguration
 ): (data: T | null | undefined) => U | null | undefined {
   return (data: T | null | undefined): U | null | undefined => {
-    if (data) {
-      return Object.entries(data).reduce<Partial<U>>((accumulator, [key, value]) => {
+    if (!data) return data as U | null | undefined;
+    
+    return Object.entries(data).reduce<Partial<U>>(
+      (accumulator, [key, value]) => {
         return lodash.set(accumulator, configuration[key] || key, value);
-      }, {}) as U;
-    }
-    return data as U | null | undefined;
+      }, 
+      {}
+    ) as U;
   };
 }
 

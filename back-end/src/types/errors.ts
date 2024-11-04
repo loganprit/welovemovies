@@ -1,42 +1,47 @@
 /**
- * Custom error class for API-specific errors
+ * Base error class for API-specific errors
  */
 export class ApiError extends Error {
   constructor(
-    public statusCode: number,
+    public readonly statusCode: number,
     message: string,
-    public details?: unknown
+    public readonly details?: Record<string, unknown>
   ) {
     super(message);
     this.name = "ApiError";
+    Error.captureStackTrace(this, this.constructor);
   }
 }
 
 /**
- * Custom error class for validation errors
+ * Error class for request validation failures
  */
 export class ValidationError extends ApiError {
-  constructor(message: string, details?: unknown) {
+  constructor(message: string, details?: Record<string, unknown>) {
     super(400, message, details);
     this.name = "ValidationError";
   }
 }
 
 /**
- * Custom error class for not found errors
+ * Error class for resource not found errors
  */
 export class NotFoundError extends ApiError {
-  constructor(resource: string, id: string | number) {
-    super(404, `${resource} with id ${id} not found`);
+  constructor(
+    resource: string,
+    identifier: string | number,
+    details?: Record<string, unknown>
+  ) {
+    super(404, `${resource} with id ${identifier} not found`, details);
     this.name = "NotFoundError";
   }
 }
 
 /**
- * Type for error response structure
+ * Error response interface for consistent error formatting
  */
 export interface ErrorResponse {
   error: string;
-  details?: unknown;
+  details?: Record<string, unknown>;
   statusCode: number;
 }

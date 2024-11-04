@@ -1,10 +1,15 @@
-// Base response interface that all responses will extend
+/**
+ * Base response interface for all API responses
+ * @template T The type of data contained in the response
+ */
 interface ApiResponse<T> {
     data: T;
     error?: string;
 }
 
-// Movie interface based on the database schema and API responses
+/**
+ * Movie entity interface based on database schema
+ */
 interface Movie {
     movie_id: number;
     title: string;
@@ -16,7 +21,9 @@ interface Movie {
     updated_at: string;
 }
 
-// Theater interface based on the database schema
+/**
+ * Theater entity interface based on database schema
+ */
 interface Theater {
     theater_id: number;
     name: string;
@@ -29,7 +36,9 @@ interface Theater {
     updated_at: string;
 }
 
-// Review interface based on the database schema
+/**
+ * Review entity interface based on database schema
+ */
 interface Review {
     review_id: number;
     content: string;
@@ -40,7 +49,9 @@ interface Review {
     updated_at: string;
 }
 
-// Critic interface based on the database schema
+/**
+ * Critic entity interface based on database schema
+ */
 interface Critic {
     critic_id: number;
     preferred_name: string;
@@ -50,12 +61,16 @@ interface Critic {
     updated_at: string;
 }
 
-// Extended Review interface that includes critic information
+/**
+ * Extended Review interface that includes critic information
+ */
 interface ReviewWithCritic extends Review {
     critic: Critic;
 }
 
-// Theater with movies interface for the /theaters endpoint
+/**
+ * Extended Theater interface that includes movie information
+ */
 interface TheaterWithMovies extends Theater {
     movies: (Movie & {
         is_showing: boolean;
@@ -63,7 +78,6 @@ interface TheaterWithMovies extends Theater {
     })[];
 }
 
-// Export all interfaces
 export type {
     ApiResponse,
     Movie,

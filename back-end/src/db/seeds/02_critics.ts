@@ -1,13 +1,10 @@
 import { Knex } from "knex";
 import { Critic } from "../../types/api";
 
-// Omit auto-generated fields from Critic type for seeding
 type CriticSeed = Omit<Critic, "critic_id" | "created_at" | "updated_at">;
 
 /**
- * Seed function to populate the critics table with initial data
- * @param knex - The Knex instance
- * @returns Promise that resolves when seeding is complete
+ * Seed function to populate the critics table
  */
 export async function seed(knex: Knex): Promise<void> {
   const critics: CriticSeed[] = [
@@ -48,6 +45,5 @@ export async function seed(knex: Knex): Promise<void> {
     },
   ];
 
-  // Insert the critics into the database
   await knex("critics").insert(critics);
 }

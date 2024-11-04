@@ -20,32 +20,42 @@ interface ReviewLocals {
 type CustomRequest = Request<ReviewParams, unknown, ReviewBody>;
 type CustomResponse = Response<unknown, ReviewLocals>;
 
-// Middleware to check if review exists
+/**
+ * Middleware to validate review existence
+ */
 async function reviewExists(
   req: CustomRequest,
   res: CustomResponse,
   next: NextFunction
 ): Promise<void> {
-  const review = await service.read(Number(req.params.reviewId));
+  const reviewId = Number(req.params.reviewId);
+  const review = await service.read(reviewId);
+
   if (review) {
     res.locals.review = review;
     return next();
   }
+
   res.status(404).json({
     error: `Review with ID ${req.params.reviewId} cannot be found.`
   });
 }
 
-// Controller functions
-async function destroy(
-  _req: CustomRequest,
+/**
+ * Retrieves a specific review by ID
+ */
+async function read(
+  req: CustomRequest,
   res: CustomResponse,
   _next: NextFunction
 ): Promise<void> {
-  await service.destroy(res.locals.review.review_id);
-  res.sendStatus(204);
+  const data = await service.read(Number(req.params.reviewId));
+  res.json({ data });
 }
 
+/**
+ * Updates an existing review
+ */
 async function update(
   req: CustomRequest,
   res: CustomResponse,
@@ -55,18 +65,22 @@ async function update(
     ...req.body.data,
     review_id: res.locals.review.review_id,
   };
+  
   await service.update(updatedReview);
   const updated = await service.readWithCritic(res.locals.review.review_id);
   res.json({ data: updated[0] });
 }
 
-async function read(
-  req: CustomRequest,
+/**
+ * Deletes an existing review
+ */
+async function destroy(
+  _req: CustomRequest,
   res: CustomResponse,
   _next: NextFunction
 ): Promise<void> {
-  const data = await service.read(Number(req.params.reviewId));
-  res.json({ data });
+  await service.destroy(res.locals.review.review_id);
+  res.sendStatus(204);
 }
 
 export default {

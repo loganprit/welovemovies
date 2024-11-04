@@ -12,7 +12,7 @@ export function up(knex: Knex): Knex.SchemaBuilder {
     table.boolean("is_showing").notNullable().defaultTo(false);
     table.foreign("movie_id").references("movie_id").inTable("movies");
     table.foreign("theater_id").references("theater_id").inTable("theaters");
-    table.primary(["movie_id", "theater_id"]); // Sets a composite primary key
+    table.primary(["movie_id", "theater_id"]);
   });
 }
 
