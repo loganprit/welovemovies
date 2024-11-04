@@ -19,7 +19,7 @@
     "seed:dev": "npm run build && cross-env NODE_ENV=development NODE_TLS_REJECT_UNAUTHORIZED=0 npx knex seed:run --knexfile dist/knexfile.js",
     "seed:test": "npm run build && cross-env NODE_ENV=test NODE_TLS_REJECT_UNAUTHORIZED=0 npx knex seed:run --knexfile dist/knexfile.js",
     "seed:prod": "npm run build && cross-env NODE_ENV=production NODE_TLS_REJECT_UNAUTHORIZED=0 npx knex seed:run --knexfile dist/knexfile.js",
-    "start": "node dist/server.js",
+    "start": "npm run build && node dist/server.js",
     "start:dev": "ts-node-dev --respawn --transpile-only src/server.ts",
     "start:solution": "docker-compose up --build",
     "test": "jest --config jest.config.ts",
