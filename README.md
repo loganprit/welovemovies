@@ -65,16 +65,12 @@ WeLoveMovies serves as a hub for:
 ## Development Setup
 
 1. Clone the repository
-2. Install dependencies: `bash
-npm install   `
+2. Install dependencies: `npm install`
 3. Configure environment:
    - Copy `.env.sample` to `.env` in both front-end and back-end directories
    - Set up database connection in `DATABASE_URL`
-4. Initialize database: `bash
-npm run migrate
-npm run seed   `
-5. Start development servers: `bash
-npm start   `
+4. Initialize database: `npm run migrate && npm run seed`
+5. Start development servers: `npm start`
 
 ## Available Scripts
 
