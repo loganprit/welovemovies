@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Details from "./Details";
-import ReviewList from "./ReviewList";
-import TheaterList from "./TheaterList";
+import ReviewList from "../reviews/ReviewList";
+import TheaterList from "../theaters/TheaterList";
 import { deleteReview, readMovie, updateReview } from "../utils/api";
 import ErrorAlert from "../shared/ErrorAlert";
 import { Movie } from "../types/models";
@@ -89,22 +89,25 @@ const FullMovie: React.FC = () => {
   };
 
   if (!movie) {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex items-center justify-center min-h-[200px]">
+        <div className="text-gray-600">Loading...</div>
+      </div>
+    );
   }
 
   return (
-    <div className="container">
+    <div className="container mx-auto px-4 py-8">
       <ErrorAlert error={error} />
-      <section className="row mt-4">
-        <article className="col-sm-12 col-md-6 col-lg-3">
+      <section className="flex flex-col lg:flex-row gap-8">
+        <article className="w-full lg:w-1/4">
           <img
             alt={`${movie.title} Poster`}
-            className="rounded"
+            className="w-full rounded-lg shadow-lg object-cover"
             src={movie.image_url}
-            style={{ width: "100%" }}
           />
         </article>
-        <aside className="col-sm-12 col-md-6 col-lg-9">
+        <aside className="flex-1 space-y-8">
           <Details movie={movie} />
           <TheaterList theaters={movie.theaters} />
           <ReviewList

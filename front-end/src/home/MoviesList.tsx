@@ -32,31 +32,40 @@ function MoviesList(): JSX.Element {
   const list = movies.map((movie: Movie) => (
     <article 
       key={movie.movie_id} 
-      className="col-sm-12 col-md-6 col-lg-3 my-2"
+      className="relative p-4 sm:w-1/2 md:w-1/3 lg:w-1/4"
     >
-      <img
-        alt={`${movie.title} Poster`}
-        className="rounded"
-        src={movie.image_url}
-        style={{ width: "100%" }}
-      />
-      <Link
-        to={`/movies/${movie.movie_id}`}
-        className="stretched-link text-dark"
-      >
-        <h3 className="font-poppins-heading text-center mt-2">
+      <div className="group h-full">
+        <img
+          alt={`${movie.title} Poster`}
+          className="w-full rounded shadow-lg transition-transform duration-200 group-hover:scale-105"
+          src={movie.image_url}
+        />
+        <Link
+          to={`/movies/${movie.movie_id}`}
+          className="absolute inset-0 z-10"
+          aria-label={`View details for ${movie.title}`}
+        >
+          <span className="sr-only">View details</span>
+        </Link>
+        <h3 className="font-poppins-heading text-center mt-4 text-xl text-gray-900">
           {movie.title}
         </h3>
-      </Link>
+      </div>
     </article>
   ));
 
   return (
-    <main className="container">
+    <main>
       <ErrorAlert error={error} />
-      <h2 className="font-poppins">Now Showing</h2>
-      <hr />
-      <section className="row">{list}</section>
+      <div className="container mx-auto px-6">
+        <div className="mt-8">
+          <h2 className="font-poppins-heading text-4xl mb-2">Now Showing</h2>
+          <hr className="mb-8 border-gray-200" />
+        </div>
+        <section className="flex flex-wrap -mx-4">
+          {list}
+        </section>
+      </div>
     </main>
   );
 }

@@ -36,16 +36,20 @@ const DetailedMoviesList: React.FC = () => {
     return () => abortController.abort();
   }, []);
 
-  const list = movies.map((movie) => (
-    <DetailedMovie key={movie.movie_id} movie={movie} />
-  ));
-
   return (
-    <main className="container">
+    <main className="min-h-screen bg-gray-50">
       <ErrorAlert error={error} />
-      <h2 className="font-poppins">All Movies</h2>
-      <hr />
-      <section>{list}</section>
+      <div className="container mx-auto px-4 py-8">
+        <div className="mb-8">
+          <h2 className="font-poppins-heading text-4xl text-gray-900 mb-4">All Movies</h2>
+          <hr className="border-gray-200" />
+        </div>
+        <section className="divide-y divide-gray-200">
+          {movies.map((movie) => (
+            <DetailedMovie key={movie.movie_id} movie={movie} />
+          ))}
+        </section>
+      </div>
     </main>
   );
 };

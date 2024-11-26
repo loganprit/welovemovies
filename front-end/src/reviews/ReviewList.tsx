@@ -19,31 +19,36 @@ const ReviewList: React.FC<ReviewListProps> = ({
   setReviewScore 
 }) => {
   if (!reviews.length) {
-    return null;
+    return (
+      <div className="text-center py-8 text-gray-500">
+        No reviews yet
+      </div>
+    );
   }
 
-  const list = reviews
+  const sortedReviews = reviews
     .sort((leftReview, rightReview) => {
-      if (!leftReview.critic || !rightReview.critic) {
-        return 0;
-      }
+      if (!leftReview.critic || !rightReview.critic) return 0;
       return leftReview.critic.preferred_name.localeCompare(
         rightReview.critic.preferred_name
       );
-    })
-    .map((review) => (
-      <Review
-        key={review.review_id}
-        review={review}
-        deleteReview={deleteReview}
-        setReviewScore={setReviewScore}
-      />
-    ));
+    });
 
   return (
-    <section className="mt-4">
-      <h3>Reviews</h3>
-      {list}
+    <section className="mt-8">
+      <h3 className="font-poppins-heading text-2xl text-gray-900 mb-6">
+        Reviews ({reviews.length})
+      </h3>
+      <div className="space-y-6">
+        {sortedReviews.map((review) => (
+          <Review
+            key={review.review_id}
+            review={review}
+            deleteReview={deleteReview}
+            setReviewScore={setReviewScore}
+          />
+        ))}
+      </div>
     </section>
   );
 };

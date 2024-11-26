@@ -6,9 +6,9 @@ interface ErrorAlertProps {
 }
 
 /**
- * Displays a bootstrap danger alert if the specified error is truthy.
+ * Displays a Tailwind-styled alert for error messages
  * @param props - Component props containing error object
- * @returns JSX element displaying error message in a bootstrap alert, or null if no error
+ * @returns JSX element displaying error message in an alert, or null if no error
  */
 const ErrorAlert: React.FC<ErrorAlertProps> = ({ error }) => {
   if (!error) {
@@ -17,10 +17,11 @@ const ErrorAlert: React.FC<ErrorAlertProps> = ({ error }) => {
 
   return (
     <div 
-      className="alert alert-danger m-2" 
+      className="my-2 px-4 py-3 border border-red-400 rounded bg-red-100 text-red-700" 
       role="alert"
     >
-      Error: {error.message}
+      <strong className="font-bold">Error: </strong>
+      <span className="block sm:inline">{error.message}</span>
     </div>
   );
 };

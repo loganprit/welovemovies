@@ -30,11 +30,24 @@ interface AverageRatingProps {
  * @returns JSX element displaying average rating
  */
 const AverageRating: React.FC<AverageRatingProps> = ({ reviews = [] }) => {
+  const rating = averageReviewRating(reviews);
+  
   return (
-    <p className="average-rating">
-      <strong>Average Review Rating:</strong>{" "}
-      <span data-testid="average-rating">{averageReviewRating(reviews)}</span>
-    </p>
+    <div className="flex items-center gap-2">
+      <span className="font-medium text-gray-900">Average Rating:</span>
+      <span 
+        data-testid="average-rating"
+        className={`px-3 py-1 rounded-full text-sm font-medium
+          ${rating === "N/A" 
+            ? "bg-gray-100 text-gray-600" 
+            : "bg-primary-100 text-primary-800"}`}
+      >
+        {rating}
+      </span>
+      <span className="text-sm text-gray-500">
+        ({reviews.length} {reviews.length === 1 ? "review" : "reviews"})
+      </span>
+    </div>
   );
 };
 

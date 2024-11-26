@@ -1,3 +1,4 @@
+@import './styles/tokens.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -9,11 +10,11 @@
 }
 
 @layer components {
-  .font-poppins {
-    @apply font-poppins;
+  .font-poppins-base {
+    font-family: Poppins, system-ui, sans-serif;
   }
 
   .font-poppins-heading {
-    @apply font-poppins font-bold;
+    @apply font-poppins-base font-bold;
   }
 }
