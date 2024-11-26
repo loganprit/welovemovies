@@ -1,8 +1,19 @@
-.font-poppins {
-  font-family: Poppins, "sans-serif";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: Poppins, system-ui, sans-serif;
+  }
 }
 
-.font-poppins-heading {
-  font-family: Poppins, "sans-serif";
-  font-weight: 700;
+@layer components {
+  .font-poppins {
+    @apply font-poppins;
+  }
+
+  .font-poppins-heading {
+    @apply font-poppins font-bold;
+  }
 }
