@@ -51,26 +51,24 @@ const Theater: React.FC<TheaterProps> = ({ theater, variant = "detailed" }) => {
     </address>
   );
 
-  if (variant === "simple") {
-    return (
-      <article className={`rounded-lg shadow-sm border transition-shadow hover:shadow-md ${
-        theme === "dark"
-          ? "bg-gray-800 border-gray-700"
-          : "bg-white border-gray-200"
-      }`}>
-        <div className="p-6">
-          <h5 className={`font-poppins-heading text-xl mb-4 ${
-            theme === "dark" ? "text-white" : "text-gray-900"
-          }`}>
-            {theater.name}
-          </h5>
-          <AddressBlock />
-        </div>
-      </article>
-    );
-  }
+  const SimpleTheater = () => (
+    <article className={`rounded-lg shadow-sm border transition-shadow hover:shadow-md ${
+      theme === "dark"
+        ? "bg-gray-800 border-gray-700"
+        : "bg-white border-gray-200"
+    }`}>
+      <div className="p-6">
+        <h5 className={`font-poppins-heading text-xl mb-4 ${
+          theme === "dark" ? "text-white" : "text-gray-900"
+        }`}>
+          {theater.name}
+        </h5>
+        <AddressBlock />
+      </div>
+    </article>
+  );
 
-  return (
+  const DetailedTheater = () => (
     <article className={`rounded-lg shadow-sm border p-6 transition-shadow hover:shadow-md ${
       theme === "dark"
         ? "bg-gray-800 border-gray-700"
@@ -118,6 +116,8 @@ const Theater: React.FC<TheaterProps> = ({ theater, variant = "detailed" }) => {
       </div>
     </article>
   );
+
+  return variant === "simple" ? <SimpleTheater /> : <DetailedTheater />;
 };
 
 export default Theater;

@@ -116,7 +116,7 @@ const FullMovie: React.FC = () => {
           </article>
           <aside className="flex-1 space-y-8">
             <MovieDetails movie={movie} variant="full" />
-            <TheaterList theaters={movie.theaters} />
+            <TheaterList theaters={movie.theaters} variant="simple" />
             <ReviewList
               reviews={movie.reviews}
               deleteReview={handleDeleteReview}

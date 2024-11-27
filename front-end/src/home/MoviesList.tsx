@@ -47,16 +47,14 @@ const MoviesList: React.FC = () => {
 
   return (
     <main className={theme === "dark" ? "bg-gray-900" : "bg-gray-50"}>
-      <div className="container mx-auto px-6 py-8">
-        <div className="mt-8">
-          <h2 className={`font-poppins-heading text-4xl mb-2 ${
+      <div className="container mx-auto px-4 py-8">
+        <div className="mb-8">
+          <h2 className={`font-poppins-heading text-4xl mb-4 ${
             theme === "dark" ? "text-white" : "text-gray-900"
           }`}>
             Now Showing
           </h2>
-          <hr className={`mb-8 ${
-            theme === "dark" ? "border-gray-700" : "border-gray-200"
-          }`} />
+          <hr className={theme === "dark" ? "border-gray-700" : "border-gray-200"} />
         </div>
         
         <ErrorAlert error={error} />
