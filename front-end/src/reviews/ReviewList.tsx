@@ -1,6 +1,7 @@
 import React from "react";
 import { Review as ReviewType } from "../types/api-types";
 import Review from "./Review";
+import { useTheme } from "../context/ThemeContext";
 
 interface ReviewListProps {
   reviews?: ReviewType[];
@@ -18,9 +19,13 @@ const ReviewList: React.FC<ReviewListProps> = ({
   deleteReview, 
   setReviewScore 
 }) => {
+  const { theme } = useTheme();
+
   if (!reviews.length) {
     return (
-      <div className="text-center py-8 text-gray-500">
+      <div className={`text-center py-8 ${
+        theme === "dark" ? "text-gray-400" : "text-gray-500"
+      }`}>
         No reviews yet
       </div>
     );
@@ -36,7 +41,9 @@ const ReviewList: React.FC<ReviewListProps> = ({
 
   return (
     <section className="mt-8">
-      <h3 className="font-poppins-heading text-2xl text-gray-900 mb-6">
+      <h3 className={`font-poppins-heading text-2xl mb-6 ${
+        theme === "dark" ? "text-white" : "text-gray-900"
+      }`}>
         Reviews ({reviews.length})
       </h3>
       <div className="space-y-6">

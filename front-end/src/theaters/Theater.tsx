@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Theater as TheaterType } from "../types/api-types";
 import { Movie } from "../types/models";
+import { useTheme } from "../context/ThemeContext";
 
 interface TheaterProps {
   theater: TheaterType & {
@@ -20,16 +21,24 @@ interface TheaterProps {
  * @returns JSX element displaying theater details
  */
 const Theater: React.FC<TheaterProps> = ({ theater, variant = "detailed" }) => {
+  const { theme } = useTheme();
+
   if (!theater) {
     return (
-      <div className="p-6 text-gray-600 bg-gray-50 rounded-lg">
+      <div className={`p-6 rounded-lg ${
+        theme === "dark" 
+          ? "bg-gray-800 text-gray-300" 
+          : "bg-gray-50 text-gray-600"
+      }`}>
         Theater information unavailable
       </div>
     );
   }
 
   const AddressBlock = () => (
-    <address className="text-gray-600 not-italic">
+    <address className={`not-italic ${
+      theme === "dark" ? "text-gray-400" : "text-gray-600"
+    }`}>
       {theater.address_line_1}
       <br />
       {theater.address_line_2 && (
@@ -44,9 +53,15 @@ const Theater: React.FC<TheaterProps> = ({ theater, variant = "detailed" }) => {
 
   if (variant === "simple") {
     return (
-      <article className="bg-white rounded-lg shadow-sm border border-gray-200 transition-shadow hover:shadow-md">
+      <article className={`rounded-lg shadow-sm border transition-shadow hover:shadow-md ${
+        theme === "dark"
+          ? "bg-gray-800 border-gray-700"
+          : "bg-white border-gray-200"
+      }`}>
         <div className="p-6">
-          <h5 className="font-poppins-heading text-xl text-gray-900 mb-4">
+          <h5 className={`font-poppins-heading text-xl mb-4 ${
+            theme === "dark" ? "text-white" : "text-gray-900"
+          }`}>
             {theater.name}
           </h5>
           <AddressBlock />
@@ -56,10 +71,16 @@ const Theater: React.FC<TheaterProps> = ({ theater, variant = "detailed" }) => {
   }
 
   return (
-    <article className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 transition-shadow hover:shadow-md">
+    <article className={`rounded-lg shadow-sm border p-6 transition-shadow hover:shadow-md ${
+      theme === "dark"
+        ? "bg-gray-800 border-gray-700"
+        : "bg-white border-gray-200"
+    }`}>
       <div className="flex flex-col lg:flex-row gap-8">
         <aside className="lg:w-1/3">
-          <h2 className="font-poppins-heading text-2xl text-gray-900 mb-4">
+          <h2 className={`font-poppins-heading text-2xl mb-4 ${
+            theme === "dark" ? "text-white" : "text-gray-900"
+          }`}>
             {theater.name}
           </h2>
           <AddressBlock />
@@ -84,8 +105,11 @@ const Theater: React.FC<TheaterProps> = ({ theater, variant = "detailed" }) => {
                              transition-all duration-200 group-hover:shadow-md 
                              group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 
-                                transition-opacity duration-200 rounded-lg" />
+                  <div className={`absolute inset-0 rounded-lg transition-opacity duration-200 ${
+                    theme === "dark"
+                      ? "bg-black bg-opacity-0 group-hover:bg-opacity-20"
+                      : "bg-black bg-opacity-0 group-hover:bg-opacity-10"
+                  }`} />
                 </Link>
               </div>
             ))}

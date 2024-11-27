@@ -1,5 +1,6 @@
 import React from "react";
 import { Review } from "../types/api-types";
+import { useTheme } from "../context/ThemeContext";
 
 /**
  * Calculates the average rating from an array of reviews
@@ -31,20 +32,30 @@ interface AverageRatingProps {
  */
 const AverageRating: React.FC<AverageRatingProps> = ({ reviews = [] }) => {
   const rating = averageReviewRating(reviews);
+  const { theme } = useTheme();
   
   return (
     <div className="flex items-center gap-2">
-      <span className="font-medium text-gray-900">Average Rating:</span>
+      <span className={`font-medium ${
+        theme === "dark" ? "text-gray-200" : "text-gray-900"
+      }`}>
+        Average Rating:
+      </span>
       <span 
         data-testid="average-rating"
-        className={`px-3 py-1 rounded-full text-sm font-medium
-          ${rating === "N/A" 
-            ? "bg-gray-100 text-gray-600" 
-            : "bg-primary-100 text-primary-800"}`}
+        className={`px-3 py-1 rounded-full text-sm font-medium ${
+          rating === "N/A" 
+            ? theme === "dark"
+              ? "bg-gray-800 text-gray-400"
+              : "bg-gray-100 text-gray-600"
+            : theme === "dark"
+              ? "bg-primary-900/20 text-primary-300"
+              : "bg-primary-100 text-primary-800"
+        }`}
       >
         {rating}
       </span>
-      <span className="text-sm text-gray-500">
+      <span className={theme === "dark" ? "text-sm text-gray-400" : "text-sm text-gray-500"}>
         ({reviews.length} {reviews.length === 1 ? "review" : "reviews"})
       </span>
     </div>

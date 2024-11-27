@@ -1,5 +1,6 @@
 import React from "react";
 import HeaderNav from "./HeaderNav";
+import ThemeToggle from "./ThemeToggle";
 import headerImage from "./header.jpg";
 
 interface HeaderStyles extends React.CSSProperties {
@@ -10,7 +11,7 @@ interface HeaderStyles extends React.CSSProperties {
 
 /**
  * Header Component
- * Displays the main header section with navigation and welcome message
+ * Displays the main header section with navigation, theme toggle, and welcome message
  * @returns JSX element displaying the header with background image and content
  */
 const Header: React.FC = () => {
@@ -24,7 +25,10 @@ const Header: React.FC = () => {
       }}
     >
       <div className="container mx-auto px-6">
-        <HeaderNav />
+        <div className="flex justify-between items-center">
+          <HeaderNav />
+          <ThemeToggle />
+        </div>
         <div className="py-12">
           <h1 className="text-5xl font-poppins-heading mb-4">
             Find your next favorite movie!

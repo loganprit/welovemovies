@@ -1,6 +1,7 @@
 import React from "react";
 import { marked } from "marked";
 import { Review as ReviewType } from "../types/api-types";
+import { useTheme } from "../context/ThemeContext";
 
 // Create a synchronous marked parser
 const parser = marked.parseInline;
@@ -12,6 +13,8 @@ interface ReviewProps {
 }
 
 const Review: React.FC<ReviewProps> = ({ review, deleteReview, setReviewScore }) => {
+  const { theme } = useTheme();
+
   const handleIncreaseClick = async (): Promise<void> => {
     const score = review.score + 1;
     if (score > 5) return;
@@ -28,42 +31,75 @@ const Review: React.FC<ReviewProps> = ({ review, deleteReview, setReviewScore })
 
   if (!critic) {
     return (
-      <div className="p-4 text-gray-600 bg-gray-50 rounded-lg">
+      <div className={`p-4 rounded-lg ${
+        theme === "dark" 
+          ? "bg-gray-800 text-gray-300" 
+          : "bg-gray-50 text-gray-600"
+      }`}>
         Review information unavailable
       </div>
     );
   }
 
   return (
-    <article className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6 transition-shadow hover:shadow-md">
+    <article className={`rounded-lg shadow-sm p-6 mb-6 transition-all duration-200 
+      border hover:shadow-md ${
+      theme === "dark"
+        ? "bg-gray-800 border-gray-700"
+        : "bg-white border-gray-200"
+    }`}>
       <header className="mb-4">
-        <h4 className="text-lg font-poppins-heading text-gray-900">
+        <h4 className={`text-lg font-poppins-heading ${
+          theme === "dark" ? "text-white" : "text-gray-900"
+        }`}>
           {critic.preferred_name} {critic.surname}
-          <span className="text-sm text-gray-600 ml-2">
+          <span className={`text-sm ml-2 ${
+            theme === "dark" ? "text-gray-400" : "text-gray-600"
+          }`}>
             of {critic.organization_name}
           </span>
         </h4>
       </header>
       
       <div 
-        className="prose prose-sm max-w-none mb-4 text-gray-700"
+        className={`prose prose-sm max-w-none mb-4 ${
+          theme === "dark" ? "text-gray-300" : "text-gray-700"
+        }`}
         dangerouslySetInnerHTML={{ __html: parser(review.content) as string }}
       />
       
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <span className="font-medium text-gray-900">Rating:</span>
-          <div className="flex items-center bg-gray-100 rounded-lg px-2 py-1">
+          <span className={`font-medium ${
+            theme === "dark" ? "text-gray-200" : "text-gray-900"
+          }`}>
+            Rating:
+          </span>
+          <div className={`flex items-center rounded-lg px-2 py-1 ${
+            theme === "dark" ? "bg-gray-700" : "bg-gray-100"
+          }`}>
             <button
-              className="text-primary-600 hover:text-primary-800 px-2 py-1 transition-colors"
+              className={`px-2 py-1 transition-colors ${
+                theme === "dark"
+                  ? "text-primary-400 hover:text-primary-300"
+                  : "text-primary-600 hover:text-primary-800"
+              }`}
               onClick={handleDecreaseClick}
               aria-label="Decrease rating"
             >
               −
             </button>
-            <span className="mx-2 font-medium">{review.score}</span>
+            <span className={`mx-2 font-medium ${
+              theme === "dark" ? "text-gray-200" : "text-gray-900"
+            }`}>
+              {review.score}
+            </span>
             <button
-              className="text-primary-600 hover:text-primary-800 px-2 py-1 transition-colors"
+              className={`px-2 py-1 transition-colors ${
+                theme === "dark"
+                  ? "text-primary-400 hover:text-primary-300"
+                  : "text-primary-600 hover:text-primary-800"
+              }`}
               onClick={handleIncreaseClick}
               aria-label="Increase rating"
             >
@@ -74,9 +110,12 @@ const Review: React.FC<ReviewProps> = ({ review, deleteReview, setReviewScore })
         
         <button 
           onClick={() => deleteReview(review)}
-          className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 
-                     transition-colors duration-200 focus:ring-2 focus:ring-offset-2 
-                     focus:ring-red-500"
+          className={`px-4 py-2 text-white rounded-lg transition-colors duration-200 
+            focus:ring-2 focus:ring-offset-2 ${
+            theme === "dark"
+              ? "bg-red-700 hover:bg-red-600 focus:ring-red-600"
+              : "bg-red-600 hover:bg-red-700 focus:ring-red-500"
+          }`}
           aria-label="Delete review"
         >
           Delete Review

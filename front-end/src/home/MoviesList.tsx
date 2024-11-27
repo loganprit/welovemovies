@@ -4,6 +4,7 @@ import ErrorAlert from "../shared/ErrorAlert";
 import { listMovies } from "../utils/api";
 import { Movie } from "../types/models";
 import { ApiError } from "../types/api-types";
+import { useTheme } from "../context/ThemeContext";
 
 /**
  * MoviesList Component
@@ -13,6 +14,7 @@ import { ApiError } from "../types/api-types";
 function MoviesList(): JSX.Element {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [error, setError] = useState<ApiError | null>(null);
+  const { theme } = useTheme();
 
   useEffect(() => {
     setError(null);
@@ -32,7 +34,9 @@ function MoviesList(): JSX.Element {
   const list = movies.map((movie: Movie) => (
     <article 
       key={movie.movie_id} 
-      className="relative p-4 sm:w-1/2 md:w-1/3 lg:w-1/4"
+      className={`relative p-4 sm:w-1/2 md:w-1/3 lg:w-1/4 transition-colors duration-300 ${
+        theme === "dark" ? "bg-gray-800" : "bg-white"
+      }`}
     >
       <div className="group h-full">
         <img
@@ -47,7 +51,9 @@ function MoviesList(): JSX.Element {
         >
           <span className="sr-only">View details</span>
         </Link>
-        <h3 className="font-poppins-heading text-center mt-4 text-xl text-gray-900">
+        <h3 className={`font-poppins-heading text-center mt-4 text-xl ${
+          theme === "dark" ? "text-white" : "text-gray-900"
+        }`}>
           {movie.title}
         </h3>
       </div>
@@ -55,12 +61,18 @@ function MoviesList(): JSX.Element {
   ));
 
   return (
-    <main>
+    <main className={theme === "dark" ? "bg-gray-900" : "bg-gray-50"}>
       <ErrorAlert error={error} />
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-6 py-8">
         <div className="mt-8">
-          <h2 className="font-poppins-heading text-4xl mb-2">Now Showing</h2>
-          <hr className="mb-8 border-gray-200" />
+          <h2 className={`font-poppins-heading text-4xl mb-2 ${
+            theme === "dark" ? "text-white" : "text-gray-900"
+          }`}>
+            Now Showing
+          </h2>
+          <hr className={`mb-8 ${
+            theme === "dark" ? "border-gray-700" : "border-gray-200"
+          }`} />
         </div>
         <section className="flex flex-wrap -mx-4">
           {list}

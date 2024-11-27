@@ -4,6 +4,7 @@ import ErrorAlert from "../shared/ErrorAlert";
 import { listTheaters } from "../utils/api";
 import { Theater as TheaterType } from "../types/api-types";
 import { ApiError } from "../types/api-types";
+import { useTheme } from "../context/ThemeContext";
 
 interface TheaterListProps {
   theaters?: TheaterType[];
@@ -22,6 +23,7 @@ interface TheaterListProps {
 const TheaterList: React.FC<TheaterListProps> = ({ theaters: propTheaters, variant = "detailed" }) => {
   const [theaters, setTheaters] = useState<TheaterType[]>([]);
   const [error, setError] = useState<ApiError | null>(null);
+  const { theme } = useTheme();
 
   useEffect(() => {
     // If theaters are provided via props, use those instead of fetching
@@ -57,7 +59,11 @@ const TheaterList: React.FC<TheaterListProps> = ({ theaters: propTheaters, varia
 
   if (!theaters.length) {
     return (
-      <div className="p-6 text-center text-gray-500 bg-gray-50 rounded-lg">
+      <div className={`p-6 text-center rounded-lg ${
+        theme === "dark"
+          ? "bg-gray-800 text-gray-400"
+          : "bg-gray-50 text-gray-500"
+      }`}>
         No theaters available
       </div>
     );
@@ -75,7 +81,9 @@ const TheaterList: React.FC<TheaterListProps> = ({ theaters: propTheaters, varia
   if (propTheaters) {
     return (
       <section className="mt-8">
-        <h4 className="font-poppins-heading text-2xl text-gray-900 mb-6">
+        <h4 className={`font-poppins-heading text-2xl mb-6 ${
+          theme === "dark" ? "text-white" : "text-gray-900"
+        }`}>
           Now Showing At
         </h4>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -87,14 +95,16 @@ const TheaterList: React.FC<TheaterListProps> = ({ theaters: propTheaters, varia
 
   // Render full theaters page
   return (
-    <main className="min-h-screen bg-gray-50">
+    <main className={theme === "dark" ? "bg-gray-900" : "bg-gray-50"}>
       <div className="container mx-auto px-4 py-8">
         <ErrorAlert error={error} />
         <div className="mb-8">
-          <h2 className="font-poppins-heading text-4xl text-gray-900 mb-4">
+          <h2 className={`font-poppins-heading text-4xl mb-4 ${
+            theme === "dark" ? "text-white" : "text-gray-900"
+          }`}>
             All Theaters
           </h2>
-          <hr className="border-gray-200" />
+          <hr className={theme === "dark" ? "border-gray-700" : "border-gray-200"} />
         </div>
         <div className="space-y-6">
           {list}

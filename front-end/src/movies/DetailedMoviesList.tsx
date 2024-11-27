@@ -4,6 +4,7 @@ import ErrorAlert from "../shared/ErrorAlert";
 import { listMovies } from "../utils/api";
 import { Movie } from "../types/models";
 import { ApiError } from "../types/api-types";
+import { useTheme } from "../context/ThemeContext";
 
 /**
  * Component that displays a list of detailed movies
@@ -12,6 +13,7 @@ import { ApiError } from "../types/api-types";
 const DetailedMoviesList: React.FC = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [error, setError] = useState<ApiError | null>(null);
+  const { theme } = useTheme();
 
   useEffect(() => {
     setError(null);
@@ -37,14 +39,20 @@ const DetailedMoviesList: React.FC = () => {
   }, []);
 
   return (
-    <main className="min-h-screen bg-gray-50">
+    <main className={theme === "dark" ? "bg-gray-900" : "bg-gray-50"}>
       <ErrorAlert error={error} />
       <div className="container mx-auto px-4 py-8">
         <div className="mb-8">
-          <h2 className="font-poppins-heading text-4xl text-gray-900 mb-4">All Movies</h2>
-          <hr className="border-gray-200" />
+          <h2 className={`font-poppins-heading text-4xl mb-4 ${
+            theme === "dark" ? "text-white" : "text-gray-900"
+          }`}>
+            All Movies
+          </h2>
+          <hr className={theme === "dark" ? "border-gray-700" : "border-gray-200"} />
         </div>
-        <section className="divide-y divide-gray-200">
+        <section className={`divide-y ${
+          theme === "dark" ? "divide-gray-700" : "divide-gray-200"
+        }`}>
           {movies.map((movie) => (
             <DetailedMovie key={movie.movie_id} movie={movie} />
           ))}
