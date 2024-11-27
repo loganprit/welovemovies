@@ -11,7 +11,11 @@ const ThemeToggle: React.FC = () => {
   return (
     <button
       onClick={toggleTheme}
-      className="p-2 rounded-lg bg-primary/10 hover:bg-primary/20 transition-colors"
+      className={`p-2 rounded-lg transition-colors ${
+        theme === "dark"
+          ? "bg-gray-800 hover:bg-gray-700 text-gray-200"
+          : "bg-gray-100 hover:bg-gray-200 text-gray-600"
+      }`}
       aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
     >
       {theme === "light" ? (
