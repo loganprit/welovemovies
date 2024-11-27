@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Theater from "./Theater";
+import TheaterCardSkeleton from "../shared/components/TheaterCard/Skeleton";
 import ErrorAlert from "../shared/ErrorAlert";
 import { listTheaters } from "../utils/api";
 import { Theater as TheaterType } from "../types/api-types";
@@ -22,6 +23,7 @@ interface TheaterListProps {
  */
 const TheaterList: React.FC<TheaterListProps> = ({ theaters: propTheaters, variant = "detailed" }) => {
   const [theaters, setTheaters] = useState<TheaterType[]>([]);
+  const [isLoading, setIsLoading] = useState(!propTheaters);
   const [error, setError] = useState<ApiError | null>(null);
   const { theme } = useTheme();
 
@@ -29,10 +31,12 @@ const TheaterList: React.FC<TheaterListProps> = ({ theaters: propTheaters, varia
     // If theaters are provided via props, use those instead of fetching
     if (propTheaters) {
       setTheaters(propTheaters);
+      setIsLoading(false);
       return;
     }
 
     setError(null);
+    setIsLoading(true);
     const abortController = new AbortController();
 
     const loadTheaters = async (): Promise<void> => {
@@ -50,12 +54,56 @@ const TheaterList: React.FC<TheaterListProps> = ({ theaters: propTheaters, varia
             status: apiError.status
           });
         }
+      } finally {
+        if (!abortController.signal.aborted) {
+          setIsLoading(false);
+        }
       }
     };
 
     loadTheaters();
     return () => abortController.abort();
   }, [propTheaters]);
+
+  // Render loading state
+  if (isLoading) {
+    if (propTheaters) {
+      return (
+        <section className="mt-8">
+          <h4 className={`font-poppins-heading text-2xl mb-6 ${
+            theme === "dark" ? "text-white" : "text-gray-900"
+          }`}>
+            Now Showing At
+          </h4>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {Array.from({ length: 3 }).map((_, index) => (
+              <TheaterCardSkeleton key={index} />
+            ))}
+          </div>
+        </section>
+      );
+    }
+
+    return (
+      <main className={theme === "dark" ? "bg-gray-900" : "bg-gray-50"}>
+        <div className="container mx-auto px-4 py-8">
+          <div className="mb-8">
+            <h2 className={`font-poppins-heading text-4xl mb-4 ${
+              theme === "dark" ? "text-white" : "text-gray-900"
+            }`}>
+              All Theaters
+            </h2>
+            <hr className={theme === "dark" ? "border-gray-700" : "border-gray-200"} />
+          </div>
+          <div className="space-y-6">
+            {Array.from({ length: 4 }).map((_, index) => (
+              <TheaterCardSkeleton key={index} />
+            ))}
+          </div>
+        </div>
+      </main>
+    );
+  }
 
   if (!theaters.length) {
     return (

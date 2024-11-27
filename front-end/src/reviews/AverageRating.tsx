@@ -5,7 +5,7 @@ import { useTheme } from "../context/ThemeContext";
 /**
  * Calculates the average rating from an array of reviews
  * @param reviews - Array of Review objects
- * @returns The rounded average score or "N/A" if no reviews
+ * @returns The average score with one decimal place or "N/A" if no reviews
  */
 function averageReviewRating(reviews: Review[] = []): number | "N/A" {
   if (reviews.length === 0) {
@@ -18,19 +18,23 @@ function averageReviewRating(reviews: Review[] = []): number | "N/A" {
     return sum + validScore;
   }, 0);
 
-  return Math.round(total / reviews.length);
+  return Number((total / reviews.length).toFixed(1));
 }
 
 interface AverageRatingProps {
   reviews: Review[];
+  showCount?: boolean;
 }
 
 /**
  * Component that displays the average rating from a collection of reviews
- * @param props - Component props containing reviews array
+ * @param props - Component props containing reviews array and display options
  * @returns JSX element displaying average rating
  */
-const AverageRating: React.FC<AverageRatingProps> = ({ reviews = [] }) => {
+const AverageRating: React.FC<AverageRatingProps> = ({ 
+  reviews = [], 
+  showCount = false 
+}) => {
   const rating = averageReviewRating(reviews);
   const { theme } = useTheme();
   
@@ -55,9 +59,11 @@ const AverageRating: React.FC<AverageRatingProps> = ({ reviews = [] }) => {
       >
         {rating}
       </span>
-      <span className={theme === "dark" ? "text-sm text-gray-400" : "text-sm text-gray-500"}>
-        ({reviews.length} {reviews.length === 1 ? "review" : "reviews"})
-      </span>
+      {showCount && (
+        <span className={theme === "dark" ? "text-sm text-gray-400" : "text-sm text-gray-500"}>
+          ({reviews.length} {reviews.length === 1 ? "review" : "reviews"})
+        </span>
+      )}
     </div>
   );
 };

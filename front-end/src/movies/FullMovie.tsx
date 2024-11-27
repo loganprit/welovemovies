@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import Details from "./Details";
 import ReviewList from "../reviews/ReviewList";
 import TheaterList from "../theaters/TheaterList";
 import { deleteReview, readMovie, updateReview } from "../utils/api";
@@ -9,6 +8,7 @@ import { Movie } from "../types/models";
 import { Review } from "../types/api-types";
 import { ApiError } from "../types/api-types";
 import { useTheme } from "../context/ThemeContext";
+import MovieDetails from "./MovieDetails";
 
 interface RouteParams extends Record<string, string | undefined> {
   movieId: string;
@@ -115,7 +115,7 @@ const FullMovie: React.FC = () => {
             />
           </article>
           <aside className="flex-1 space-y-8">
-            <Details movie={movie} />
+            <MovieDetails movie={movie} variant="full" />
             <TheaterList theaters={movie.theaters} />
             <ReviewList
               reviews={movie.reviews}

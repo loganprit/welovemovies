@@ -1,6 +1,8 @@
 import React from "react";
 import { Review as ReviewType } from "../types/api-types";
 import Review from "./Review";
+import ReviewDistribution from "./ReviewDistribution";
+import AverageRating from "./AverageRating";
 import { useTheme } from "../context/ThemeContext";
 
 interface ReviewListProps {
@@ -41,11 +43,17 @@ const ReviewList: React.FC<ReviewListProps> = ({
 
   return (
     <section className="mt-8">
-      <h3 className={`font-poppins-heading text-2xl mb-6 ${
-        theme === "dark" ? "text-white" : "text-gray-900"
-      }`}>
-        Reviews ({reviews.length})
-      </h3>
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
+        <h3 className={`font-poppins-heading text-2xl ${
+          theme === "dark" ? "text-white" : "text-gray-900"
+        }`}>
+          Reviews
+        </h3>
+        <AverageRating reviews={reviews} showCount={true} />
+      </div>
+      <div className="mb-8">
+        <ReviewDistribution reviews={reviews} />
+      </div>
       <div className="space-y-6">
         {sortedReviews.map((review) => (
           <Review
