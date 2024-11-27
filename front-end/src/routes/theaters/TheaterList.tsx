@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import Theater from "./Theater";
-import TheaterCardSkeleton from "../shared/components/TheaterCard/Skeleton";
-import ErrorAlert from "../shared/ErrorAlert";
-import { listTheaters } from "../utils/api";
-import { Theater as TheaterType } from "../types/api-types";
-import { ApiError } from "../types/api-types";
-import { useTheme } from "../context/ThemeContext";
+import Theater from "./SingleTheater";
+import TheaterCardSkeleton from "../../shared/components/TheaterCard/Skeleton";
+import ErrorAlert from "../../shared/ErrorAlert";
+import { listTheaters } from "../../utils/api";
+import { Theater as TheaterType } from "../../types/api-types";
+import { ApiError } from "../../types/api-types";
+import { useTheme } from "../../shared/theme/ThemeContext";
 
 interface TheaterListProps {
   theaters?: TheaterType[];

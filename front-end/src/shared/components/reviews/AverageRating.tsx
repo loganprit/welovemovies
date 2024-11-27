@@ -1,6 +1,6 @@
 import React from "react";
-import { Review } from "../types/api-types";
-import { useTheme } from "../context/ThemeContext";
+import { Review } from "../../../types/api-types";
+import { useTheme } from "../../theme/ThemeContext";
 
 /**
  * Calculates the average rating from an array of reviews

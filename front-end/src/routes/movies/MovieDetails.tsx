@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Movie } from "../types/models";
-import { useTheme } from "../context/ThemeContext";
+import { Movie } from "../../types/models";
+import { useTheme } from "../../shared/theme/ThemeContext";
 
 interface MovieDetailsProps {
-  movie: Movie;
+  movie: Movie | null;
   variant: "list" | "full";
 }
 
@@ -20,13 +20,7 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ movie, variant }) => {
   const isList = variant === "list";
 
   if (!movie) {
-    return (
-      <div className={`p-6 rounded-lg text-center ${
-        theme === "dark" ? "bg-gray-800 text-gray-300" : "bg-gray-50 text-gray-600"
-      }`}>
-        No movie details available
-      </div>
-    );
+    return null;
   }
 
   return (
@@ -43,6 +37,7 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ movie, variant }) => {
             alt={`${movie.title} Poster`}
             className="w-full h-[400px] rounded-lg shadow-lg object-cover hover:shadow-xl transition-shadow duration-200"
             src={movie.image_url}
+            loading="lazy"
           />
         </article>
       )}
@@ -90,8 +85,8 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ movie, variant }) => {
               transform hover:-translate-y-0.5 shadow-md hover:shadow-lg
               focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 ${
               theme === "dark"
-                ? "bg-primary-600 text-white hover:bg-primary-500"
-                : "bg-primary-600 text-white hover:bg-primary-700"
+                ? "bg-primary-500 hover:bg-primary-400 text-gray-100 hover:text-white"
+                : "bg-primary-600 hover:bg-primary-700 text-black hover:text-gray-900"
             }`}
             aria-label={`See more details about ${movie.title}`}
           >

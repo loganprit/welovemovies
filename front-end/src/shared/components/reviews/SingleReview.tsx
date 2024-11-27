@@ -1,7 +1,7 @@
 import React from "react";
 import { marked } from "marked";
-import { Review as ReviewType } from "../types/api-types";
-import { useTheme } from "../context/ThemeContext";
+import { Review as ReviewType } from "../../../types/api-types";
+import { useTheme } from "../../theme/ThemeContext";
 
 // Create a synchronous marked parser
 const parser = marked.parseInline;

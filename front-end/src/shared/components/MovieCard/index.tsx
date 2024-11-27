@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Movie } from "../../../types/models";
-import { useTheme } from "../../../context/ThemeContext";
+import { useTheme } from "../../theme/ThemeContext";
 
 interface MovieCardProps {
   movie: Movie;

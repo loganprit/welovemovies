@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
-import { Review } from "../types/api-types";
-import { useTheme } from "../context/ThemeContext";
+import { Review } from "../../../types/api-types";
+import { useTheme } from "../../theme/ThemeContext";
 
 interface ReviewDistributionProps {
   reviews: Review[];

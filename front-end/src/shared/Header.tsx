@@ -1,6 +1,6 @@
 import React from "react";
 import HeaderNav from "./HeaderNav";
-import ThemeToggle from "./ThemeToggle";
+import ThemeToggle from "./theme/ThemeToggle";
 import headerImage from "./header.jpg";
 
 interface HeaderStyles extends React.CSSProperties {

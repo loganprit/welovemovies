@@ -1,11 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { ThemeProvider } from "./context/ThemeContext";
+import { ThemeProvider } from "./shared/theme/ThemeContext";
 import Header from "./shared/Header";
-import MoviesList from "./home/MoviesList";
-import DetailedMoviesList from "./movies/DetailedMoviesList";
-import FullMovie from "./movies/FullMovie";
-import TheaterList from "./theaters/TheaterList";
+import MoviesList from "./routes/home/BasicMoviesList";
+import DetailedMoviesList from "./routes/movies/DetailedMoviesList";
+import FullMovie from "./routes/movies/SingleMovie";
+import TheaterList from "./routes/theaters/TheaterList";
 
 /**
  * Root Application Component

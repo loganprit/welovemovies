@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Theater as TheaterType } from "../types/api-types";
-import { Movie } from "../types/models";
-import { useTheme } from "../context/ThemeContext";
+import { Theater as TheaterType } from "../../types/api-types";
+import { Movie } from "../../types/models";
+import { useTheme } from "../../shared/theme/ThemeContext";
 
 interface TheaterProps {
   theater: TheaterType & {

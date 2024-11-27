@@ -1,9 +1,9 @@
 import React from "react";
-import { Review as ReviewType } from "../types/api-types";
-import Review from "./Review";
+import { Review as ReviewType } from "../../../types/api-types";
+import Review from "./SingleReview";
 import ReviewDistribution from "./ReviewDistribution";
 import AverageRating from "./AverageRating";
-import { useTheme } from "../context/ThemeContext";
+import { useTheme } from "../../theme/ThemeContext";
 
 interface ReviewListProps {
   reviews?: ReviewType[];
