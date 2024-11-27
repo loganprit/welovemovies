@@ -31,6 +31,7 @@ WeLoveMovies serves as a hub for:
 - **Movie Listings**: Users can view all movies or filter to see what's currently showing.
 - **Theater Showtimes**: Find out where and when you can catch a movie locally.
 - **Detailed Reviews**: Access user-generated reviews for movies to gauge audience reactions and critiques.
+- **Dark Mode**: Toggle between light and dark themes for a personalized viewing experience.
 
 ## Technologies and Tools
 
@@ -42,7 +43,7 @@ WeLoveMovies serves as a hub for:
 - **SQLite**: Used for testing environment with in-memory database
 - **Knex**: Type-safe SQL query builder for database interactions
 - **Jest**: Testing framework configured for TypeScript testing
-- **Docker**: Containerization support for consistent development and deployment
+- **Tailwind CSS**: Styling framework for modern and responsive design
 
 ## Project Structure
 
@@ -101,7 +102,7 @@ This newest update to WeLoveMovies marked my first introduction to TypeScript, w
 
 ## Future Goals
 
-- **Visual Redesign**: Modernize the frontend with Tailwind CSS and create a comprehensive UI component library for consistent design.
+- **Visual Redesign**: Modernize the frontend with a comprehensive UI component library for consistent design.
 - **Advanced Filtering**: Implement more sophisticated filtering options to sort movies by ratings, release dates, or viewer demographics.
 - **Search**: Implement advanced search functionality.
 - **Movie Metadata**: Expand movie information by integrating with TMDb's API.
