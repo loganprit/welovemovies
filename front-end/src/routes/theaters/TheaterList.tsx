@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Theater from "./SingleTheater";
 import TheaterCardSkeleton from "../../shared/components/TheaterCard/Skeleton";
 import ErrorAlert from "../../shared/ErrorAlert";
-import { listTheaters } from "../../utils/api";
 import { Theater as TheaterType } from "../../types/api-types";
-import { ApiError } from "../../types/api-types";
 import { useTheme } from "../../shared/theme/ThemeContext";
+import { useTheaterData } from "../../hooks/useTheaterData";
 
 interface TheaterListProps {
   theaters?: TheaterType[];
@@ -22,48 +21,11 @@ interface TheaterListProps {
  * @returns JSX element displaying the list of theaters
  */
 const TheaterList: React.FC<TheaterListProps> = ({ theaters: propTheaters, variant = "detailed" }) => {
-  const [theaters, setTheaters] = useState<TheaterType[]>([]);
-  const [isLoading, setIsLoading] = useState(!propTheaters);
-  const [error, setError] = useState<ApiError | null>(null);
   const { theme } = useTheme();
+  const { theaters, isLoading, error } = useTheaterData();
 
-  useEffect(() => {
-    // If theaters are provided via props, use those instead of fetching
-    if (propTheaters) {
-      setTheaters(propTheaters);
-      setIsLoading(false);
-      return;
-    }
-
-    setError(null);
-    setIsLoading(true);
-    const abortController = new AbortController();
-
-    const loadTheaters = async (): Promise<void> => {
-      try {
-        const data = await listTheaters(abortController.signal);
-        if (!abortController.signal.aborted) {
-          setTheaters(data);
-        }
-      } catch (err) {
-        if (!abortController.signal.aborted && (err as Error).name !== "AbortError") {
-          const apiError = err as ApiError;
-          setError({
-            name: "FetchError",
-            message: apiError.message || "Failed to load theaters",
-            status: apiError.status
-          });
-        }
-      } finally {
-        if (!abortController.signal.aborted) {
-          setIsLoading(false);
-        }
-      }
-    };
-
-    loadTheaters();
-    return () => abortController.abort();
-  }, [propTheaters]);
+  // Use prop theaters if provided, otherwise use fetched theaters
+  const displayTheaters = propTheaters || theaters;
 
   // Render loading state
   if (isLoading) {
@@ -105,7 +67,7 @@ const TheaterList: React.FC<TheaterListProps> = ({ theaters: propTheaters, varia
     );
   }
 
-  if (!theaters.length) {
+  if (!displayTheaters.length) {
     return (
       <div className={`p-6 text-center rounded-lg ${
         theme === "dark"
@@ -117,7 +79,7 @@ const TheaterList: React.FC<TheaterListProps> = ({ theaters: propTheaters, varia
     );
   }
 
-  const list = theaters.map((theater) => (
+  const list = displayTheaters.map((theater) => (
     <Theater 
       key={theater.theater_id} 
       theater={theater} 

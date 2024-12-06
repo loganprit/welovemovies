@@ -117,7 +117,6 @@ const DetailedMovieSkeleton: React.FC<DetailedMovieSkeletonProps> = ({
     <div className={`flex flex-col md:flex-row gap-8 py-8 border-b ${
       theme === "dark" ? "border-gray-700" : "border-gray-200"
     }`}>
-      {/* ... existing list variant code ... */}
     </div>
   );
 };
