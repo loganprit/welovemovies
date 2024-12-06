@@ -10,6 +10,7 @@ import { Review } from "../../types/api-types";
 import { deleteReview, updateReview } from "../../utils/api";
 import { useQueryClient } from "@tanstack/react-query";
 import DetailedMovieSkeleton from "../../shared/components/MovieCard/DetailedSkeleton";
+import { ProgressiveImage } from "../../shared/components/ProgressiveImage";
 
 const FullMovie: React.FC = () => {
   const { movieId } = useParams<{ movieId: string }>();
@@ -54,10 +55,10 @@ const FullMovie: React.FC = () => {
       <div className="container mx-auto px-4 py-8">
         <section className="flex flex-col lg:flex-row gap-8">
           <article className="w-full lg:w-1/4">
-            <img
+            <ProgressiveImage
+              src={movie.image_url}
               alt={`${movie.title} Poster`}
               className="w-full rounded-lg shadow-lg object-cover"
-              src={movie.image_url}
             />
           </article>
           <aside className="flex-1 space-y-8">

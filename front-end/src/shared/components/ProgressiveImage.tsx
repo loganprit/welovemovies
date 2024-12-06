@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
+import { useTheme } from "../theme/ThemeContext";
 
 interface ProgressiveImageProps {
   src: string;
   alt: string;
   className?: string;
-  placeholderColor?: string;
 }
 
 export const ProgressiveImage: React.FC<ProgressiveImageProps> = ({
   src,
   alt,
   className = "",
-  placeholderColor = "#1a1a1a",
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [error, setError] = useState(false);
+  const { theme } = useTheme();
   const { ref, inView } = useInView({
     triggerOnce: true,
     rootMargin: "50px 0px",
@@ -33,8 +33,9 @@ export const ProgressiveImage: React.FC<ProgressiveImageProps> = ({
   return (
     <div
       ref={ref}
-      className={`relative overflow-hidden ${className}`}
-      style={{ backgroundColor: placeholderColor }}
+      className={`relative overflow-hidden ${className} ${
+        theme === "dark" ? "bg-gray-700" : "bg-gray-200"
+      } ${!isLoaded && "animate-pulse"}`}
     >
       {error ? (
         <div className="absolute inset-0 flex items-center justify-center bg-gray-200 dark:bg-gray-800">

@@ -4,6 +4,7 @@ import { Theater as TheaterType } from "../../types/api-types";
 import { Movie } from "../../types/models";
 import { useTheme } from "../../shared/theme/ThemeContext";
 import { useTheaterData } from "../../hooks/useTheaterData";
+import { ProgressiveImage } from "../../shared/components/ProgressiveImage";
 
 interface TheaterProps {
   theater: TheaterType & {
@@ -106,9 +107,9 @@ const Theater: React.FC<TheaterProps> = ({ theater, variant = "detailed" }) => {
                   className="block w-full h-full"
                   aria-label={`View details for ${movie.title}`}
                 >
-                  <img
-                    alt={`${movie.title} Poster`}
+                  <ProgressiveImage
                     src={movie.image_url}
+                    alt={`${movie.title} Poster`}
                     className="w-full h-full object-cover rounded-lg shadow-sm 
                              transition-all duration-200 group-hover:shadow-md 
                              group-hover:scale-105"

@@ -25,6 +25,7 @@
     "type-check:watch": "tsc --noEmit --watch"
   },
   "dependencies": {
+    "@tanstack/react-router": "^1.85.10",
     "better-sqlite3": "^9.6.0",
     "cors": "^2.8.5",
     "cross-env": "^7.0.3",

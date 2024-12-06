@@ -3,21 +3,22 @@ import { Link } from "react-router-dom";
 import { Movie } from "../../types/models";
 import { useTheme } from "../../shared/theme/ThemeContext";
 import { useMovieData } from "../../hooks/useMovieData";
-import { ProgressiveImage } from "../../shared/components/ProgressiveImage";
+import DetailedMovieSkeleton from "../../shared/components/MovieCard/DetailedSkeleton";
 
 interface MovieDetailsProps {
   movie: Movie | null;
   variant: "list" | "full";
+  isLoading?: boolean;
 }
 
 /**
  * MovieDetails Component
  * Displays movie information in either list or full-page format
  * 
- * @param props - Component props containing movie data and display variant
- * @returns JSX element displaying movie information
+ * @param props - Component props containing movie data, display variant, and loading state
+ * @returns JSX element displaying movie information or loading skeleton
  */
-const MovieDetails: React.FC<MovieDetailsProps> = ({ movie, variant }) => {
+const MovieDetails: React.FC<MovieDetailsProps> = ({ movie, variant, isLoading }) => {
   const { theme } = useTheme();
   const { prefetchMovie } = useMovieData();
   const isList = variant === "list";
@@ -31,6 +32,12 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ movie, variant }) => {
     return () => clearTimeout(timer);
   }, [movie, prefetchMovie]);
 
+  // Show skeleton loader when loading
+  if (isLoading) {
+    return <DetailedMovieSkeleton variant={variant} />;
+  }
+
+  // Return null if no movie data
   if (!movie) {
     return null;
   }
@@ -45,10 +52,11 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ movie, variant }) => {
     `} onMouseEnter={handleMouseEnter}>
       {isList && (
         <article className="w-full md:w-1/4 flex-shrink-0">
-          <ProgressiveImage
-            src={movie.image_url}
+          <img
             alt={`${movie.title} Poster`}
             className="w-full h-[400px] rounded-lg shadow-lg object-cover hover:shadow-xl transition-shadow duration-200"
+            src={movie.image_url}
+            loading="lazy"
           />
         </article>
       )}
