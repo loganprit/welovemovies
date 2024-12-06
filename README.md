@@ -116,8 +116,8 @@ This newest update to WeLoveMovies marked my first introduction to TypeScript, w
 <tr>
 <td width="50%">
 
-![All Movies](/images/all_movies.jpeg)
-_Overview of all movies available in the database._
+![Dark Mode](/images/now_showing_dark.jpeg)
+_A preview of dark mode on the Now Showing page._
 
 </td>
 <td width="50%">
@@ -142,6 +142,9 @@ _Detailed view of a movie including reviews and showtimes._
 </td>
 </tr>
 </table>
+
+![All Movies](/images/all_movies.jpeg)
+_Overview of all movies available in the database._
 
 View the front-end README [here](/front-end/README.md). </br>
 View the back-end README [here](/back-end/README.md).
