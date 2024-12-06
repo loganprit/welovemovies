@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { Link } from "react-router-dom";
 import { Movie } from "../../types/models";
 import { useTheme } from "../../shared/theme/ThemeContext";
+import { useMovieData } from "../../hooks/useMovieData";
+import { ProgressiveImage } from "../../shared/components/ProgressiveImage";
 
 interface MovieDetailsProps {
   movie: Movie | null;
@@ -17,7 +19,17 @@ interface MovieDetailsProps {
  */
 const MovieDetails: React.FC<MovieDetailsProps> = ({ movie, variant }) => {
   const { theme } = useTheme();
+  const { prefetchMovie } = useMovieData();
   const isList = variant === "list";
+
+  const handleMouseEnter = useCallback(() => {
+    if (!movie) return;
+    const timer = setTimeout(() => {
+      prefetchMovie(movie.movie_id);
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, [movie, prefetchMovie]);
 
   if (!movie) {
     return null;
@@ -30,14 +42,13 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ movie, variant }) => {
           ? "border-gray-700 hover:bg-gray-800/50" 
           : "border-gray-200 hover:bg-gray-50"
       } transition-colors duration-200` : "space-y-4"}
-    `}>
+    `} onMouseEnter={handleMouseEnter}>
       {isList && (
         <article className="w-full md:w-1/4 flex-shrink-0">
-          <img
+          <ProgressiveImage
+            src={movie.image_url}
             alt={`${movie.title} Poster`}
             className="w-full h-[400px] rounded-lg shadow-lg object-cover hover:shadow-xl transition-shadow duration-200"
-            src={movie.image_url}
-            loading="lazy"
           />
         </article>
       )}

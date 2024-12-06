@@ -6,6 +6,21 @@ import MoviesList from "./routes/home/BasicMoviesList";
 import DetailedMoviesList from "./routes/movies/DetailedMoviesList";
 import FullMovie from "./routes/movies/SingleMovie";
 import TheaterList from "./routes/theaters/TheaterList";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: 2,
+      refetchOnWindowFocus: false,
+      refetchOnMount: false,
+      refetchOnReconnect: false,
+      staleTime: 30 * 60 * 1000, // 30 minutes
+      gcTime: 60 * 60 * 1000, // 1 hour
+    },
+  },
+});
 
 /**
  * Root Application Component
@@ -14,17 +29,20 @@ import TheaterList from "./routes/theaters/TheaterList";
  */
 const App: React.FC = () => {
   return (
-    <ThemeProvider>
-      <Router>
-        <Header />
-        <Routes>
-          <Route path="/" element={<MoviesList />} />
-          <Route path="/movies" element={<DetailedMoviesList />} />
-          <Route path="/movies/:movieId" element={<FullMovie />} />
-          <Route path="/theaters" element={<TheaterList />} />
-        </Routes>
-      </Router>
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider>
+        <Router>
+          <Header />
+          <Routes>
+            <Route path="/" element={<MoviesList />} />
+            <Route path="/movies" element={<DetailedMoviesList />} />
+            <Route path="/movies/:movieId" element={<FullMovie />} />
+            <Route path="/theaters" element={<TheaterList />} />
+          </Routes>
+        </Router>
+        <ReactQueryDevtools initialIsOpen={false} />
+      </ThemeProvider>
+    </QueryClientProvider>
   );
 };
 

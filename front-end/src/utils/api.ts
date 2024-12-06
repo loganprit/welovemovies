@@ -146,3 +146,18 @@ export async function updateReview(reviewId: number, data: Partial<Review>): Pro
     };
     return await fetchJson<Review>(url, options, {} as Review);
 }
+
+/**
+ * Fetches data for a specific theater by ID
+ * @param theaterId - The ID of the theater to fetch
+ * @returns Promise containing the theater data
+ */
+export const readTheater = async (theaterId: number): Promise<Theater> => {
+  const response = await fetch(`${API_BASE_URL}/theaters/${theaterId}`);
+  
+  if (!response.ok) {
+    throw new Error(`Failed to fetch theater ${theaterId}: ${response.statusText}`);
+  }
+
+  return response.json();
+};

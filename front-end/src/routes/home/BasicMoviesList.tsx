@@ -1,49 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { Movie } from "../../types/models";
-import { ApiError } from "../../types/api-types";
-import { listMovies } from "../../utils/api";
+import React from "react";
 import { useTheme } from "../../shared/theme/ThemeContext";
 import MovieCard from "../../shared/components/MovieCard";
 import MovieCardSkeleton from "../../shared/components/MovieCard/Skeleton";
 import ErrorAlert from "../../shared/ErrorAlert";
+import { useMovieData } from "../../hooks/useMovieData";
 
-/**
- * MoviesList Component
- * Displays a grid of movie posters with titles that link to individual movie pages
- * Fetches movie data on mount and handles loading/error states
- */
 const MoviesList: React.FC = () => {
-  const [movies, setMovies] = useState<Movie[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<ApiError | null>(null);
   const { theme } = useTheme();
-
-  useEffect(() => {
-    const abortController = new AbortController();
-    
-    const loadMovies = async () => {
-      try {
-        setError(null);
-        setIsLoading(true);
-        const fetchedMovies = await listMovies(abortController.signal);
-        if (!abortController.signal.aborted) {
-          setMovies(fetchedMovies);
-        }
-      } catch (err) {
-        if (!abortController.signal.aborted) {
-          const apiError = err as ApiError;
-          setError(apiError);
-        }
-      } finally {
-        if (!abortController.signal.aborted) {
-          setIsLoading(false);
-        }
-      }
-    };
-
-    loadMovies();
-    return () => abortController.abort();
-  }, []);
+  const { movies, isLoading, error } = useMovieData();
 
   return (
     <main className={theme === "dark" ? "bg-gray-900" : "bg-gray-50"}>
@@ -61,15 +25,15 @@ const MoviesList: React.FC = () => {
         
         <section className="flex flex-wrap -mx-4">
           {isLoading ? (
-            // Show 8 skeleton loaders while loading
-            Array.from({ length: 8 }).map((_, index) => (
-              <MovieCardSkeleton key={index} />
+            Array.from({ length: 16 }).map((_, index) => (
+              <MovieCardSkeleton key={index} variant="grid" />
             ))
           ) : (
             movies.map((movie) => (
               <MovieCard
                 key={movie.movie_id}
                 movie={movie}
+                variant="grid"
               />
             ))
           )}

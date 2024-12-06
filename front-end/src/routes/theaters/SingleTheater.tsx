@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { Link } from "react-router-dom";
 import { Theater as TheaterType } from "../../types/api-types";
 import { Movie } from "../../types/models";
 import { useTheme } from "../../shared/theme/ThemeContext";
+import { useTheaterData } from "../../hooks/useTheaterData";
 
 interface TheaterProps {
   theater: TheaterType & {
@@ -22,6 +23,15 @@ interface TheaterProps {
  */
 const Theater: React.FC<TheaterProps> = ({ theater, variant = "detailed" }) => {
   const { theme } = useTheme();
+  const { prefetchTheater } = useTheaterData();
+
+  const handleMouseEnter = useCallback(() => {
+    const timer = setTimeout(() => {
+      prefetchTheater(theater.theater_id);
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, [theater.theater_id, prefetchTheater]);
 
   if (!theater) {
     return (
