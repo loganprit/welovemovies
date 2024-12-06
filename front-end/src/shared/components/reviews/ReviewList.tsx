@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Review as ReviewType } from "../../../types/api-types";
 import Review from "./SingleReview";
 import ReviewDistribution from "./ReviewDistribution";
@@ -22,6 +22,17 @@ const ReviewList: React.FC<ReviewListProps> = ({
   setReviewScore 
 }) => {
   const { theme } = useTheme();
+  const [optimisticUpdate, setOptimisticUpdate] = useState<{
+    reviewId: number;
+    score: number;
+  } | null>(null);
+
+  // Handler to track optimistic updates
+  const handleScoreUpdate = async (review: ReviewType, score: number): Promise<void> => {
+    setOptimisticUpdate({ reviewId: review.review_id, score });
+    await setReviewScore(review, score);
+    setOptimisticUpdate(null);
+  };
 
   if (!reviews.length) {
     return (
@@ -49,10 +60,19 @@ const ReviewList: React.FC<ReviewListProps> = ({
         }`}>
           Reviews
         </h3>
-        <AverageRating reviews={reviews} showCount={true} />
+        <AverageRating 
+          reviews={reviews} 
+          showCount={true}
+          optimisticReviewId={optimisticUpdate?.reviewId}
+          optimisticScore={optimisticUpdate?.score}
+        />
       </div>
       <div className="mb-8">
-        <ReviewDistribution reviews={reviews} />
+        <ReviewDistribution 
+          reviews={reviews}
+          optimisticReviewId={optimisticUpdate?.reviewId}
+          optimisticScore={optimisticUpdate?.score}
+        />
       </div>
       <div className="space-y-6">
         {sortedReviews.map((review) => (
@@ -60,7 +80,7 @@ const ReviewList: React.FC<ReviewListProps> = ({
             key={review.review_id}
             review={review}
             deleteReview={deleteReview}
-            setReviewScore={setReviewScore}
+            setReviewScore={handleScoreUpdate}
           />
         ))}
       </div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useCallback, useRef } from "react";
 import { marked } from "marked";
 import { Review as ReviewType } from "../../../types/api-types";
 import { useTheme } from "../../theme/ThemeContext";
@@ -14,18 +14,51 @@ interface ReviewProps {
 
 const Review: React.FC<ReviewProps> = ({ review, deleteReview, setReviewScore }) => {
   const { theme } = useTheme();
+  const [optimisticScore, setOptimisticScore] = useState<number | null>(null);
+  const timeoutRef = useRef<NodeJS.Timeout>();
+
+  const updateScore = useCallback(async (newScore: number) => {
+    // Clear any pending timeout
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+
+    // Update UI immediately
+    setOptimisticScore(newScore);
+    
+    // Set new timeout for API call
+    timeoutRef.current = setTimeout(async () => {
+      try {
+        await setReviewScore(review, newScore);
+      } catch (error) {
+        setOptimisticScore(null);
+        console.error("Failed to update score:", error);
+      }
+    }, 1000);
+  }, [review, setReviewScore]);
 
   const handleIncreaseClick = async (): Promise<void> => {
-    const score = review.score + 1;
-    if (score > 5) return;
-    await setReviewScore(review, score);
+    const currentScore = optimisticScore ?? review.score;
+    const newScore = currentScore + 1;
+    if (newScore > 5) return;
+    updateScore(newScore);
   };
 
   const handleDecreaseClick = async (): Promise<void> => {
-    const score = review.score - 1;
-    if (score < 1) return;
-    await setReviewScore(review, score);
+    const currentScore = optimisticScore ?? review.score;
+    const newScore = currentScore - 1;
+    if (newScore < 1) return;
+    updateScore(newScore);
   };
+
+  // Clean up timeout on unmount
+  React.useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
 
   const { critic } = review;
 
@@ -92,7 +125,7 @@ const Review: React.FC<ReviewProps> = ({ review, deleteReview, setReviewScore })
             <span className={`mx-2 font-medium ${
               theme === "dark" ? "text-gray-200" : "text-gray-900"
             }`}>
-              {review.score}
+              {optimisticScore ?? review.score}
             </span>
             <button
               className={`px-2 py-1 transition-colors ${

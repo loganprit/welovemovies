@@ -4,25 +4,36 @@ import { useTheme } from "../../theme/ThemeContext";
 
 interface ReviewDistributionProps {
   reviews: Review[];
+  optimisticReviewId?: number;
+  optimisticScore?: number;
 }
 
 /**
  * Component that displays a bar graph showing the distribution of review scores
- * @param props - Component props containing reviews array
+ * @param props - Component props containing reviews array and optimistic updates
  * @returns JSX element displaying the review score distribution
  */
-const ReviewDistribution: React.FC<ReviewDistributionProps> = ({ reviews = [] }) => {
+const ReviewDistribution: React.FC<ReviewDistributionProps> = ({ 
+  reviews = [], 
+  optimisticReviewId,
+  optimisticScore 
+}) => {
   const { theme } = useTheme();
 
   const distribution = useMemo(() => {
     const counts = new Array(5).fill(0);
     reviews.forEach((review) => {
+      // If this is the review being updated, use the optimistic score
+      const scoreToUse = review.review_id === optimisticReviewId 
+        ? optimisticScore 
+        : review.score;
+      
       // Ensure score is within valid range (1-5)
-      const validScore = Math.min(Math.max(review.score, 1), 5);
+      const validScore = Math.min(Math.max(scoreToUse ?? review.score, 1), 5);
       counts[validScore - 1]++;
     });
     return counts;
-  }, [reviews]);
+  }, [reviews, optimisticReviewId, optimisticScore]);
 
   // Calculate total number of reviews for percentage calculation
   const totalReviews = reviews.length;

@@ -7,14 +7,14 @@ import { useTheme } from "../../theme/ThemeContext";
  * @param reviews - Array of Review objects
  * @returns The average score with one decimal place or "N/A" if no reviews
  */
-function averageReviewRating(reviews: Review[] = []): number | "N/A" {
+function averageReviewRating(reviews: Review[] = [], optimisticReviewId?: number, optimisticScore?: number): number | "N/A" {
   if (reviews.length === 0) {
     return "N/A";
   }
 
   const total = reviews.reduce((sum, review) => {
-    // Ensure score is within valid range (1-5)
-    const validScore = Math.min(Math.max(review.score, 1), 5);
+    const scoreToUse = review.review_id === optimisticReviewId ? optimisticScore : review.score;
+    const validScore = Math.min(Math.max(scoreToUse ?? review.score, 1), 5);
     return sum + validScore;
   }, 0);
 
@@ -24,6 +24,8 @@ function averageReviewRating(reviews: Review[] = []): number | "N/A" {
 interface AverageRatingProps {
   reviews: Review[];
   showCount?: boolean;
+  optimisticReviewId?: number;
+  optimisticScore?: number;
 }
 
 /**
@@ -33,9 +35,11 @@ interface AverageRatingProps {
  */
 const AverageRating: React.FC<AverageRatingProps> = ({ 
   reviews = [], 
-  showCount = false 
+  showCount = false,
+  optimisticReviewId,
+  optimisticScore 
 }) => {
-  const rating = averageReviewRating(reviews);
+  const rating = averageReviewRating(reviews, optimisticReviewId, optimisticScore);
   const { theme } = useTheme();
   
   return (
