@@ -4,9 +4,9 @@
   "description": "zid-be-project-movie-01-qualified",
   "main": "src/app.js",
   "scripts": {
-    "start": "npm run build && node dist/server.js",
+    "start": "npm run build && cross-env NODE_ENV=production node dist/server.js",
     "start:dev": "ts-node-dev --respawn --transpile-only src/server.ts",
-    "build": "tsc",
+    "build": "rimraf dist && tsc",
     "test": "jest --config jest.config.ts",
     "type-check": "tsc --noEmit",
     "type-check:watch": "tsc --noEmit --watch",
