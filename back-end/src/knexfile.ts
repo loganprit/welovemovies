@@ -6,7 +6,7 @@ import path from "path";
  * Load environment variables
  * @throws {Error} If required environment variables are missing
  */
-dotenv.config();
+dotenv.config({ path: path.resolve(__dirname, "../.env") });
 
 if (!process.env.DATABASE_URL) {
   throw new Error("DATABASE_URL environment variable is required");
@@ -31,11 +31,11 @@ const baseConfig: Knex.Config = {
   acquireConnectionTimeout: 60_000,
   migrations: {
     directory: path.resolve(__dirname, "db", "migrations"),
-    extension: "ts",
+    extension: process.env.NODE_ENV === "development" ? "ts" : "js",
   },
   seeds: {
     directory: path.resolve(__dirname, "db", "seeds"),
-    extension: "ts",
+    extension: process.env.NODE_ENV === "development" ? "ts" : "js",
   },
   debug: process.env.NODE_ENV === "development",
 };
