@@ -1,11 +1,7 @@
 import type { Knex } from "knex";
-import dotenv from "dotenv";
 import path from "path";
+import dotenv from "dotenv";
 
-/**
- * Load environment variables
- * @throws {Error} If required environment variables are missing
- */
 dotenv.config();
 
 if (!process.env.DATABASE_URL) {
@@ -30,11 +26,11 @@ const baseConfig: Knex.Config = {
   },
   acquireConnectionTimeout: 60_000,
   migrations: {
-    directory: path.resolve(__dirname, "db", "migrations"),
+    directory: path.resolve(__dirname, "src", "db", "migrations"),
     extension: "ts",
   },
   seeds: {
-    directory: path.resolve(__dirname, "db", "seeds"),
+    directory: path.resolve(__dirname, "src", "db", "seeds"),
     extension: "ts",
   },
   debug: process.env.NODE_ENV === "development",
@@ -59,7 +55,7 @@ const config: Record<string, Knex.Config> = {
     },
     pool: {
       ...baseConfig.pool,
-      min: 2, // Ensure minimum connections in production
+      min: 2,
     },
   },
   test: {
@@ -73,10 +69,10 @@ const config: Record<string, Knex.Config> = {
       ],
     },
     migrations: {
-      directory: path.resolve(__dirname, "db", "migrations"),
+      directory: path.resolve(__dirname, "src", "db", "migrations"),
     },
     seeds: {
-      directory: path.resolve(__dirname, "db", "seeds"),
+      directory: path.resolve(__dirname, "src", "db", "seeds"),
     },
     useNullAsDefault: true,
     pool: {
@@ -90,4 +86,4 @@ const config: Record<string, Knex.Config> = {
   },
 };
 
-export default config;
+export default config; 

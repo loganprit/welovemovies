@@ -24,6 +24,10 @@ const port = Number(process.env.PORT) || DEFAULT_PORT;
 async function startServer(): Promise<void> {
   try {
     // Run database migrations
+    await connection.migrate.latest({
+      directory: "./src/db/migrations",
+      extension: "ts"
+    });
     const [batchNo, migrations] = await connection.migrate.latest();
     console.info(`Batch ${batchNo}: Applied ${migrations.length} migrations`);
     

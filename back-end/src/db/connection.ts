@@ -1,5 +1,5 @@
 import knex, { Knex } from "knex";
-import config from "../knexfile";
+import config from "../../knexfile";
 
 /**
  * Database connection configuration and initialization module
