@@ -1,85 +1,51 @@
 # WeLoveMovies Frontend
 
-## Introduction
+The WeLoveMovies frontend is a SvelteKit application built as a static SPA-style site. It deploys separately from the API and talks to the existing Express backend through `PUBLIC_API_URL`.
 
-The WeLoveMovies frontend is a React-based web application that provides an intuitive interface for browsing movies, theaters, and reviews. It focuses on delivering a seamless user experience through responsive design and interactive components.
+## Routes
 
-## Features
+- `/`: Now Showing.
+- `/movies`: All Movies.
+- `/movies/[movieId]`: Movie detail, theaters, reviews, review update, and review delete controls.
+- `/theaters`: All Theaters.
 
-- **Movie Browser**: Interactive grid view of movies with filtering options
-- **Theater Locator**: Map-based interface showing nearby theaters
-- **Review System**: Clean, organized display of user reviews with ratings
-- **Responsive Design**: Optimized layout for both desktop and mobile devices
-- **Dynamic Routing**: Smooth navigation between different views using React Router
+## Source Layout
 
-## Component Structure
+- `src/routes/`: SvelteKit file-based routes.
+- `src/lib/api.ts`: Fetch client for the backend `{ data, error }` API contract.
+- `src/lib/components/`: Movie, theater, review, header, image, error, and skeleton components.
+- `src/lib/stores/theme.ts`: Light/dark theme state.
+- `src/lib/types/api.ts`: Shared frontend domain and API types.
+- `src/lib/assets/`: Imported assets used by components.
+- `static/`: Static files served from the site root.
 
-- `Header`: Main navigation and branding
-- `MovieList`: Displays grid of available movies
-- `TheaterView`: Shows theater information and current showings
-- `ReviewSection`: Handles display and submission of reviews
-- `ErrorAlert`: Manages error state display
+## Environment
 
-## Setup Instructions
+Use SvelteKit's public environment variable convention:
 
-1. Clone the repository
-2. Navigate to front-end directory: `cd front-end`
-3. Install dependencies: `npm install`
-4. Set up environment:
-   - For development: Copy `.env.development` to `.env`
-   - For production: Copy `.env.production` to `.env`
-   - Modify the API URL in `.env` if needed
-5. Start development server: `npm start`
+```bash
+PUBLIC_API_URL=http://localhost:5001
+```
 
-## Available Scripts
+Only variables prefixed with `PUBLIC_` are available in browser code. The local fallback is `http://localhost:5001`.
 
-- `npm start`: Launches development server
-- `npm test`: Runs test suite
-- `npm run build`: Creates production build
-- `npm run eject`: Ejects from Create React App
+## Scripts
 
-## Technologies Used
+Run these from the repository root unless you are already in `front-end/`.
 
-- **React**: Core frontend framework
-- **React Router**: Client-side routing
-- **Bootstrap**: Styling and responsive design
-- **Axios**: API request handling
+- `npm run start --workspace=front-end`: Start the SvelteKit dev server.
+- `npm run dev --workspace=front-end`: Alias for the dev server.
+- `npm run build --workspace=front-end`: Build the static frontend.
+- `npm run preview --workspace=front-end`: Preview the production build.
+- `npm run type-check --workspace=front-end`: Run `svelte-kit sync` and `svelte-check`.
+- `npm run format --workspace=front-end`: Format frontend source files.
 
-## Screenshots
+## Development Notes
 
-<table>
-<tr>
-<td width="50%">
+- The app is configured with `@sveltejs/adapter-static` and an `index.html` fallback for direct route refreshes.
+- The frontend intentionally does not proxy API requests through SvelteKit server routes; it calls the public API URL directly.
+- Keep public route behavior aligned with the backend contract before changing `src/lib/api.ts`.
+- Svelte components use Svelte 5 runes and should stay compatible with `svelte-check`.
 
-![Dark Mode](/images/now_showing_dark.jpeg)
-_A preview of dark mode on the Now Showing page._
-
-</td>
-<td width="50%">
-
-![Now Showing](/images/now_showing.jpeg)
-_List of movies currently showing in theaters._
-
-</td>
-</tr>
-<tr>
-<td width="50%">
-
-![All Theaters](/images/all_theaters.jpeg)
-_Overview of all theaters and their movies available in the database._
-
-</td>
-<td width="50%">
-
-![Specific Movie Details](/images/specific_movie.jpeg)
-_Detailed view of a movie including reviews and showtimes._
-
-</td>
-</tr>
-</table>
-
-![All Movies](/images/all_movies.jpeg)
-_Overview of all movies available in the database._
-
-View the main README [here](../README.md). </br>
+View the main README [here](../README.md).
 View the back-end README [here](/back-end/README.md).
