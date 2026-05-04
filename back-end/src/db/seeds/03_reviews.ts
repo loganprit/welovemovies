@@ -1,5 +1,5 @@
-import { Knex } from "knex";
-import { Review, Movie, Critic } from "../../types/api";
+import type { Knex } from "knex";
+import type { Review, Movie, Critic } from "../../types/api";
 
 const REVIEW_CONTENT = `A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.`;
 

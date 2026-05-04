@@ -9,7 +9,9 @@ function getInitialTheme(): Theme {
   const saved = window.localStorage.getItem("theme") as Theme | null;
   if (saved === "light" || saved === "dark") return saved;
 
-  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  return window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
 }
 
 function createThemeStore() {
@@ -26,7 +28,7 @@ function createThemeStore() {
   return {
     subscribe,
     set,
-    toggle: () => update((theme) => (theme === "light" ? "dark" : "light"))
+    toggle: () => update((theme) => (theme === "light" ? "dark" : "light")),
   };
 }
 

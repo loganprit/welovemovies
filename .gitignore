@@ -42,6 +42,7 @@ Thumbs.db
 # Misc
 .vercel/
 .screenshots/
+.playwright-cli/
 .qualified-attach/
 TODO.md
 og-image.svg

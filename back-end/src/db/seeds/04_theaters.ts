@@ -1,5 +1,5 @@
-import { Knex } from "knex";
-import { Theater } from "../../types/api";
+import type { Knex } from "knex";
+import type { Theater } from "../../types/api";
 
 type TheaterSeed = Omit<Theater, "theater_id" | "created_at" | "updated_at">;
 

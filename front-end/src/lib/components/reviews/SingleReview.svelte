@@ -5,7 +5,7 @@
   let {
     review,
     deleteReview,
-    setReviewScore
+    setReviewScore,
   }: {
     review: Review;
     deleteReview: (review: Review) => Promise<void>;
@@ -41,26 +41,39 @@
 </script>
 
 {#if review.critic}
-  <article class={`mb-6 rounded-lg border p-6 shadow-sm transition-all duration-200 hover:shadow-md ${$theme === "dark" ? "border-gray-700 bg-gray-800" : "border-gray-200 bg-white"}`}>
+  <article
+    class={`mb-6 rounded-lg border p-6 shadow-sm transition-all duration-200 hover:shadow-md ${$theme === "dark" ? "border-gray-700 bg-gray-800" : "border-gray-200 bg-white"}`}
+  >
     <header class="mb-4">
-      <h4 class={`text-lg font-poppins-heading ${$theme === "dark" ? "text-white" : "text-gray-900"}`}>
-        {review.critic.preferred_name} {review.critic.surname}
-        <span class={`ml-2 text-sm ${$theme === "dark" ? "text-gray-400" : "text-gray-600"}`}>
+      <h4
+        class={`text-lg font-poppins-heading ${$theme === "dark" ? "text-white" : "text-gray-900"}`}
+      >
+        {review.critic.preferred_name}
+        {review.critic.surname}
+        <span
+          class={`ml-2 text-sm ${$theme === "dark" ? "text-gray-400" : "text-gray-600"}`}
+        >
           of {review.critic.organization_name}
         </span>
       </h4>
     </header>
 
-    <p class={`prose prose-sm mb-4 max-w-none whitespace-pre-wrap ${$theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>
+    <p
+      class={`prose prose-sm mb-4 max-w-none whitespace-pre-wrap ${$theme === "dark" ? "text-gray-300" : "text-gray-700"}`}
+    >
       {review.content}
     </p>
 
     <div class="flex items-center justify-between gap-4">
       <div class="flex items-center gap-2">
-        <span class={`font-medium ${$theme === "dark" ? "text-gray-200" : "text-gray-900"}`}>
+        <span
+          class={`font-medium ${$theme === "dark" ? "text-gray-200" : "text-gray-900"}`}
+        >
           Rating:
         </span>
-        <div class={`flex items-center rounded-lg px-2 py-1 ${$theme === "dark" ? "bg-gray-700" : "bg-gray-100"}`}>
+        <div
+          class={`flex items-center rounded-lg px-2 py-1 ${$theme === "dark" ? "bg-gray-700" : "bg-gray-100"}`}
+        >
           <button
             class={`px-2 py-1 transition-colors ${$theme === "dark" ? "text-primary-400 hover:text-primary-300" : "text-primary-600 hover:text-primary-800"}`}
             onclick={handleDecreaseClick}
@@ -68,7 +81,9 @@
           >
             -
           </button>
-          <span class={`mx-2 font-medium ${$theme === "dark" ? "text-gray-200" : "text-gray-900"}`}>
+          <span
+            class={`mx-2 font-medium ${$theme === "dark" ? "text-gray-200" : "text-gray-900"}`}
+          >
             {optimisticScore ?? review.score}
           </span>
           <button
@@ -91,7 +106,9 @@
     </div>
   </article>
 {:else}
-  <div class={`rounded-lg p-4 ${$theme === "dark" ? "bg-gray-800 text-gray-300" : "bg-gray-50 text-gray-600"}`}>
+  <div
+    class={`rounded-lg p-4 ${$theme === "dark" ? "bg-gray-800 text-gray-300" : "bg-gray-50 text-gray-600"}`}
+  >
     Review information unavailable
   </div>
 {/if}

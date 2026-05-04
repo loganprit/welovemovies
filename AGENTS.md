@@ -15,47 +15,46 @@ Critical memories override other information when they conflict. Do not update o
 
 ## Project Shape
 
-WeLoveMovies is now a split SvelteKit plus Express application.
+WeLoveMovies is now a SvelteKit plus Convex application.
 
 - `front-end/`: SvelteKit static SPA frontend using Svelte 5, Vite, TypeScript, Tailwind CSS, and `@sveltejs/adapter-static`.
-- `back-end/`: Existing Express, Knex, Objection, and TypeScript REST API.
-- The frontend talks to the backend through `PUBLIC_API_URL`; do not reintroduce `REACT_APP_API_URL`.
-- The backend response contract is `{ data, error }`.
-- Keep the backend deployment and routes unchanged unless the task explicitly asks for backend behavior changes.
+- `front-end/src/convex/`: Convex schema, queries, mutations, generated API types, and tests.
+- `back-end/`: Legacy Express, Knex, Objection, and TypeScript REST API kept for rollback/reference and seed export.
+- The frontend talks to Convex through `PUBLIC_CONVEX_URL`; do not reintroduce `PUBLIC_API_URL`, `REACT_APP_API_URL`, or the old REST fetch wrapper.
+- Keep legacy numeric fields like `movie_id`, `review_id`, and `theater_id` in Convex-facing shapes for route and component compatibility.
 
 ## Frontend Guidance
 
 - Use Svelte 5 patterns and keep code passing `svelte-check`.
 - Public routes are `/`, `/movies`, `/movies/[movieId]`, and `/theaters`.
 - Shared frontend domain types live in `front-end/src/lib/types/api.ts`.
-- API behavior lives in `front-end/src/lib/api.ts`.
+- Convex behavior lives in `front-end/src/convex/`.
 - Static root assets belong in `front-end/static/`; imported component assets belong in `front-end/src/lib/assets/`.
 - Direct URL refreshes must continue to work with the adapter-static fallback.
 
 ## Commands
 
-- Install: `npm install`
-- Frontend dev: `npm run start --workspace=front-end`
-- Frontend build: `npm run build --workspace=front-end`
-- Frontend type-check: `npm run type-check --workspace=front-end`
-- Backend type-check: `npm run type-check --workspace=back-end`
-- Backend tests: `npm test --workspace=back-end`
-- Full build: `npm run build`
+- Install: `bun install`
+- Frontend dev: `bun run start`
+- Frontend build: `bun run build`
+- Frontend type-check: `bun run type-check`
+- Convex tests: `bun run test`
+- Convex dev: `bun run convex:dev`
+- Seed export/import: `bun run seed:export`, then `bun run seed:import`
 
 ## Verification
 
 For frontend changes, run at least:
 
 ```bash
-npm run type-check --workspace=front-end
-npm run build --workspace=front-end
+bun run type-check
+bun run build
 ```
 
-For backend changes, run at least:
+For Convex changes, run at least:
 
 ```bash
-npm run type-check --workspace=back-end
-npm test --workspace=back-end
+bun run test
 ```
 
 For route or UI changes, verify in Browser against `/`, `/movies`, `/movies/[movieId]`, and `/theaters`.

@@ -5,26 +5,27 @@ Follow `AGENTS.md` first. This file exists so Claude-style agents get the same p
 ## Current Stack
 
 - Frontend: SvelteKit, Svelte 5, Vite, TypeScript, Tailwind CSS, `@sveltejs/adapter-static`.
-- Backend: Express, TypeScript, Knex, Objection, PostgreSQL in production, SQLite for tests.
-- Package manager: npm workspaces.
+- Backend: Convex schema, queries, mutations, and database.
+- Legacy backend: `back-end/` Express/Knex code retained as rollback/reference and seed source.
+- Package manager: Bun workspace.
 
 ## Important Conventions
 
-- Use `PUBLIC_API_URL` for frontend API configuration.
-- Keep the frontend/backend split deployment model.
+- Use `PUBLIC_CONVEX_URL` for frontend Convex configuration.
 - Preserve public routes: `/`, `/movies`, `/movies/[movieId]`, `/theaters`.
-- Preserve backend `{ data, error }` response envelopes.
+- Preserve legacy numeric IDs in Convex documents for URL/component compatibility.
 - Do not bring back CRA, React Router, `react-app-rewired`, or `REACT_APP_API_URL`.
 
 ## Useful Commands
 
 ```bash
-npm install
-npm run start --workspace=front-end
-npm run build --workspace=front-end
-npm run type-check --workspace=front-end
-npm run type-check --workspace=back-end
-npm test --workspace=back-end
+bun install
+bun run start
+bun run type-check
+bun run test
+bun run build
+bun run seed:export
+bun run seed:import
 ```
 
 Use Browser verification for UI/routing work, especially direct refreshes for dynamic routes like `/movies/1`.
