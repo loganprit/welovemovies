@@ -6,7 +6,7 @@
     reviews = [],
     showCount = false,
     optimisticReviewId,
-    optimisticScore
+    optimisticScore,
   }: {
     reviews?: Review[];
     showCount?: boolean;
@@ -18,7 +18,10 @@
     if (reviews.length === 0) return "N/A";
 
     const total = reviews.reduce((sum, review) => {
-      const scoreToUse = review.review_id === optimisticReviewId ? optimisticScore : review.score;
+      const scoreToUse =
+        review.review_id === optimisticReviewId
+          ? optimisticScore
+          : review.score;
       const validScore = Math.min(Math.max(scoreToUse ?? review.score, 1), 5);
       return sum + validScore;
     }, 0);
@@ -28,7 +31,9 @@
 </script>
 
 <div class="flex items-center gap-2">
-  <span class={`font-medium ${$theme === "dark" ? "text-gray-200" : "text-gray-900"}`}>
+  <span
+    class={`font-medium ${$theme === "dark" ? "text-gray-200" : "text-gray-900"}`}
+  >
     Average Rating:
   </span>
   <span
@@ -46,8 +51,13 @@
     {rating}
   </span>
   {#if showCount}
-    <span class={$theme === "dark" ? "text-sm text-gray-400" : "text-sm text-gray-500"}>
-      ({reviews.length} {reviews.length === 1 ? "review" : "reviews"})
+    <span
+      class={$theme === "dark"
+        ? "text-sm text-gray-400"
+        : "text-sm text-gray-500"}
+    >
+      ({reviews.length}
+      {reviews.length === 1 ? "review" : "reviews"})
     </span>
   {/if}
 </div>

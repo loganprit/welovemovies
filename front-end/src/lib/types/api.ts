@@ -1,13 +1,3 @@
-export interface ApiRequestOptions extends RequestInit {
-  headers: Headers;
-  signal?: AbortSignal;
-}
-
-export interface ApiResponse<T> {
-  data: T;
-  error?: string;
-}
-
 export interface ApiError extends Error {
   status?: number;
   name: string;
@@ -31,7 +21,7 @@ export interface Review {
   movie_id: number;
   created_at: string;
   updated_at: string;
-  critic?: Critic;
+  critic?: Critic | null;
 }
 
 export interface Theater {
@@ -44,7 +34,7 @@ export interface Theater {
   zip: string;
   created_at: string;
   updated_at: string;
-  movies?: Movie[];
+  movies?: (Movie & { is_showing?: boolean; theater_id?: number })[];
 }
 
 export interface Movie {
@@ -58,5 +48,5 @@ export interface Movie {
   updated_at: string;
   is_showing?: boolean;
   reviews?: Review[];
-  theaters?: Theater[];
+  theaters?: (Theater & { is_showing?: boolean; movie_id?: number })[];
 }

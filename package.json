@@ -1,39 +1,28 @@
 {
   "name": "welovemovies",
   "private": true,
+  "packageManager": "bun@1.2.0",
   "workspaces": [
-    "front-end",
-    "back-end"
+    "front-end"
   ],
   "scripts": {
-    "start": "concurrently \"npm run start:frontend\" \"npm run start:backend\"",
-    "start:frontend": "npm run start --workspace=front-end",
-    "start:backend": "npm run start --workspace=back-end",
-    "build": "npm run clean && npm run build --workspaces",
-    "clean": "rimraf dist back-end/dist front-end/build front-end/.svelte-kit",
-    "test": "npm test --workspace=back-end",
-    "migrate": "npm run migrate --workspace=back-end",
-    "migrate:dev": "npm run migrate --workspace=back-end",
-    "migrate:test": "npm run migrate:test --workspace=back-end",
-    "migrate:prod": "npm run migrate:prod --workspace=back-end",
-    "seed": "npm run seed --workspace=back-end",
-    "seed:test": "npm run seed:test --workspace=back-end",
-    "seed:prod": "npm run seed:prod --workspace=back-end",
-    "db:reset": "npm run db:reset:dev --workspace=back-end",
-    "type-check": "npm run type-check --workspaces",
-    "type-check:watch": "npm run type-check:watch --workspaces"
-  },
-  "dependencies": {
-    "dotenv": "^8.2.0",
-    "knex": "^3.1.0",
-    "pg": "^8.4.2"
+    "start": "bun run --filter welovemovies-front-end dev",
+    "build": "bun run clean && bun run --filter welovemovies-front-end build",
+    "clean": "rimraf front-end/build front-end/.svelte-kit",
+    "test": "bun run --filter welovemovies-front-end test",
+    "type-check": "bun run --filter welovemovies-front-end type-check",
+    "type-check:watch": "bun run --filter welovemovies-front-end type-check:watch",
+    "seed:export": "bun run --filter welovemovies-front-end seed:export",
+    "seed:import": "bun run --filter welovemovies-front-end seed:import",
+    "convex:dev": "bun run --filter welovemovies-front-end convex:dev",
+    "convex:codegen": "bun run --filter welovemovies-front-end convex:codegen",
+    "convex:deploy": "bun run --filter welovemovies-front-end convex:deploy"
   },
   "devDependencies": {
-    "concurrently": "^9.2.1",
     "rimraf": "^6.0.1"
   },
   "engines": {
-    "node": ">=20.19.0",
-    "npm": ">=10.0.0"
+    "bun": ">=1.2.0",
+    "node": ">=20.19.0"
   }
 }

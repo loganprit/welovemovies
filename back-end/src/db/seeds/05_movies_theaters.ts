@@ -1,5 +1,5 @@
-import { Knex } from "knex";
-import { Movie, Theater } from "../../types/api";
+import type { Knex } from "knex";
+import type { Movie, Theater } from "../../types/api";
 
 type MovieId = Pick<Movie, "movie_id">;
 type TheaterId = Pick<Theater, "theater_id">;

@@ -1,5 +1,5 @@
-import { Knex } from "knex";
-import { Movie } from "../../types/api";
+import type { Knex } from "knex";
+import type { Movie } from "../../types/api";
 
 type MovieSeed = Omit<Movie, "movie_id" | "created_at" | "updated_at">;
 

@@ -1,5 +1,5 @@
-import { Knex } from "knex";
-import { Critic } from "../../types/api";
+import type { Knex } from "knex";
+import type { Critic } from "../../types/api";
 
 type CriticSeed = Omit<Critic, "critic_id" | "created_at" | "updated_at">;
 

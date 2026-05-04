@@ -1,6 +1,6 @@
 # WeLoveMovies Backend
 
-The WeLoveMovies backend is the existing Node.js, Express, TypeScript, Knex, and Objection API that powers the movie browsing frontend. It remains independent from the SvelteKit frontend and should continue returning the current `{ data, error }` response shape.
+The WeLoveMovies backend is the legacy Node.js, Express, TypeScript, Knex, and Objection API. The active app now uses Convex as the backend of record, so this directory is kept for rollback/reference and as the seed data source for `front-end/scripts/export-convex-seeds.ts`.
 
 ## API Areas
 
@@ -34,31 +34,15 @@ DATABASE_URL=postgres://...
 NODE_ENV=development
 ```
 
-Tests use an in-memory SQLite database through the workspace test script.
+Tests use an in-memory SQLite database when running the legacy backend directly.
 
 ## Scripts
 
-Run these from the repository root unless you are already in `back-end/`.
+The backend is no longer an active root workspace. To run it directly, work inside `back-end/`, install its local dependencies, and use the package scripts defined in `back-end/package.json`.
 
-- `npm run start --workspace=back-end`: Build and start the compiled Express server.
-- `npm run start:dev --workspace=back-end`: Start the backend with `ts-node-dev`.
-- `npm run build --workspace=back-end`: Compile TypeScript into `dist/`.
-- `npm run type-check --workspace=back-end`: Type-check without emitting files.
-- `npm test --workspace=back-end`: Run Jest/Supertest against in-memory SQLite.
-- `npm run migrate --workspace=back-end`: Run development migrations.
-- `npm run seed --workspace=back-end`: Seed the development database.
-- `npm run db:reset:dev --workspace=back-end`: Roll back, migrate, and seed development data.
+## Current Frontend Contract
 
-## Frontend Contract
-
-The SvelteKit frontend calls this API through `PUBLIC_API_URL`. Preserve these response envelopes unless both sides are updated together:
-
-```ts
-type ApiResponse<T> = {
-  data: T;
-  error?: string;
-};
-```
+The SvelteKit frontend now calls Convex functions through `PUBLIC_CONVEX_URL`. Preserve the legacy seed shape and numeric IDs because the Convex export script depends on this directory.
 
 View the main README [here](../README.md).
 View the front-end README [here](/front-end/README.md).

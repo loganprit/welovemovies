@@ -8,6 +8,7 @@
 # Testing
 /coverage
 *.test.js.snap
+/convex-seed
 
 # Production
 /build
