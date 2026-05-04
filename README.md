@@ -1,114 +1,123 @@
 # WeLoveMovies
 
-Visit the live application [here](https://welovemovies-front-end-ribo.onrender.com/)!
+WeLoveMovies is a movie browsing app for discovering films, reading reviews, and finding theaters. The project uses a split deployment model: a static SvelteKit frontend talks to an existing Express/Knex REST API through a public API URL.
 
-## Introduction
-
-WeLoveMovies is a movie database application designed to help users discover movies, read detailed reviews, and find local theater showtimes. This platform caters to movie enthusiasts looking to explore a wide range of film genres and titles, offering insightful reviews and convenient viewing options.
-
-## Problem Statement
-
-Moviegoers often struggle to find a centralized source that provides comprehensive details about movies, including where they can watch them locally. WeLoveMovies addresses this challenge by aggregating data about movies, their reviews, and available theaters in one user-friendly interface.
-
-## User Case
-
-This application is ideal for:
-
-- Movie enthusiasts who want to explore films based on genre, popularity, or new releases.
-- Individuals looking for local theaters showing specific movies.
-- Users interested in reading detailed reviews before watching a film.
-
-## Intended Use
-
-WeLoveMovies serves as a hub for:
-
-- Browsing movies currently showing in theaters.
-- Exploring detailed movie descriptions and aggregated reviews.
-- Finding theaters that are showing specific movies.
+Visit the live application [here](https://welovemovies-front-end-ribo.onrender.com/).
 
 ## Features
 
-- **Movie Listings**: Users can view all movies or filter to see what's currently showing.
-- **Theater Showtimes**: Find out where and when you can catch a movie locally.
-- **Detailed Reviews**: Access user-generated reviews for movies to gauge audience reactions and critiques.
-- **Dark Mode**: Toggle between light and dark themes for a personalized viewing experience.
+- Browse movies that are currently showing.
+- View all movies in the catalog.
+- Open movie detail pages with theater availability and critic reviews.
+- Browse all theaters and the movies they are showing.
+- Update and delete reviews through the existing API.
+- Toggle between light and dark themes.
 
-## Technologies and Tools
+## Tech Stack
 
-- **TypeScript**: Provides type safety and enhanced developer experience across both frontend and backend
-- **React**: Frontend framework with TypeScript integration for building the user interface
-- **Node.js**: Runtime environment for the backend, optimized for I/O-bound operations
-- **Express**: Web framework for building the REST API with TypeScript support
-- **PostgreSQL**: Primary database for production environment
-- **SQLite**: Used for testing environment with in-memory database
-- **Knex**: Type-safe SQL query builder for database interactions
-- **Jest**: Testing framework configured for TypeScript testing
-- **Tailwind CSS**: Styling framework for modern and responsive design
+- **SvelteKit + Svelte 5**: Static SPA-style frontend with file-based routes.
+- **Vite**: Frontend development server and production build tooling.
+- **TypeScript**: Shared type safety across the frontend and backend.
+- **Tailwind CSS**: Responsive frontend styling.
+- **Node.js + Express**: REST API server.
+- **Knex + Objection**: Database access and models.
+- **PostgreSQL**: Production database.
+- **SQLite**: In-memory test database.
+- **Jest + Supertest**: Backend API tests.
 
 ## Project Structure
 
-- `/front-end`: React/TypeScript frontend application
-  - `/src`: Source code directory
-    - `/components`: Reusable UI components
-    - `/movie`: Movie-related components
-    - `/theaters`: Theater-related components
-    - `/shared`: Shared components and utilities
-    - `/types`: TypeScript type definitions
-    - `/utils`: Utility functions and API clients
-- `/back-end`: Express/TypeScript backend application
-  - `/src`: Source code directory
-    - `/db`: Database migrations and seeds
-    - `/movies`: Movie-related routes and services
-    - `/reviews`: Review-related routes and services
-    - `/theaters`: Theater-related routes and services
-    - `/types`: TypeScript type definitions
+- `front-end/`: SvelteKit frontend.
+  - `src/routes/`: Public routes for `/`, `/movies`, `/movies/[movieId]`, and `/theaters`.
+  - `src/lib/api.ts`: API client using `PUBLIC_API_URL`.
+  - `src/lib/components/`: Shared Svelte UI components.
+  - `src/lib/stores/`: Frontend stores, including theme state.
+  - `src/lib/types/`: Shared frontend API and domain types.
+  - `static/`: Static assets copied directly into the built frontend.
+- `back-end/`: Express/TypeScript backend.
+  - `src/db/`: Knex migrations, seeds, and connection setup.
+  - `src/movies/`: Movie routes, services, and queries.
+  - `src/reviews/`: Review routes, services, and queries.
+  - `src/theaters/`: Theater routes, services, and queries.
+  - `src/types/`: Backend TypeScript types.
 
 ## Development Setup
 
-1. Clone the repository
-2. Install dependencies: `npm install`
-3. Configure environment:
-   - Copy `.env.sample` to `.env` in both front-end and back-end directories
-   - Set up database connection in `DATABASE_URL`
-4. Initialize database: `npm run migrate && npm run seed`
-5. Start development servers: `npm start`
+Use Node.js `20.19.0` or newer for the SvelteKit/Vite frontend.
 
-## Available Scripts
+1. Install dependencies:
 
-### Root Directory
+   ```bash
+   npm install
+   ```
 
-- `npm start`: Start both frontend and backend in development mode
-- `npm run build`: Build both packages for production
-- `npm test`: Run tests for both packages
-- `npm run type-check`: Run TypeScript type checking
+2. Configure the backend:
 
-### Frontend
+   ```bash
+   cp back-end/.env.sample back-end/.env
+   ```
 
-- `npm run start:frontend`: Start frontend development server
-- `npm run build`: Create production build
-- `npm run lint`: Run ESLint
-- `npm run format`: Format code with Prettier
+   Set `DATABASE_URL` in `back-end/.env`.
 
-### Backend
+3. Configure the frontend API URL when needed:
 
-- `npm run start:backend`: Start backend development server
-- `npm run migrate`: Run database migrations
-- `npm run seed`: Seed database with initial data
-- `npm run db:reset`: Reset database (rollback, migrate, seed)
+   ```bash
+   PUBLIC_API_URL=http://localhost:5001
+   ```
 
-## Discoveries
+   SvelteKit exposes only variables prefixed with `PUBLIC_` to browser code. If `PUBLIC_API_URL` is omitted, the frontend falls back to `http://localhost:5001`.
 
-This newest update to WeLoveMovies marked my first introduction to TypeScript, where I discovered the power of static typing and type safety. Through developing the backend, I learned essential TypeScript features like interfaces, type declarations, and generics while implementing complex database queries and API integrations. The process of building CRUD operations with proper type checking enhanced my understanding of both data management and the benefits of TypeScript's compile-time error detection.
+4. Prepare the development database:
 
-## Future Goals
+   ```bash
+   npm run db:reset:dev --workspace=back-end
+   ```
 
-- **Visual Redesign**: Modernize the frontend with a comprehensive UI component library for consistent design.
-- **Advanced Filtering**: Implement more sophisticated filtering options to sort movies by ratings, release dates, or viewer demographics.
-- **Search**: Implement advanced search functionality.
-- **Movie Metadata**: Expand movie information by integrating with TMDb's API.
-- **Theater Location**: Add real theater search based on user location.
-- **Performance**: Implement caching layer for improved response times.
-- **User Accounts**: Add authentication and authorization for personalized features.
+5. Start both workspaces:
+
+   ```bash
+   npm start
+   ```
+
+## Scripts
+
+Root workspace:
+
+- `npm start`: Start frontend and backend together.
+- `npm run build`: Build all workspaces.
+- `npm run type-check --workspace=front-end`: Run SvelteKit and Svelte type checks.
+- `npm run type-check --workspace=back-end`: Run backend TypeScript checks.
+- `npm test --workspace=back-end`: Run backend Jest tests.
+
+Frontend workspace:
+
+- `npm run start --workspace=front-end`: Start the SvelteKit dev server.
+- `npm run build --workspace=front-end`: Build the static SvelteKit frontend.
+- `npm run preview --workspace=front-end`: Preview the production frontend build.
+- `npm run type-check --workspace=front-end`: Run `svelte-check`.
+- `npm run format --workspace=front-end`: Format frontend source files.
+
+Backend workspace:
+
+- `npm run start --workspace=back-end`: Build and start the Express server.
+- `npm run start:dev --workspace=back-end`: Start the backend in watch mode.
+- `npm run migrate --workspace=back-end`: Run development migrations.
+- `npm run seed --workspace=back-end`: Seed the development database.
+- `npm run db:reset:dev --workspace=back-end`: Roll back, migrate, and seed the development database.
+- `npm test --workspace=back-end`: Run backend tests against an in-memory SQLite database.
+
+## API Contract
+
+The frontend expects the existing backend response shape:
+
+```ts
+type ApiResponse<T> = {
+  data: T;
+  error?: string;
+};
+```
+
+Keep backend routes and response contracts stable unless the frontend API client is updated at the same time.
 
 ## Screenshots
 
@@ -146,5 +155,5 @@ _Detailed view of a movie including reviews and showtimes._
 ![All Movies](/images/all_movies.jpeg)
 _Overview of all movies available in the database._
 
-View the front-end README [here](/front-end/README.md). </br>
+View the front-end README [here](/front-end/README.md).
 View the back-end README [here](/back-end/README.md).
