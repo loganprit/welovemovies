@@ -1,12 +1,10 @@
 <script lang="ts">
   import ErrorAlert from "$lib/components/ErrorAlert.svelte";
   import MovieCard from "$lib/components/MovieCard.svelte";
-  import MovieCardSkeleton from "$lib/components/skeletons/MovieCardSkeleton.svelte";
+  import { listMovies } from "$lib/data/staticData";
   import { theme } from "$lib/stores/theme";
-  import { useQuery } from "convex-svelte";
-  import { api } from "../convex/_generated/api.js";
 
-  const moviesQuery = useQuery(api.movies.list, () => ({ isShowing: true }));
+  const movies = listMovies({ isShowing: true });
 </script>
 
 <svelte:head>
@@ -24,17 +22,11 @@
       <hr class={$theme === "dark" ? "border-gray-700" : "border-gray-200"} />
     </div>
 
-    {#if moviesQuery.isLoading}
-      <section class="-mx-4 flex flex-wrap">
-        {#each Array.from({ length: 16 }, (_, index) => index) as item (item)}
-          <MovieCardSkeleton variant="grid" />
-        {/each}
-      </section>
-    {:else if moviesQuery.error}
-      <ErrorAlert error={moviesQuery.error} />
+    {#if movies.length === 0}
+      <ErrorAlert error={new Error("No movies available")} />
     {:else}
       <section class="-mx-4 flex flex-wrap">
-        {#each moviesQuery.data ?? [] as movie (movie.movie_id)}
+        {#each movies as movie (movie.movie_id)}
           <MovieCard {movie} variant="grid" />
         {/each}
       </section>

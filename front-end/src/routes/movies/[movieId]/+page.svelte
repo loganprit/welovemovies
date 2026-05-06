@@ -4,28 +4,28 @@
   import MovieDetails from "$lib/components/MovieDetails.svelte";
   import ProgressiveImage from "$lib/components/ProgressiveImage.svelte";
   import ReviewList from "$lib/components/reviews/ReviewList.svelte";
-  import DetailedMovieSkeleton from "$lib/components/skeletons/DetailedMovieSkeleton.svelte";
   import TheaterCard from "$lib/components/TheaterCard.svelte";
+  import { readMovie } from "$lib/data/staticData";
   import { theme } from "$lib/stores/theme";
   import type { Review } from "$lib/types/api";
-  import { useConvexClient, useQuery } from "convex-svelte";
-  import { api } from "../../../convex/_generated/api.js";
 
   let movieId = $derived(Number(page.params.movieId));
-  const client = useConvexClient();
-  const movieQuery = useQuery(api.movies.read, () =>
-    Number.isFinite(movieId) ? { movieId } : "skip",
+  let deletedReviewIds = $state<number[]>([]);
+  let reviewScores = $state<Record<number, number>>({});
+  let movie = $derived(
+    Number.isFinite(movieId)
+      ? readMovie(movieId, { deletedReviewIds, reviewScores })
+      : undefined,
   );
 
-  async function handleDeleteReview(review: Review) {
-    await client.mutation(api.reviews.destroy, { reviewId: review.review_id });
+  function handleDeleteReview(review: Review) {
+    deletedReviewIds = [...deletedReviewIds, review.review_id];
+    return Promise.resolve();
   }
 
-  async function handleUpdateScore(review: Review, score: number) {
-    await client.mutation(api.reviews.update, {
-      reviewId: review.review_id,
-      data: { score },
-    });
+  function handleUpdateScore(review: Review, score: number) {
+    reviewScores = { ...reviewScores, [review.review_id]: score };
+    return Promise.resolve();
   }
 </script>
 
@@ -33,22 +33,13 @@
   <title>Movie Details | WeLoveMovies</title>
 </svelte:head>
 
-{#if movieQuery.isLoading}
-  <DetailedMovieSkeleton variant="full" />
-{:else if movieQuery.error}
-  <main class={$theme === "dark" ? "bg-gray-900" : "bg-gray-50"}>
-    <div class="container mx-auto px-4 py-8">
-      <ErrorAlert error={movieQuery.error} />
-    </div>
-  </main>
-{:else if !movieQuery.data}
+{#if !movie}
   <main class={$theme === "dark" ? "bg-gray-900" : "bg-gray-50"}>
     <div class="container mx-auto px-4 py-8">
       <ErrorAlert error={new Error("Movie cannot be found")} />
     </div>
   </main>
 {:else}
-  {@const movie = movieQuery.data}
   <main class={$theme === "dark" ? "bg-gray-900" : "bg-gray-50"}>
     <div class="container mx-auto px-4 py-8">
       <section class="flex flex-col gap-8 lg:flex-row">

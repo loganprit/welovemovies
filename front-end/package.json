@@ -12,17 +12,8 @@
     "type-check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
     "check": "bun run type-check",
     "lint": "bun run type-check",
-    "test": "vitest run",
-    "convex:codegen": "convex codegen",
-    "convex:dev": "convex dev",
-    "convex:deploy": "convex deploy --cmd-url-env-var-name PUBLIC_CONVEX_URL --cmd 'bun run build'",
-    "seed:export": "bun run scripts/export-convex-seeds.ts",
-    "seed:import": "bun run seed:export && bun run seed:import:movies && bun run seed:import:critics && bun run seed:import:theaters && bun run seed:import:reviews && bun run seed:import:movies-theaters",
-    "seed:import:movies": "convex import --table movies --replace -y convex-seed/movies.jsonl",
-    "seed:import:critics": "convex import --table critics --replace -y convex-seed/critics.jsonl",
-    "seed:import:theaters": "convex import --table theaters --replace -y convex-seed/theaters.jsonl",
-    "seed:import:reviews": "convex import --table reviews --replace -y convex-seed/reviews.jsonl",
-    "seed:import:movies-theaters": "convex import --table movies_theaters --replace -y convex-seed/movies_theaters.jsonl",
+    "test": "svelte-kit sync && vitest run",
+    "seed:export": "bun run scripts/export-static-data.ts",
     "format": "prettier --plugin=prettier-plugin-svelte --write \"src/**/*.{svelte,ts,css,md}\"",
     "precommit": "lint-staged"
   },
@@ -30,10 +21,6 @@
     "src/**/*.{svelte,ts}": [
       "prettier --write"
     ]
-  },
-  "dependencies": {
-    "convex": "^1.37.0",
-    "convex-svelte": "^0.0.12"
   },
   "devDependencies": {
     "@edge-runtime/vm": "^5.0.0",
@@ -44,6 +31,7 @@
     "@tailwindcss/forms": "^0.5.9",
     "@tailwindcss/typography": "^0.5.15",
     "autoprefixer": "^10.4.21",
+    "convex": "^1.37.0",
     "convex-test": "^0.0.51",
     "lint-staged": "^15.5.2",
     "postcss": "^8.5.6",
