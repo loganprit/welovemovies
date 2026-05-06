@@ -26,6 +26,13 @@ async function attachCritic(
   return { ...review, critic };
 }
 
+function validateScore(score: number | undefined) {
+  if (score === undefined) return;
+  if (!Number.isInteger(score) || score < 1 || score > 5) {
+    throw new ConvexError("Review score must be an integer between 1 and 5");
+  }
+}
+
 export const update = mutation({
   args: {
     reviewId: v.number(),
@@ -37,6 +44,7 @@ export const update = mutation({
   handler: async (ctx, args): Promise<ReviewWithCritic> => {
     const review = await readReviewByLegacyId(ctx, args.reviewId);
     if (!review) throw new ConvexError("Review cannot be found");
+    validateScore(args.data.score);
 
     await ctx.db.patch(review._id, {
       ...args.data,
