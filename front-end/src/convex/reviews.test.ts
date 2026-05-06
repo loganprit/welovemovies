@@ -63,4 +63,13 @@ describe("reviews Convex functions", () => {
       t.mutation(api.reviews.update, { reviewId: 999, data: { score: 4 } }),
     ).rejects.toThrow("Review cannot be found");
   });
+
+  test.each([0, 6, 3.5])("rejects invalid review score %s", async (score) => {
+    const t = convexTest(schema, modules);
+    await seed(t);
+
+    await expect(
+      t.mutation(api.reviews.update, { reviewId: 1, data: { score } }),
+    ).rejects.toThrow("Review score must be an integer between 1 and 5");
+  });
 });
