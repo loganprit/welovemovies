@@ -12,11 +12,7 @@
     "test": "bun run --filter welovemovies-front-end test",
     "type-check": "bun run --filter welovemovies-front-end type-check",
     "type-check:watch": "bun run --filter welovemovies-front-end type-check:watch",
-    "seed:export": "bun run --filter welovemovies-front-end seed:export",
-    "seed:import": "bun run --filter welovemovies-front-end seed:import",
-    "convex:dev": "bun run --filter welovemovies-front-end convex:dev",
-    "convex:codegen": "bun run --filter welovemovies-front-end convex:codegen",
-    "convex:deploy": "bun run --filter welovemovies-front-end convex:deploy"
+    "seed:export": "bun run --filter welovemovies-front-end seed:export"
   },
   "devDependencies": {
     "rimraf": "^6.0.1"

@@ -1,12 +1,10 @@
 <script lang="ts">
   import ErrorAlert from "$lib/components/ErrorAlert.svelte";
   import MovieDetails from "$lib/components/MovieDetails.svelte";
-  import DetailedMovieSkeleton from "$lib/components/skeletons/DetailedMovieSkeleton.svelte";
+  import { listMovies } from "$lib/data/staticData";
   import { theme } from "$lib/stores/theme";
-  import { useQuery } from "convex-svelte";
-  import { api } from "../../convex/_generated/api.js";
 
-  const moviesQuery = useQuery(api.movies.list, () => ({}));
+  const movies = listMovies();
 </script>
 
 <svelte:head>
@@ -24,25 +22,15 @@
       <hr class={$theme === "dark" ? "border-gray-700" : "border-gray-200"} />
     </div>
 
-    {#if moviesQuery.isLoading}
-      <section
-        class={$theme === "dark"
-          ? "divide-y divide-gray-700"
-          : "divide-y divide-gray-200"}
-      >
-        {#each Array.from({ length: 16 }, (_, index) => index) as item (item)}
-          <DetailedMovieSkeleton />
-        {/each}
-      </section>
-    {:else if moviesQuery.error}
-      <ErrorAlert error={moviesQuery.error} />
+    {#if movies.length === 0}
+      <ErrorAlert error={new Error("No movies available")} />
     {:else}
       <section
         class={$theme === "dark"
           ? "divide-y divide-gray-700"
           : "divide-y divide-gray-200"}
       >
-        {#each moviesQuery.data ?? [] as movie (movie.movie_id)}
+        {#each movies as movie (movie.movie_id)}
           <MovieDetails {movie} variant="list" />
         {/each}
       </section>

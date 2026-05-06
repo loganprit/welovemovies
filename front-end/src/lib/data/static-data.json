@@ -1,0 +1,1509 @@
+{
+  "movies": [
+    {
+      "movie_id": 1,
+      "title": "Spirited Away",
+      "runtime_in_minutes": 125,
+      "rating": "PG",
+      "description": "Chihiro and her parents are moving to a small Japanese town in the countryside, much to Chihiro's dismay. On the way to their new home, Chihiro's father makes a wrong turn and drives down a lonely one-lane road which dead-ends in front of a tunnel. Her parents decide to stop the car and explore the area. They go through the tunnel and find an abandoned amusement park on the other side, with its own little town...",
+      "image_url": "https://www.themoviedb.org/t/p/w1280/39wmItIWsg5sZMyRUHLkWBcuVCM.jpg",
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "movie_id": 2,
+      "title": "Interstellar",
+      "runtime_in_minutes": 169,
+      "rating": "PG-13",
+      "description": "Earth's future has been riddled by disasters, famines, and droughts. There is only one way to ensure mankind's survival: Interstellar travel. A newly discovered wormhole in the far reaches of our solar system allows a team of astronauts to go where no man has gone before, a planet that may have the right environment to sustain human life...",
+      "image_url": "https://www.themoviedb.org/t/p/w1280/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "movie_id": 3,
+      "title": "Rear Window",
+      "runtime_in_minutes": 112,
+      "rating": "PG",
+      "description": "Professional photographer L.B. \"Jeff\" Jefferies breaks his leg while getting an action shot at an auto race. Confined to his New York apartment, he spends his time looking out of the rear window observing the neighbors. He begins to suspect that a man across the courtyard may have murdered his wife. Jeff enlists the help of his high society fashion-consultant girlfriend Lisa Freemont and his visiting nurse Stella to investigate...",
+      "image_url": "https://www.themoviedb.org/t/p/w1280/ILVF0eJxHMddjxeQhswFtpMtqx.jpg",
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "movie_id": 4,
+      "title": "Raiders of the Lost Ark",
+      "runtime_in_minutes": 115,
+      "rating": "PG",
+      "description": "The year is 1936. An archeology professor named Indiana Jones is venturing in the jungles of South America searching for a golden statue. Unfortunately, he sets off a deadly trap but miraculously escapes. Then, Jones hears from a museum curator named Marcus Brody about a biblical artifact called The Ark of the Covenant, which can hold the key to humanly existence. Jones has to venture to vast places such as Nepal and Egypt to find this artifact...",
+      "image_url": "https://www.themoviedb.org/t/p/w1280/ceG9VzoRAVGwivFU403Wc3AHRys.jpg",
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "movie_id": 5,
+      "title": "Spider-Man: Into the Spider-Verse",
+      "runtime_in_minutes": 117,
+      "rating": "PG",
+      "description": "Miles Morales is a New York teen struggling with school, friends and, on top of that, being the new Spider-Man. When he comes across Peter Parker, the erstwhile saviour of New York, in the multiverse, Miles must train to become the new protector of his city...",
+      "image_url": "https://www.themoviedb.org/t/p/w1280/iiZZdoQBEYBv6id8su7ImL0oCbD.jpg",
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "movie_id": 6,
+      "title": "Whiplash",
+      "runtime_in_minutes": 106,
+      "rating": "R",
+      "description": "A young and talented drummer attending a prestigious music academy finds himself under the wing of the most respected professor at the school; one who does not hold back on abuse towards his students. The two form an odd relationship as the student wants to achieve greatness, and the professor pushes him...",
+      "image_url": "https://www.themoviedb.org/t/p/w1280/7fn624j5lj3xTme2SgiLCeuedmO.jpg",
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "movie_id": 7,
+      "title": "Metropolis",
+      "runtime_in_minutes": 153,
+      "rating": "NR",
+      "description": "Sometime in the future, the city of Metropolis is home to a Utopian society where its wealthy residents live a carefree life. One of those is Freder Fredersen. One day, he spots a beautiful woman with a group of children, she and the children quickly disappear. Trying to follow her, he is horrified to find an underground world of workers who apparently run the machinery that keeps the Utopian world above ground functioning...",
+      "image_url": "https://image.tmdb.org/t/p/original/8fKidn88IMXSv63ivv7dJcYeBlz.jpg",
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "movie_id": 8,
+      "title": "Up",
+      "runtime_in_minutes": 96,
+      "rating": "PG",
+      "description": "As a boy, Carl Fredricksen wanted to explore South America and find the forbidden Paradise Falls. About 64 years later he gets to begin his journey along with Boy Scout Russell by lifting his house with thousands of balloons. On their journey, they make many new friends including a talking dog, and figure out that someone has evil plans. Carl soon realizes that this evildoer is his childhood idol...",
+      "image_url": "https://www.themoviedb.org/t/p/w1280/vpbaStTMt8qqXaEgnOR2EE4DNJk.jpg",
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "movie_id": 9,
+      "title": "Monty Python and the Holy Grail",
+      "runtime_in_minutes": 91,
+      "rating": "PG",
+      "description": "History is turned on its comic head when, in tenth century England, King Arthur (Graham Chapman) travels the countryside to find knights who will join him at the Round Table in Camelot. Gathering up the men is a tale in itself but after a bit of a party at Camelot, many decide to leave only to be stopped by God, who sends them on a quest: to find the Holy Grail...",
+      "image_url": "https://www.themoviedb.org/t/p/w1280/xZ0rC0kuIsjk6RncpNK73kwstEP.jpg",
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "movie_id": 10,
+      "title": "Pan's Labyrinth",
+      "runtime_in_minutes": 91,
+      "rating": "PG",
+      "description": "In 1944 Falangist Spain, a girl, fascinated with fairy-tales, is sent along with her pregnant mother to live with her new stepfather, a ruthless captain of the Spanish army. During the night, she meets a fairy who takes her to an old faun in the center of the labyrinth. He tells her she's a princess, but must prove her royalty by surviving three gruesome tasks. If she fails, she will never prove herself to be the true princess and will never see her real father, the king, again...",
+      "image_url": "https://www.themoviedb.org/t/p/w1280/s8C4whhKtDaJvMDcyiMvx3BIF5F.jpg",
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "movie_id": 11,
+      "title": "Dial M for Murder",
+      "runtime_in_minutes": 105,
+      "rating": "PG",
+      "description": "In London, wealthy Margot Mary Wendice had a brief love affair with the American writer Mark Halliday while her husband and professional tennis player Tony Wendice was on a tennis tour. Tony quits playing to dedicate to his wife and finds a regular job. She decides to give him a second chance for their marriage. When Mark arrives from America to visit the couple, Margot tells him that she had destroyed all his letters but one that was stolen...",
+      "image_url": "https://www.themoviedb.org/t/p/w1280/2gDCAgl2iBQNuJuk6p2xtuS1ewg.jpg",
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "movie_id": 12,
+      "title": "V for Vendetta",
+      "runtime_in_minutes": 132,
+      "rating": "R",
+      "description": "In the year 2032, Evey Hammond is an average citizen of the United Kingdom, which is under the rule of the fascist and tyrannical Norsefire Party. She is an employee of the state-run British Television Network, but soon, she becomes the number one enemy of the state together with an enigmatic and larger-than-life freedom fighter known only by the letter \"V\"...",
+      "image_url": "https://www.themoviedb.org/t/p/w1280/1avD1JeaRiJX5M4ahPdZPypGoGN.jpg",
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "movie_id": 13,
+      "title": "Jurassic Park",
+      "runtime_in_minutes": 127,
+      "rating": "PG-13",
+      "description": "Huge advancements in scientific technology have enabled a mogul to create an island full of living dinosaurs. John Hammond has invited four individuals, along with his two grandchildren, to join him at Jurassic Park...",
+      "image_url": "https://www.themoviedb.org/t/p/w1280/b1xCNnyrPebIc7EWNZIa6jhb1Ww.jpg",
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "movie_id": 14,
+      "title": "Blade Runner",
+      "runtime_in_minutes": 117,
+      "rating": "PG-13",
+      "description": "In the twenty-first century, a corporation develops androids to be used as slaves in colonies outside of the Earth, identified as \"replicants\". In 2019, a former Police Officer is hired to hunt down a fugitive group of replicants living undercover in Los Angeles, California...",
+      "image_url": "https://www.themoviedb.org/t/p/w1280/63N9uy8nd9j7Eog2axPQ8lbr3Wj.jpg",
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "movie_id": 15,
+      "title": "Gone Girl",
+      "runtime_in_minutes": 149,
+      "rating": "R",
+      "description": "On the occasion of his fifth wedding anniversary, Nick Dunne reports that his wife, Amy, has gone missing. Under pressure from the police and a growing media frenzy, Nick's portrait of a blissful union begins to crumble...",
+      "image_url": "https://www.themoviedb.org/t/p/w1280/lv5xShBIDPe7m4ufdlV0IAc7Avk.jpg",
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "movie_id": 16,
+      "title": "Mad Max: Fury Road",
+      "runtime_in_minutes": 120,
+      "rating": "R",
+      "description": "In 2029 the mutant population has shrunken significantly due to genetically modified plants designed to reduce mutant powers and the X-Men have disbanded. Logan, whose power to self-heal is dwindling, has surrendered himself to alcohol and now earns a living as a chauffeur. He takes care of the ailing old Professor X whom he keeps hidden away. One day, a female stranger asks Logan to drive a girl named Laura to the Canadian border...",
+      "image_url": "https://www.themoviedb.org/t/p/w1280/8tZYtuWezp8JbcsvHYO0O46tFbo.jpg",
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    }
+  ],
+  "critics": [
+    {
+      "critic_id": 1,
+      "preferred_name": "Chana",
+      "surname": "Gibson",
+      "organization_name": "Film Frenzy",
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "critic_id": 2,
+      "preferred_name": "Maria",
+      "surname": "Cooke",
+      "organization_name": "The Spool",
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "critic_id": 3,
+      "preferred_name": "Bret",
+      "surname": "Moss",
+      "organization_name": "Film Companion",
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "critic_id": 4,
+      "preferred_name": "Alex",
+      "surname": "Grimes",
+      "organization_name": "AV Club",
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "critic_id": 5,
+      "preferred_name": "Mel",
+      "surname": "Delgado",
+      "organization_name": "TIME Magazine",
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "critic_id": 6,
+      "preferred_name": "Lea",
+      "surname": "Vetzer",
+      "organization_name": "London Evening Standard",
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "critic_id": 7,
+      "preferred_name": "Abhi",
+      "surname": "Patil",
+      "organization_name": "Independent (UK)",
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    }
+  ],
+  "theaters": [
+    {
+      "theater_id": 1,
+      "name": "Regal City Center",
+      "address_line_1": "801 C St.",
+      "address_line_2": "",
+      "city": "Vancouver",
+      "state": "WA",
+      "zip": "98660",
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "theater_id": 2,
+      "name": "Hollywood Theatre",
+      "address_line_1": "4122 NE Sandy Blvd.",
+      "address_line_2": "",
+      "city": "Portland",
+      "state": "OR",
+      "zip": "97212",
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "theater_id": 3,
+      "name": "Regal Tigard",
+      "address_line_1": "11626 SW Pacific Hwy",
+      "address_line_2": "",
+      "city": "Tigard",
+      "state": "OR",
+      "zip": "97223",
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    }
+  ],
+  "movies_theaters": [
+    {
+      "movie_id": 1,
+      "theater_id": 1,
+      "is_showing": true
+    },
+    {
+      "movie_id": 1,
+      "theater_id": 2,
+      "is_showing": true
+    },
+    {
+      "movie_id": 1,
+      "theater_id": 3,
+      "is_showing": true
+    },
+    {
+      "movie_id": 2,
+      "theater_id": 1,
+      "is_showing": true
+    },
+    {
+      "movie_id": 2,
+      "theater_id": 2,
+      "is_showing": true
+    },
+    {
+      "movie_id": 2,
+      "theater_id": 3,
+      "is_showing": true
+    },
+    {
+      "movie_id": 3,
+      "theater_id": 1,
+      "is_showing": true
+    },
+    {
+      "movie_id": 3,
+      "theater_id": 2,
+      "is_showing": true
+    },
+    {
+      "movie_id": 3,
+      "theater_id": 3,
+      "is_showing": true
+    },
+    {
+      "movie_id": 4,
+      "theater_id": 1,
+      "is_showing": true
+    },
+    {
+      "movie_id": 4,
+      "theater_id": 2,
+      "is_showing": true
+    },
+    {
+      "movie_id": 4,
+      "theater_id": 3,
+      "is_showing": true
+    },
+    {
+      "movie_id": 5,
+      "theater_id": 1,
+      "is_showing": true
+    },
+    {
+      "movie_id": 5,
+      "theater_id": 2,
+      "is_showing": true
+    },
+    {
+      "movie_id": 5,
+      "theater_id": 3,
+      "is_showing": true
+    },
+    {
+      "movie_id": 6,
+      "theater_id": 1,
+      "is_showing": true
+    },
+    {
+      "movie_id": 6,
+      "theater_id": 2,
+      "is_showing": true
+    },
+    {
+      "movie_id": 6,
+      "theater_id": 3,
+      "is_showing": true
+    },
+    {
+      "movie_id": 7,
+      "theater_id": 1,
+      "is_showing": true
+    },
+    {
+      "movie_id": 7,
+      "theater_id": 2,
+      "is_showing": true
+    },
+    {
+      "movie_id": 7,
+      "theater_id": 3,
+      "is_showing": true
+    },
+    {
+      "movie_id": 8,
+      "theater_id": 1,
+      "is_showing": true
+    },
+    {
+      "movie_id": 8,
+      "theater_id": 2,
+      "is_showing": true
+    },
+    {
+      "movie_id": 8,
+      "theater_id": 3,
+      "is_showing": true
+    },
+    {
+      "movie_id": 9,
+      "theater_id": 1,
+      "is_showing": true
+    },
+    {
+      "movie_id": 9,
+      "theater_id": 2,
+      "is_showing": true
+    },
+    {
+      "movie_id": 9,
+      "theater_id": 3,
+      "is_showing": true
+    },
+    {
+      "movie_id": 10,
+      "theater_id": 1,
+      "is_showing": true
+    },
+    {
+      "movie_id": 10,
+      "theater_id": 2,
+      "is_showing": true
+    },
+    {
+      "movie_id": 10,
+      "theater_id": 3,
+      "is_showing": true
+    },
+    {
+      "movie_id": 11,
+      "theater_id": 1,
+      "is_showing": true
+    },
+    {
+      "movie_id": 11,
+      "theater_id": 2,
+      "is_showing": true
+    },
+    {
+      "movie_id": 11,
+      "theater_id": 3,
+      "is_showing": true
+    },
+    {
+      "movie_id": 12,
+      "theater_id": 1,
+      "is_showing": true
+    },
+    {
+      "movie_id": 12,
+      "theater_id": 2,
+      "is_showing": true
+    },
+    {
+      "movie_id": 12,
+      "theater_id": 3,
+      "is_showing": true
+    },
+    {
+      "movie_id": 13,
+      "theater_id": 1,
+      "is_showing": true
+    },
+    {
+      "movie_id": 13,
+      "theater_id": 2,
+      "is_showing": true
+    },
+    {
+      "movie_id": 13,
+      "theater_id": 3,
+      "is_showing": true
+    },
+    {
+      "movie_id": 14,
+      "theater_id": 1,
+      "is_showing": true
+    },
+    {
+      "movie_id": 14,
+      "theater_id": 2,
+      "is_showing": true
+    },
+    {
+      "movie_id": 14,
+      "theater_id": 3,
+      "is_showing": true
+    },
+    {
+      "movie_id": 15,
+      "theater_id": 1,
+      "is_showing": true
+    },
+    {
+      "movie_id": 15,
+      "theater_id": 2,
+      "is_showing": true
+    },
+    {
+      "movie_id": 15,
+      "theater_id": 3,
+      "is_showing": true
+    },
+    {
+      "movie_id": 16,
+      "theater_id": 1,
+      "is_showing": true
+    },
+    {
+      "movie_id": 16,
+      "theater_id": 2,
+      "is_showing": true
+    },
+    {
+      "movie_id": 16,
+      "theater_id": 3,
+      "is_showing": true
+    }
+  ],
+  "reviews": [
+    {
+      "review_id": 1,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 1,
+      "critic_id": 1,
+      "movie_id": 1,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 2,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 2,
+      "critic_id": 2,
+      "movie_id": 1,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 3,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 3,
+      "critic_id": 3,
+      "movie_id": 1,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 4,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 4,
+      "critic_id": 4,
+      "movie_id": 1,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 5,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 5,
+      "critic_id": 5,
+      "movie_id": 1,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 6,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 1,
+      "critic_id": 6,
+      "movie_id": 1,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 7,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 2,
+      "critic_id": 7,
+      "movie_id": 1,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 8,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 2,
+      "critic_id": 1,
+      "movie_id": 2,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 9,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 3,
+      "critic_id": 2,
+      "movie_id": 2,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 10,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 4,
+      "critic_id": 3,
+      "movie_id": 2,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 11,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 5,
+      "critic_id": 4,
+      "movie_id": 2,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 12,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 1,
+      "critic_id": 5,
+      "movie_id": 2,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 13,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 2,
+      "critic_id": 6,
+      "movie_id": 2,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 14,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 3,
+      "critic_id": 7,
+      "movie_id": 2,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 15,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 3,
+      "critic_id": 1,
+      "movie_id": 3,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 16,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 4,
+      "critic_id": 2,
+      "movie_id": 3,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 17,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 5,
+      "critic_id": 3,
+      "movie_id": 3,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 18,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 1,
+      "critic_id": 4,
+      "movie_id": 3,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 19,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 2,
+      "critic_id": 5,
+      "movie_id": 3,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 20,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 3,
+      "critic_id": 6,
+      "movie_id": 3,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 21,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 4,
+      "critic_id": 7,
+      "movie_id": 3,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 22,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 4,
+      "critic_id": 1,
+      "movie_id": 4,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 23,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 5,
+      "critic_id": 2,
+      "movie_id": 4,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 24,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 1,
+      "critic_id": 3,
+      "movie_id": 4,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 25,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 2,
+      "critic_id": 4,
+      "movie_id": 4,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 26,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 3,
+      "critic_id": 5,
+      "movie_id": 4,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 27,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 4,
+      "critic_id": 6,
+      "movie_id": 4,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 28,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 5,
+      "critic_id": 7,
+      "movie_id": 4,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 29,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 5,
+      "critic_id": 1,
+      "movie_id": 5,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 30,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 1,
+      "critic_id": 2,
+      "movie_id": 5,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 31,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 2,
+      "critic_id": 3,
+      "movie_id": 5,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 32,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 3,
+      "critic_id": 4,
+      "movie_id": 5,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 33,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 4,
+      "critic_id": 5,
+      "movie_id": 5,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 34,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 5,
+      "critic_id": 6,
+      "movie_id": 5,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 35,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 1,
+      "critic_id": 7,
+      "movie_id": 5,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 36,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 1,
+      "critic_id": 1,
+      "movie_id": 6,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 37,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 2,
+      "critic_id": 2,
+      "movie_id": 6,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 38,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 3,
+      "critic_id": 3,
+      "movie_id": 6,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 39,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 4,
+      "critic_id": 4,
+      "movie_id": 6,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 40,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 5,
+      "critic_id": 5,
+      "movie_id": 6,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 41,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 1,
+      "critic_id": 6,
+      "movie_id": 6,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 42,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 2,
+      "critic_id": 7,
+      "movie_id": 6,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 43,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 2,
+      "critic_id": 1,
+      "movie_id": 7,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 44,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 3,
+      "critic_id": 2,
+      "movie_id": 7,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 45,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 4,
+      "critic_id": 3,
+      "movie_id": 7,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 46,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 5,
+      "critic_id": 4,
+      "movie_id": 7,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 47,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 1,
+      "critic_id": 5,
+      "movie_id": 7,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 48,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 2,
+      "critic_id": 6,
+      "movie_id": 7,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 49,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 3,
+      "critic_id": 7,
+      "movie_id": 7,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 50,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 3,
+      "critic_id": 1,
+      "movie_id": 8,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 51,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 4,
+      "critic_id": 2,
+      "movie_id": 8,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 52,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 5,
+      "critic_id": 3,
+      "movie_id": 8,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 53,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 1,
+      "critic_id": 4,
+      "movie_id": 8,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 54,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 2,
+      "critic_id": 5,
+      "movie_id": 8,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 55,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 3,
+      "critic_id": 6,
+      "movie_id": 8,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 56,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 4,
+      "critic_id": 7,
+      "movie_id": 8,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 57,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 4,
+      "critic_id": 1,
+      "movie_id": 9,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 58,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 5,
+      "critic_id": 2,
+      "movie_id": 9,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 59,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 1,
+      "critic_id": 3,
+      "movie_id": 9,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 60,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 2,
+      "critic_id": 4,
+      "movie_id": 9,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 61,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 3,
+      "critic_id": 5,
+      "movie_id": 9,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 62,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 4,
+      "critic_id": 6,
+      "movie_id": 9,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 63,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 5,
+      "critic_id": 7,
+      "movie_id": 9,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 64,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 5,
+      "critic_id": 1,
+      "movie_id": 10,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 65,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 1,
+      "critic_id": 2,
+      "movie_id": 10,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 66,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 2,
+      "critic_id": 3,
+      "movie_id": 10,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 67,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 3,
+      "critic_id": 4,
+      "movie_id": 10,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 68,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 4,
+      "critic_id": 5,
+      "movie_id": 10,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 69,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 5,
+      "critic_id": 6,
+      "movie_id": 10,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 70,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 1,
+      "critic_id": 7,
+      "movie_id": 10,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 71,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 1,
+      "critic_id": 1,
+      "movie_id": 11,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 72,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 2,
+      "critic_id": 2,
+      "movie_id": 11,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 73,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 3,
+      "critic_id": 3,
+      "movie_id": 11,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 74,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 4,
+      "critic_id": 4,
+      "movie_id": 11,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 75,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 5,
+      "critic_id": 5,
+      "movie_id": 11,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 76,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 1,
+      "critic_id": 6,
+      "movie_id": 11,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 77,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 2,
+      "critic_id": 7,
+      "movie_id": 11,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 78,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 2,
+      "critic_id": 1,
+      "movie_id": 12,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 79,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 3,
+      "critic_id": 2,
+      "movie_id": 12,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 80,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 4,
+      "critic_id": 3,
+      "movie_id": 12,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 81,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 5,
+      "critic_id": 4,
+      "movie_id": 12,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 82,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 1,
+      "critic_id": 5,
+      "movie_id": 12,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 83,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 2,
+      "critic_id": 6,
+      "movie_id": 12,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 84,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 3,
+      "critic_id": 7,
+      "movie_id": 12,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 85,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 3,
+      "critic_id": 1,
+      "movie_id": 13,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 86,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 4,
+      "critic_id": 2,
+      "movie_id": 13,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 87,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 5,
+      "critic_id": 3,
+      "movie_id": 13,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 88,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 1,
+      "critic_id": 4,
+      "movie_id": 13,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 89,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 2,
+      "critic_id": 5,
+      "movie_id": 13,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 90,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 3,
+      "critic_id": 6,
+      "movie_id": 13,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 91,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 4,
+      "critic_id": 7,
+      "movie_id": 13,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 92,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 4,
+      "critic_id": 1,
+      "movie_id": 14,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 93,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 5,
+      "critic_id": 2,
+      "movie_id": 14,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 94,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 1,
+      "critic_id": 3,
+      "movie_id": 14,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 95,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 2,
+      "critic_id": 4,
+      "movie_id": 14,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 96,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 3,
+      "critic_id": 5,
+      "movie_id": 14,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 97,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 4,
+      "critic_id": 6,
+      "movie_id": 14,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 98,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 5,
+      "critic_id": 7,
+      "movie_id": 14,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 99,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 5,
+      "critic_id": 1,
+      "movie_id": 15,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 100,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 1,
+      "critic_id": 2,
+      "movie_id": 15,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 101,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 2,
+      "critic_id": 3,
+      "movie_id": 15,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 102,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 3,
+      "critic_id": 4,
+      "movie_id": 15,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 103,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 4,
+      "critic_id": 5,
+      "movie_id": 15,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 104,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 5,
+      "critic_id": 6,
+      "movie_id": 15,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 105,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 1,
+      "critic_id": 7,
+      "movie_id": 15,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 106,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 1,
+      "critic_id": 1,
+      "movie_id": 16,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 107,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 2,
+      "critic_id": 2,
+      "movie_id": 16,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 108,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 3,
+      "critic_id": 3,
+      "movie_id": 16,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 109,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 4,
+      "critic_id": 4,
+      "movie_id": 16,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 110,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 5,
+      "critic_id": 5,
+      "movie_id": 16,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 111,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 1,
+      "critic_id": 6,
+      "movie_id": 16,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "review_id": 112,
+      "content": "A masterful film that expertly balances stunning visuals with emotional depth. The cast delivers powerful performances that will stay with you long after viewing.",
+      "score": 2,
+      "critic_id": 7,
+      "movie_id": 16,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    }
+  ]
+}

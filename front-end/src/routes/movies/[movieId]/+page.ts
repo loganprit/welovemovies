@@ -1,5 +1,5 @@
+import { listMovies } from "$lib/data/staticData";
+
 export function entries() {
-  return Array.from({ length: 100 }, (_, index) => ({
-    movieId: String(index + 1),
-  }));
+  return listMovies().map((movie) => ({ movieId: String(movie.movie_id) }));
 }
