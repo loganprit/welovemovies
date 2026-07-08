@@ -1,8 +1,6 @@
 # WeLoveMovies
 
-WeLoveMovies is a static SvelteKit demo app for browsing movies, reading reviews, and finding theaters. The deployed site serves the app and its seed data from the frontend bundle, so it does not need a warmed backend service or hosted database for the demo experience.
-
-Visit the live application [here](https://welovemovies-front-end-ribo.onrender.com/).
+WeLoveMovies is a static SvelteKit demo app for browsing movies, reading reviews, and finding theaters. The app serves its seed data from the frontend bundle, so it does not need a warmed backend service or hosted database for the demo experience.
 
 ## Features
 
@@ -57,7 +55,7 @@ Use Bun `1.2.0` or newer. Node.js `20.19.0` or newer is still compatible with th
    bun run start
    ```
 
-No `PUBLIC_CONVEX_URL`, `PUBLIC_API_URL`, or backend environment variable is required for the deployed demo.
+No `PUBLIC_CONVEX_URL`, `PUBLIC_API_URL`, or backend environment variable is required for the demo.
 
 ## Scripts
 
@@ -78,17 +76,6 @@ Frontend workspace:
 - `bun run --filter welovemovies-front-end test`: Run Vitest tests.
 - `bun run --filter welovemovies-front-end seed:export`: Generate bundled static demo data.
 - `bun run --filter welovemovies-front-end format`: Format frontend source files.
-
-## Render Deployment
-
-The Render frontend service only needs the static build:
-
-```bash
-bun install
-bun run build
-```
-
-Serve `front-end/build`. Any old backend service or Convex deployment can be removed once this frontend build is deployed.
 
 ## Data Contract
 
