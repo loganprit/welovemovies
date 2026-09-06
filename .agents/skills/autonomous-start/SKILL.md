@@ -70,8 +70,9 @@ Before claiming completion or opening a PR:
    ready to commit, push, or open as a PR.
 4. When waiting for Codex review, check both review/comment signals and PR
    description reactions before deciding whether to keep waiting.
-5. Treat the PR as merge-ready when required checks pass, it is not a draft, and
-   actionable review feedback is resolved.
+5. Treat the PR as merge-ready only when required checks pass, it is not a draft,
+   an independent review of the current commit is explicitly completed and
+   approved, and actionable review feedback is resolved.
 6. If `--full` was requested and the PR is merge-ready, merge it, sync the base
    checkout, remove the feature worktree, delete local and remote feature
    branches when appropriate, and run `git fetch --prune origin`.
