@@ -1,66 +1,23 @@
 ---
 name: svelte-code-writer
-description: CLI tools for Svelte 5 documentation lookup and code analysis. MUST be used whenever creating, editing or analyzing any Svelte component (.svelte) or Svelte module (.svelte.ts/.svelte.js). If possible, this skill should be executed within the svelte-file-editor agent for optimal results.
+description: Look up Svelte 5 documentation or run the Svelte autofixer when syntax is uncertain or Svelte-specific diagnostics are needed.
 ---
 
 # Svelte 5 Code Writer
 
-## CLI Tools
+Use this skill for Svelte-specific lookup and diagnostics. Use
+`svelte-core-bestpractices` for general Svelte guidance; this tool skill does
+not need to run for every Svelte edit.
 
-You have access to `@sveltejs/mcp` CLI for Svelte-specific assistance. Use these commands via `npx`:
-
-### List Documentation Sections
-
-```bash
-npx @sveltejs/mcp list-sections
-```
-
-Lists all available Svelte 5 and SvelteKit documentation sections with titles and paths.
-
-### Get Documentation
+Run the CLI from this Bun project with `bunx @sveltejs/mcp ...`:
 
 ```bash
-npx @sveltejs/mcp get-documentation "<section1>,<section2>,..."
+bunx @sveltejs/mcp list-sections
+bunx @sveltejs/mcp get-documentation "<section1>,<section2>,..."
+bunx @sveltejs/mcp svelte-autofixer "<code_or_path>" [options]
 ```
 
-Retrieves full documentation for specified sections. Use after `list-sections` to fetch relevant docs.
-
-**Example:**
-
-```bash
-npx @sveltejs/mcp get-documentation "$state,$derived,$effect"
-```
-
-### Svelte Autofixer
-
-```bash
-npx @sveltejs/mcp svelte-autofixer "<code_or_path>" [options]
-```
-
-Analyzes Svelte code and suggests fixes for common issues.
-
-**Options:**
-
-- `--async` - Enable async Svelte mode (default: false)
-- `--svelte-version` - Target version: 4 or 5 (default: 5)
-
-**Examples:**
-
-```bash
-# Analyze inline code (escape $ as \$)
-npx @sveltejs/mcp svelte-autofixer '<script>let count = \$state(0);</script>'
-
-# Analyze a file
-npx @sveltejs/mcp svelte-autofixer ./src/lib/Component.svelte
-
-# Target Svelte 4
-npx @sveltejs/mcp svelte-autofixer ./Component.svelte --svelte-version 4
-```
-
-**Important:** When passing code with runes (`$state`, `$derived`, etc.) via the terminal, escape the `$` character as `\$` to prevent shell variable substitution.
-
-## Workflow
-
-1. **Uncertain about syntax?** Run `list-sections` then `get-documentation` for relevant topics
-2. **Reviewing/debugging?** Run `svelte-autofixer` on the code to detect issues
-3. **Always validate** - Run `svelte-autofixer` before finalizing any Svelte component
+Use documentation lookup when syntax is uncertain, then run the autofixer for
+the relevant changed component when Svelte diagnostics are part of the task.
+Use `--async` or `--svelte-version 4|5` only when the file requires that mode.
+When passing inline runes through the shell, escape `$` (for example `\$state`).
