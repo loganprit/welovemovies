@@ -1,46 +1,32 @@
 # Agent Guide
 
-## Memory Protocol
-
-Memory is accessed only through the `memory` skill CLI. Do not use file-based memory stores.
-
-Before responding to any request:
-
-```bash
-uv run --project ~/.codex/skills/memory-cli python ~/.codex/skills/memory-cli/memory_cli.py search-tags --tags critical
-uv run --project ~/.codex/skills/memory-cli python ~/.codex/skills/memory-cli/memory_cli.py retrieve --query "<task topic>" --n 5
-```
-
-Critical memories override other information when they conflict. Do not update or delete memories without explicit permission.
-
 ## Project Shape
 
-WeLoveMovies is now a SvelteKit plus Convex application.
+WeLoveMovies is a Bun-managed SvelteKit static frontend.
 
 - `front-end/`: SvelteKit static SPA frontend using Svelte 5, Vite, TypeScript, Tailwind CSS, and `@sveltejs/adapter-static`.
-- `front-end/src/convex/`: Convex schema, queries, mutations, generated API types, and tests.
+- `front-end/src/lib/data/`: Bundled demo data and read helpers used by the app.
+- `front-end/src/convex/`: Legacy Convex functions and tests kept for reference during cleanup.
 - `back-end/`: Legacy Express, Knex, Objection, and TypeScript REST API kept for rollback/reference and seed export.
-- The frontend talks to Convex through `PUBLIC_CONVEX_URL`; do not reintroduce `PUBLIC_API_URL`, `REACT_APP_API_URL`, or the old REST fetch wrapper.
-- Keep legacy numeric fields like `movie_id`, `review_id`, and `theater_id` in Convex-facing shapes for route and component compatibility.
+- The frontend reads bundled static data; do not reintroduce `PUBLIC_CONVEX_URL`, `PUBLIC_API_URL`, `REACT_APP_API_URL`, or the old REST fetch wrapper.
+- Keep legacy numeric fields like `movie_id`, `review_id`, and `theater_id` in frontend data shapes for route and component compatibility.
 
 ## Frontend Guidance
 
 - Use Svelte 5 patterns and keep code passing `svelte-check`.
 - Public routes are `/`, `/movies`, `/movies/[movieId]`, and `/theaters`.
 - Shared frontend domain types live in `front-end/src/lib/types/api.ts`.
-- Convex behavior lives in `front-end/src/convex/`.
 - Static root assets belong in `front-end/static/`; imported component assets belong in `front-end/src/lib/assets/`.
 - Direct URL refreshes must continue to work with the adapter-static fallback.
 
 ## Commands
 
 - Install: `bun install`
-- Frontend dev: `bun run start`
-- Frontend build: `bun run build`
-- Frontend type-check: `bun run type-check`
-- Convex tests: `bun run test`
-- Convex dev: `bun run convex:dev`
-- Seed export/import: `bun run seed:export`, then `bun run seed:import`
+- Start the frontend: `bun run start`
+- Build: `bun run build`
+- Type-check: `bun run type-check`
+- Tests: `bun run test`
+- Regenerate bundled seed data: `bun run seed:export`
 
 ## Verification
 
@@ -51,10 +37,6 @@ bun run type-check
 bun run build
 ```
 
-For Convex changes, run at least:
-
-```bash
-bun run test
-```
-
-For route or UI changes, verify in Browser against `/`, `/movies`, `/movies/[movieId]`, and `/theaters`.
+For route or shared-shell changes, verify the reachable dev server against `/`,
+`/movies`, `/movies/[movieId]`, and `/theaters`. For local component changes,
+verify the affected routes.
